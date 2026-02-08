@@ -1,0 +1,56 @@
+{
+  "short": [
+    {
+      "id": "light_piano",
+      "name": "Light Piano",
+      "filename": "light piano_3_07.mp3",
+      "duration_seconds": 187,
+      "duration_display": "3:07",
+      "mood": "calm, peaceful",
+      "instruments": ["piano"],
+      "recommended_for": ["meditation", "sleep", "focus"]
+    },
+    {
+      "id": "suspense",
+      "name": "Suspense",
+      "filename": "suspense_3_24.mp3",
+      "duration_seconds": 204,
+      "duration_display": "3:24",
+      "mood": "mysterious, atmospheric",
+      "instruments": ["ambient", "synth"],
+      "recommended_for": ["space", "cosmic", "night"]
+    },
+    {
+      "id": "cinematic",
+      "name": "Cinematic",
+      "filename": "3_54_cinematic.mp3",
+      "duration_seconds": 234,
+      "duration_display": "3:54",
+      "mood": "epic, dramatic",
+      "instruments": ["orchestra", "strings"],
+      "recommended_for": ["mountains", "palaces", "temples"]
+    }
+  ],
+  "long": [
+    {
+      "id": "relaxing_piano",
+      "name": "Relaxing Piano",
+      "filename": "relaxing-piano-10min.mp3",
+      "duration_seconds": 600,
+      "duration_display": "10:00",
+      "mood": "deeply calming, meditative",
+      "instruments": ["piano"],
+      "recommended_for": ["meditation", "sleep", "deep relaxation"]
+    },
+    {
+      "id": "winter_piano",
+      "name": "Winter Piano",
+      "filename": "winter piano_10_30.mp3",
+      "duration_seconds": 630,
+      "duration_display": "10:30",
+      "mood": "serene, peaceful, cozy",
+      "instruments": ["piano", "ambient"],
+      "recommended_for": ["winter", "cozy spaces", "rainy scenes"]
+    }
+  ]
+}
