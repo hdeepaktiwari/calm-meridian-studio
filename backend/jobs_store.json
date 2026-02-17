@@ -1,0 +1,899 @@
+{
+  "cf559bc0": {
+    "job_id": "cf559bc0",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Ocean & Sea Creatures",
+    "duration": 300,
+    "custom_description": "As dawn breaks beneath the gentle surface of the ocean, soft golden rays pierce through the water, illuminating a vibrant world where kelp forests sway gracefully in a rhythmic dance. Schools of colorful fish dart playfully among the coral formations, their scales glimmering like precious jewels, while curious dolphins glide effortlessly through the sunbeams, their silhouettes creating a majestic ballet of light and shadow. In the serene tide pools, delicate starfish and anemones bask in the warmth of the morning sun, while the deep ocean depths pulse with mysterious bioluminescence, casting an ethereal glow that hints at the secrets hidden within this underwater paradise.",
+    "music_id": "winter_piano",
+    "music_path": "music/winter piano_10_30.mp3",
+    "music_name": "Winter Piano",
+    "created_at": "2026-02-15T11:03:12.405915",
+    "completed_at": "2026-02-15T13:06:09.483387",
+    "video_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/final_video.mp4",
+    "video_url": "/videos/1771140307_Ocean__Sea_Creatures_300s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "Kelp Forest",
+        "description": "A kaleidoscope of colors fills the frame as vibrant wrasse fish weave through the kelp. The atmosphere is tranquil, the only sound being the gentle sway of kelp in the current.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "wrasse fish",
+          "kelp",
+          "tranquil atmosphere"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_01_kelp_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Tide Pools",
+        "description": "Amidst the tide pools, seaglass glimmers in the sun while barnacles cling to rocks. A hermit crab emerges from its shell, exploring its surroundings with curiosity.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "seaglass",
+          "barnacles",
+          "hermit crab"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_02_tide_pools.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Deep Ocean Depths",
+        "description": "In the deep darkness, bioluminescent jellyfish float gracefully, their light illuminating eerie rock formations. Shadows flicker as a distant whale song echoes in the vast blue.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "bioluminescence",
+          "jellyfish",
+          "rock formations"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_03_deep_ocean_depths.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Ocean Surface at Sunset",
+        "description": "As the sun dips low, dolphins breach the surface, their bodies catching the light before splashing back into the water. The sky is ablaze with colors.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "dolphins",
+          "splashes",
+          "colored sky"
+        ],
+        "mood": "majestic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_04_ocean_surface_at_sunset.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Rocky Coastline",
+        "description": "Sunset casts a golden glow over the rocky coastline, where marine life clings to the cliffs. The crashing waves create a symphony of sound, harmonizing with the beauty of the landscape.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "marine life",
+          "cliffs",
+          "crashing waves"
+        ],
+        "mood": "majestic",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_05_rocky_coastline.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "Tropical Beach",
+        "description": "Gentle waves lap against powdery white sand as palm trees sway in the light breeze. Snorkelers swim just offshore, their bubbly laughter blending with the sounds of the ocean.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "tropical beach",
+          "palm trees",
+          "snorkelers"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_06_tropical_beach.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Underwater Cave",
+        "description": "The underwater cave glistens with pearls of light as fish swim in and out of shadows. The walls are covered in soft corals hiding countless small creatures.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "fish shadows",
+          "soft corals",
+          "small creatures"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_07_underwater_cave.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Kelp Forest",
+        "description": "Sunbeams pierce through the thick kelp, casting swirling shadows on the sandy floor. Sea turtles glide through the swaying fronds, accompanied by schools of shimmering fish.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "kelp swaying",
+          "sea turtles",
+          "schools of fish"
+        ],
+        "mood": "serene",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_08_kelp_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Ocean Surface at Sunset",
+        "description": "The sky transforms with shades of orange and purple as the sun dips below the horizon. Silhouettes of dolphins leap gracefully against the fiery backdrop, creating a stunning tableau.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "dolphins",
+          "sunset sky",
+          "silhouettes"
+        ],
+        "mood": "majestic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_09_ocean_surface_at_sunset.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "Rocky Coastline",
+        "description": "Surging waves crash onto weathered rocks, sending sprays of water high into the air. Seagulls wheel above, calling as the sun sets, painting the sky in hues of orange and pink.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "surging waves",
+          "weathered rocks",
+          "seagulls"
+        ],
+        "mood": "majestic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_10_rocky_coastline.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "Tide Pools",
+        "description": "Sunlight bathes the tide pools in warmth, revealing the intricate details of barnacles and sea urchins. A curious octopus hides among the crevices.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "barnacles",
+          "sea urchins",
+          "curious octopus"
+        ],
+        "mood": "serene",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_11_tide_pools.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Underwater Cave",
+        "description": "Exploring the cave, a luminous school of fish swims towards the light, revealing the intricate beauty of the cave\u2019s formations. Shadows dance across the walls.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "luminous fish",
+          "cave formations",
+          "shadows"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_12_underwater_cave.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Coral Reef Ecosystem",
+        "description": "A lively scene as fish swirl around vivid coral structures, their scales glinting in the sunlight. A sea turtle glides lazily through the coral maze.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "swirling fish",
+          "vivid coral",
+          "sea turtle"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_13_coral_reef_ecosystem.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Kelp Forest",
+        "description": "The light filters through the kelp, creating an enchanting atmosphere where fish dart between the fronds, and a lone sea otter floats by, playing with a sea urchin.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "sea otter",
+          "urchin",
+          "fish darting"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_14_kelp_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Deep Ocean Depths",
+        "description": "Eerie silhouettes of deep-sea creatures glide through the darkness, illuminated only by faint bioluminescent glows. Their movements create an atmosphere of wonder and intrigue.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "deep-sea creatures",
+          "eerie silhouettes",
+          "faint glows"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_15_deep_ocean_depths.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "Coral Reef Ecosystem",
+        "description": "Brightly colored corals stretch across the frame, while a group of vibrant parrotfish grazes on the coral with their beaks, creating a lively scene beneath the waves.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "parrotfish",
+          "grassy coral",
+          "vibrant colors"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_16_coral_reef_ecosystem.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Kelp Forest",
+        "description": "Underwater, the kelp forest is alive with movement as schools of silvery fish dart through the thick strands. Sunlight creates patterns on the sandy seafloor below.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "silvery fish",
+          "kelp strands",
+          "patterns of sunlight"
+        ],
+        "mood": "serene",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_17_kelp_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Coral Reef Ecosystem",
+        "description": "As the sun rises, golden rays pour through the clear waters, revealing an array of vibrant coral formations. Schools of clownfish dart in and out of their anemone homes, their colors vivid against the coral backdrop.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "colorful fish schools",
+          "coral formations",
+          "anemones"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_18_coral_reef_ecosystem.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 19,
+        "location": "Tide Pools",
+        "description": "Sunlight filters down into shallow pools where starfish cling to rocks and anemones sway gently. Tiny crabs scuttle across the wet sand, seeking refuge among the seaweed.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "starfish",
+          "anemones",
+          "tiny crabs"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_19_tide_pools.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 20,
+        "location": "Coral Reef Ecosystem",
+        "description": "A vibrant coral garden teems with life; parrotfish munch on coral while bright butterflyfish flit about. The scene is alive with movement and color as the sun's rays dance on the water's surface.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "parrotfish",
+          "butterflyfish",
+          "coral garden"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_20_coral_reef_ecosystem.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 21,
+        "location": "Deep Ocean Depths",
+        "description": "A breathtaking view of a giant squid gliding through the dark waters, its bioluminescent features glowing softly. The deep-sea background is a canvas of dark blues.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "giant squid",
+          "bioluminescent features",
+          "dark blues"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_21_deep_ocean_depths.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 22,
+        "location": "Sandy Ocean Floor",
+        "description": "The sandy floor is blanketed with scattered seashells, while gentle currents create ripples across the surface. A solitary stingray glides silently overhead, blending perfectly into its surroundings.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "sandy ocean floor",
+          "seashells",
+          "stingray"
+        ],
+        "mood": "serene",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_22_sandy_ocean_floor.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 23,
+        "location": "Underwater Cave",
+        "description": "Inside the cavern, shafts of light break through the crevices, illuminating schools of small fish darting about. The walls are adorned with vibrant sponges and corals, creating a hidden sanctuary.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "underwater cave",
+          "small fish",
+          "vibrant sponges"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_23_underwater_cave.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 24,
+        "location": "Tropical Beach",
+        "description": "The sun is high, illuminating the clear turquoise water as colorful fish swim just beneath the surface. Families play in the sand, laughter mingling with the sound of the ocean.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "turquoise water",
+          "colorful fish",
+          "families on beach"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_24_tropical_beach.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 25,
+        "location": "Rocky Coastline",
+        "description": "Waves crash against rugged cliffs, sending up a fine mist that catches the warm sunset light. Sea stacks rise dramatically from the ocean, home to seabirds perched above.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "waves crashing",
+          "rugged cliffs",
+          "seabirds"
+        ],
+        "mood": "majestic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_25_rocky_coastline.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 26,
+        "location": "Ocean Surface at Sunset",
+        "description": "The horizon is ablaze with color as dolphins leap joyfully into the air, creating splashes that shimmer in the twilight. Reflections dance across the water's surface.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "dolphins",
+          "twilight colors",
+          "reflections"
+        ],
+        "mood": "majestic",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_26_ocean_surface_at_sunset.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 27,
+        "location": "Tropical Beach",
+        "description": "The bright turquoise sea is alive with movement as pelicans dive for fish. Families build sandcastles, while colorful beach umbrellas dot the shore.",
+        "lighting": "golden beach sunset",
+        "key_elements": [
+          "pelicans",
+          "sandcastles",
+          "colorful umbrellas"
+        ],
+        "mood": "vibrant",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_27_tropical_beach.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 28,
+        "location": "Sandy Ocean Floor",
+        "description": "The peaceful sandy ocean floor features craters made by clinging sand dollars. A gentle current stirs up grains of sand, creating a dreamlike atmosphere.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "sand dollars",
+          "grains of sand",
+          "dreamlike atmosphere"
+        ],
+        "mood": "serene",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_28_sandy_ocean_floor.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 29,
+        "location": "Sandy Ocean Floor",
+        "description": "The gentle ocean current shifts the sands, revealing hidden treasures like colorful shells and small starfish nestled within the grains.",
+        "lighting": "underwater sunbeams",
+        "key_elements": [
+          "colorful shells",
+          "small starfish",
+          "hidden treasures"
+        ],
+        "mood": "serene",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_29_sandy_ocean_floor.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 30,
+        "location": "Deep Ocean Depths",
+        "description": "In the abyss, a glowing anglerfish navigates its dark world, showcasing its bioluminescent lure. The water is thick with mystery as shadows swirl, hinting at unseen creatures.",
+        "lighting": "bioluminescent glow",
+        "key_elements": [
+          "anglerfish",
+          "bioluminescence",
+          "unseen creatures"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771140307_Ocean__Sea_Creatures_300s/images/scene_30_deep_ocean_depths.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Majestic Ocean Symphony | Explore the Depths in Stunning 4K | Relaxation",
+      "description": "As dawn breaks beneath the gentle surface of the ocean, soft golden rays pierce through the water, illuminating a vibrant world where kelp forests sway gracefully in a rhythmic dance. Schools of colorful fish dart playfully among the coral formations, their scales glimmering like precious jewels, while curious dolphins glide effortlessly through the sunbeams, their silhouettes creating a majestic ballet of light and shadow. In the serene tide pools, delicate starfish and anemones bask in the warmth of the morning sun, while the deep ocean depths pulse with mysterious bioluminescence, casting an ethereal glow that hints at the secrets hidden within this underwater paradise.\n\nYour visual journey begins among the towering kelp forests, as the sunlight filters down through the emerald fronds, inviting you into a realm of tranquility and wonder. From the vibrant dance of the fish to the gentle sway of the kelp, each moment is a celebration of life. As you move closer to the rocky coastline, the rhythmic sound of waves crashing against the shore fills the air, a soothing backdrop to the breathtaking sights.\n\nIn this video:\n\ud83c\udf0a Dive into the swaying kelp forests\n\ud83d\udc2c Glide with dolphins in sunlit waters\n\ud83e\udd91 Discover the hidden treasures of tide pools\n\ud83c\udf05 Witness the ocean surface at sunset\n\ud83c\udf0c Explore the depths illuminated by bioluminescent wonders\n\nKey themes: 4k, 8k hdr, ocean tranquility, mesmerizing sea life, ambient sounds, healing frequencies, stress relief, anxiety relief, deep sleep, sleep music 2026, natural beauty, kelp forest, tide pools",
+      "hashtags": [
+        "#4K",
+        "#8K",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#OceanLife",
+        "#SeaCreatures",
+        "#KelpForest",
+        "#TidePools",
+        "#DeepOcean",
+        "#NatureSounds",
+        "#HealingFrequencies",
+        "#StressRelief",
+        "#AnxietyRelief",
+        "#SleepMusic2026",
+        "#LofiBeats",
+        "#432hz",
+        "#528hz",
+        "#Nature",
+        "#ScenicViews",
+        "#Bioluminescence",
+        "#RockyCoastline",
+        "#UnderwaterParadise",
+        "#Serene",
+        "#Majestic",
+        "#Breathtaking"
+      ],
+      "primary_keywords": [
+        "4K ocean video",
+        "ASMR ocean sounds",
+        "kelp forest relaxation",
+        "tide pools exploration",
+        "deep ocean tranquility",
+        "ambient ocean music",
+        "sleep music 2026",
+        "stress relief ocean",
+        "bioluminescent sea life",
+        "rocky coastline views"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "IT-ky0TBu1g",
+      "url": "https://www.youtube.com/watch?v=IT-ky0TBu1g",
+      "published_at": "2026-02-17T19:44:07.522612",
+      "scheduled_at": "2026-02-18T02:30:00.0Z",
+      "title": "Majestic Ocean Symphony | Explore the Depths in Stunning 4K | Relaxation",
+      "privacy": "public"
+    }
+  },
+  "4d7f900a": {
+    "job_id": "4d7f900a",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Lush Green Forests",
+    "duration": 180,
+    "custom_description": "As dawn breaks over a lush green forest, soft golden rays filter through the thick canopy above, casting a warm glow upon the vibrant undergrowth. The camera glides past intricate tree root systems, emerging into a serene fern grotto where dew-kissed fronds sway gently in the cool morning breeze. Wildlife rustles in the underbrush, while playful vines cascade from ancient trees, creating a mystical tapestry of shadows and light that envelops the viewer in a tranquil embrace.",
+    "music_id": "suspense",
+    "music_path": "music/suspense_3_24.mp3",
+    "music_name": "Suspense",
+    "created_at": "2026-02-16T19:56:04.696978",
+    "completed_at": "2026-02-16T20:02:37.256262",
+    "video_path": "generated_videos/1771251964_Lush_Green_Forests_180s/final_video.mp4",
+    "video_url": "/videos/1771251964_Lush_Green_Forests_180s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "Sunlit glade",
+        "description": "A sunlit glade reveals a burst of wildflowers amidst lush grasses. Shafts of light break through the trees, inviting butterflies to dance in the warm air.",
+        "lighting": "golden shafts",
+        "key_elements": [
+          "wildflowers",
+          "grass",
+          "butterflies"
+        ],
+        "mood": "verdant",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_01_sunlit_glade.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Creek through woods",
+        "description": "The gentle babble of a creek flows through the woodland, weaving between stones and mossy banks. Sunlight dances off the water's surface, creating shimmering reflections.",
+        "lighting": "dappled forest light",
+        "key_elements": [
+          "moss-covered stones",
+          "water reflections",
+          "wildlife"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_02_creek_through_woods.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Ancient forest path",
+        "description": "The path continues deeper into the woods, flanked by flower-laden wild plants. The camera captures the fluttering shadows of leaves, enhancing the woodland's enchanting aura.",
+        "lighting": "golden shafts",
+        "key_elements": [
+          "flowering plants",
+          "fluttering shadows",
+          "towering trees"
+        ],
+        "mood": "mystical",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_03_ancient_forest_path.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Fern grotto",
+        "description": "The soft light filters through the high canopy above the fern grotto, illuminating the soft textures of the fronds and creating a peaceful ambiance filled with whispers of the wind.",
+        "lighting": "misty morning",
+        "key_elements": [
+          "soft textures",
+          "high canopy",
+          "fronds"
+        ],
+        "mood": "mystical",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_04_fern_grotto.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Creek through woods",
+        "description": "The creek meanders through the lush landscape, reflecting the greens and browns of the surrounding forest. The sound of water flows harmoniously with the gentle rustling of leaves.",
+        "lighting": "dappled forest light",
+        "key_elements": [
+          "reflections",
+          "mossy banks",
+          "creek"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_05_creek_through_woods.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "Tree root system",
+        "description": "A gnarled tree root system sprawls across the forest floor, intricately intertwined with the rich earth. Moss carpets and small mushrooms thrive in the shaded crevices.",
+        "lighting": "dappled forest light",
+        "key_elements": [
+          "tree roots",
+          "moss carpets",
+          "mushrooms"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_06_tree_root_system.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Dense undergrowth",
+        "description": "Thick undergrowth teems with life. The camera glides through the foliage, revealing the intricate patterns of leaves and the occasional flicker of movement from hidden creatures.",
+        "lighting": "overcast soft light",
+        "key_elements": [
+          "dense foliage",
+          "wildlife",
+          "fallen leaves"
+        ],
+        "mood": "primordial",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_07_dense_undergrowth.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Canopy from below",
+        "description": "The camera tilts upward, capturing the intricate web of branches overhead. Sunlight breaks through in golden shafts, illuminating the leaves in emerald hues while the gentle sway of vines adds a touch of mystique.",
+        "lighting": "golden shafts",
+        "key_elements": [
+          "dappled sunlight",
+          "vines",
+          "towering trees"
+        ],
+        "mood": "mystical",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_08_canopy_from_below.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Canopy from below",
+        "description": "Under the canopy, light trickles down, creating a mosaic of light and shadow on the forest floor. The tranquil sound of birdsong permeates the air, adding to the forest's charm.",
+        "lighting": "dappled forest light",
+        "key_elements": [
+          "birds",
+          "mosaic light",
+          "towering trees"
+        ],
+        "mood": "verdant",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_09_canopy_from_below.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "Tree root system",
+        "description": "The camera focuses on the complex tree root systems intertwining with the earth, revealing the symbiotic relationship between soil and the roots. Sunlight highlights the textures and colors of this hidden world.",
+        "lighting": "dappled forest light",
+        "key_elements": [
+          "textures of roots",
+          "soil",
+          "intertwined systems"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_10_tree_root_system.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "Forest clearing",
+        "description": "The clearing is alive with the sound of a nearby brook, and the camera captures glimpses of small animals venturing out, framed by the brilliant greenery of the surroundings.",
+        "lighting": "misty morning",
+        "key_elements": [
+          "wildlife",
+          "greenery",
+          "blooming flowers"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_11_forest_clearing.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Moss-covered logs",
+        "description": "Large, ancient logs covered in rich moss create a textured landscape. The camera pans along the logs, revealing small mushrooms sprouting and the delicate patterns of dew glistening.",
+        "lighting": "overcast soft light",
+        "key_elements": [
+          "moss carpets",
+          "mushrooms",
+          "fallen logs"
+        ],
+        "mood": "primordial",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_12_moss-covered_logs.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Moss-covered logs",
+        "description": "The camera zooms in on the vibrant moss covering the logs and the tiny ecosystems that thrive on them, including delicate insects and tiny flowering plants.",
+        "lighting": "overcast soft light",
+        "key_elements": [
+          "ecosystems",
+          "tiny insects",
+          "moss-covered logs"
+        ],
+        "mood": "primordial",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_13_moss-covered_logs.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Dense undergrowth",
+        "description": "The undergrowth is dense and rich, filled with a variety of plants and ferns lying low to the ground. The camera captures small details of nature's intricacies as it explores this uncharted landscape.",
+        "lighting": "overcast soft light",
+        "key_elements": [
+          "variety of plants",
+          "intricate details",
+          "ferns"
+        ],
+        "mood": "primordial",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_14_dense_undergrowth.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Sunlit glade",
+        "description": "Dappled sunlight pours into the glade, with its vibrant colors and sounds of nature forming a celebration of life. The glade feels alive with activity from insects and birds alike.",
+        "lighting": "golden shafts",
+        "key_elements": [
+          "vibrant colors",
+          "insect activity",
+          "birdsong"
+        ],
+        "mood": "verdant",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_15_sunlit_glade.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "Fern grotto",
+        "description": "A secluded fern grotto, where sunlight softly illuminates the fronds. Dew drops hang from the leaves, and the air is thick with serenity as the gentle breeze causes the ferns to sway.",
+        "lighting": "misty morning",
+        "key_elements": [
+          "dew-kissed fronds",
+          "soft sunlight",
+          "vines"
+        ],
+        "mood": "mystical",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_16_fern_grotto.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Ancient forest path",
+        "description": "A winding path blanketed by vibrant moss and framed by towering trees. Sunlight filters softly through the leaves, creating a dappled pattern on the ground. The air is still and rich with earthy scents.",
+        "lighting": "dappled forest light",
+        "key_elements": [
+          "towering trees",
+          "moss carpets",
+          "leaf litter"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_17_ancient_forest_path.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Forest clearing",
+        "description": "A serene clearing filled with vibrant ferns and scattered wildflowers. The sunlight spills generously, creating a peaceful sanctuary alive with rustling wildlife.",
+        "lighting": "misty morning",
+        "key_elements": [
+          "ferns",
+          "wildlife",
+          "fallen logs"
+        ],
+        "mood": "verdant",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771251964_Lush_Green_Forests_180s/images/scene_18_forest_clearing.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Serene Dawn in a Lush Green Forest | 4K Healing Ambience | Stress Relief",
+      "description": "Awaken your senses as dawn unfurls over a lush green forest, where soft golden rays spill through a thick canopy, warming the vibrant undergrowth with their gentle touch. The air is alive with the earthy scent of moss and damp earth, creating a serene atmosphere that invites tranquility into your soul. Each breath fills you with the soothing sounds of nature, as a symphony of rustling leaves and distant bird calls wraps around you like a comforting embrace.\n\nAs the camera glides gracefully through this enchanting landscape, your eyes feast on the intricate network of roots twisting beneath ancient trees, leading you deeper into the heart of the woodland. You find yourself emerging into a hidden fern grotto, where dew-kissed fronds sway gently in the cool morning breeze, and the soft trickle of a nearby creek whispers sweet melodies that beckon you to pause and reflect. Playful vines dangle from towering branches, creating a dance of shadows and light that captivates your gaze and stirs a sense of wonder. Immerse yourself in this tranquil journey that rejuvenates your spirit and calms your mind.\n\nIn this video:\n\ud83c\udf33 Explore a sunlit glade bathed in warm light \n\ud83d\udca7 Experience a serene creek flowing through the woods \n\ud83c\udf3f Wander along an ancient forest path rich with history \n\ud83c\udf43 Discover the peaceful charm of a fern grotto \n\ud83d\udca6 Listen to the gentle sounds of a babbling creek \n\nKey themes: 4K, ambient sounds, deep sleep, stress relief, anxiety relief, healing frequencies, 432hz, 528hz, sleep music 2026, nature sounds, lofi beats.",
+      "hashtags": [
+        "#4K",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#NatureSounds",
+        "#Forest",
+        "#Healing",
+        "#DeepSleep",
+        "#StressRelief",
+        "#SleepMusic2026",
+        "#LushGreenForests",
+        "#PeacefulNature",
+        "#RelaxingAmbience",
+        "#Mindfulness",
+        "#Calm",
+        "#NatureLovers",
+        "#FernGrotto",
+        "#CreekSounds",
+        "#MorningLight",
+        "#QuietMoments",
+        "#HealingFrequencies",
+        "#432hz",
+        "#528hz",
+        "#NatureVibes"
+      ],
+      "primary_keywords": [
+        "4K forest video",
+        "nature sounds for sleep",
+        "deep sleep music",
+        "stress relief sounds",
+        "ASMR forest ambience",
+        "healing frequencies nature",
+        "ambient music for relaxation",
+        "tranquil forest path",
+        "creek sounds for meditation"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "XzMr40aOozs",
+      "url": "https://www.youtube.com/watch?v=XzMr40aOozs",
+      "published_at": "2026-02-17T19:38:49.722495",
+      "scheduled_at": "2026-02-18T02:30:00.0Z",
+      "title": "Serene Dawn in a Lush Green Forest | 4K Healing Ambience | Stress Relief",
+      "privacy": "public"
+    }
+  }
+}

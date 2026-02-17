@@ -9,6 +9,7 @@ import random
 import requests
 from openai import OpenAI
 from moviepy import AudioFileClip, concatenate_videoclips, VideoClip, concatenate_audioclips, CompositeAudioClip
+from moviepy.audio.fx import AudioFadeOut
 import numpy as np
 from PIL import Image
 from pathlib import Path
@@ -212,43 +213,54 @@ TRENDING KEYWORDS (from current web search - USE THESE):
 IMPORTANT: Incorporate these trending keywords naturally into the title, description, and hashtags.
 These are currently popular search terms that will help the video rank higher."""
         
-        prompt = f"""You are a metadata writer for "Calm Meridian" — a YouTube channel featuring calming scenic world videos. Tagline: "Where the World Slows Down."
+        prompt = f"""You are an expert YouTube content creator and SEO specialist who writes viral, emotionally engaging video descriptions. Generate optimized metadata for a cinematic video.
 
 Domain: {domain.name}
 Video Features: {scene_summary}
 Custom Description: {custom_description if custom_description else 'Cinematic ambient video'}
 {trending_context}
 
-Generate YouTube metadata:
+Generate SEO-optimized metadata following this EXACT structure:
 
-1. TITLE (50-70 characters):
-   - Cinematic, evocative, curiosity-driven
-   - Include "4K" where natural
-   - 1-2 relevant emoji max
+1. TITLE (50-70 characters): 
+   - Emotionally evocative and click-worthy
+   - Include "4K" or "8K" 
+   - Use power words: "Breathtaking", "Stunning", "Majestic", "Serene"
+   - Format: "[Emotional Hook] | [What It Is] | [Benefit]"
 
-2. DESCRIPTION (200-350 words):
-   Write clean, flowing prose. NO bold markdown headers. NO section labels like "OPENING HOOK", "WHY WATCH", "CALL TO ACTION", "ENGAGEMENT PROMPT". NO "subscribe/like/bell" prompts. NO asking viewers to comment. NO emojis in the body text.
+2. DESCRIPTION (300-500 words) - Clean, immersive, NO engagement prompts:
+
+   Opening paragraph: Poetic invitation to experience the video. Sensory imagery.
    
-   Just write:
-   - An evocative opening paragraph that draws the viewer into the scene
-   - A paragraph describing the visual journey and what the video features
-   - A brief paragraph about the mood/atmosphere and what it's good for (sleep, meditation, relaxation)
-   - 3-5 relevant hashtags at the very end
+   Second paragraph: Describe the visual journey through specific scenes.
    
-   Let the writing speak for itself. Natural, elegant prose — not a YouTube template.
+   "In this video:" section with simple scene descriptions (use emojis).
+   
+   Key themes line: 8-12 comma-separated keywords.
+   
+   STRICT RULES for description:
+   - NO "like and subscribe", NO "hit the bell", NO CTAs
+   - NO "comment below", NO "share with friends"
+   - NO markdown bold headers (no ** or #)
+   - NO "don't forget to", NO engagement prompts
+   - Keep it clean, poetic, informative only
 
-3. HASHTAGS (15-20 tags):
-   - Mix of broad and niche
-   - Include domain-specific tags
-   - No need for #subscribe or #like
+3. HASHTAGS (25-30 tags):
+   - Mix trending + niche + domain-specific
+   - Include: #4K #Relaxation #Meditation #ASMR #AmbientMusic
+   - Add domain hashtags
+   - Include trending 2026 hashtags
 
 4. PRIMARY_KEYWORDS (8-10 keywords):
-   - High-search-volume terms for this niche
+   - High-search-volume terms
+   - Long-tail keywords for the niche
+
+IMPORTANT: Write a clean, poetic description. NO calls to action, NO "like subscribe", NO engagement prompts, NO markdown bold headers. Just beautiful, informative text.
 
 Return ONLY valid JSON:
 {{
-  "title": "Title here",
-  "description": "Clean prose description here",
+  "title": "Evocative title here",
+  "description": "Full immersive description with sections and emojis",
   "hashtags": ["#tag1", "#tag2", ...],
   "primary_keywords": ["keyword1", "keyword2", ...]
 }}"""
@@ -260,13 +272,13 @@ Return ONLY valid JSON:
                     {"role": "system", "content": """You are a viral YouTube content creator who writes emotionally captivating video descriptions that make viewers feel like they're already experiencing the video. 
 
 Your style is:
-- Clean, elegant prose — no markdown bold, no section headers, no emojis in body
 - Immersive and sensory (describe what they'll see, hear, feel)
 - Poetic but accessible
-- NEVER include: call to action, engagement prompts, subscribe/like/bell requests, questions to viewers
-- Naturally incorporates keywords without being spammy
+- Clean and informative — NO calls to action, NO "like subscribe share", NO engagement prompts
+- NO markdown bold headers (no ** or #)
+- Naturally incorporates trending keywords
 
-Write descriptions that transport viewers into the experience through pure prose. Return only valid JSON."""},
+Return only valid JSON."""},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.8,
@@ -291,7 +303,7 @@ Write descriptions that transport viewers into the experience through pure prose
             # Return default SEO if generation fails
             return {
                 "title": f"{domain.name} 4K | Relaxing Ambient Video | Sleep & Meditation",
-                "description": f"Experience the beauty of {domain.name} in this stunning cinematic journey. Perfect for sleep, meditation, study, and relaxation. High-quality 4K video with peaceful ambient sounds.",
+                "description": f"Experience the beauty of {domain.name} in this stunning cinematic journey. Perfect for sleep, meditation, study, and relaxation. High-quality 4K video with peaceful ambient sounds.\n\n🎵 Use for: Sleep, Focus, Meditation, Stress Relief\n\nSubscribe for more relaxing content!",
                 "hashtags": ["#relaxing", "#meditation", "#sleepmusic", "#ambient", "#4k", f"#{domain.name.lower().replace(' ', '')}", "#peaceful", "#calm", "#nature", "#asmr"],
                 "primary_keywords": [domain.name, "relaxing video", "sleep music", "meditation", "ambient"],
                 "trending_keywords_used": []
@@ -499,11 +511,7 @@ Write descriptions that transport viewers into the experience through pure prose
             
             # Apply gentle fade out at the end (last 3 seconds)
             fade_duration = min(3.0, video_duration * 0.1)
-            try:
-                from moviepy.audio.fx import AudioFadeOut
-                audio = audio.with_effects([AudioFadeOut(fade_duration)])
-            except Exception:
-                pass  # Skip fade if not supported
+            audio = audio.with_effects([AudioFadeOut(fade_duration)])
             
             final_video = final_video.with_audio(audio)
         
