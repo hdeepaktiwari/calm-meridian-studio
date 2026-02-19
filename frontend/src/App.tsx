@@ -13,10 +13,10 @@ function App() {
 
   const apiUrl = 'http://localhost:3011';
 
-  const loadData = async () => {
+  const loadData = async (isInitial = false) => {
     try {
-      setLoading(true);
-      setError('');
+      if (isInitial) setLoading(true);
+      // Don't setError('') on background refreshes — avoids flicker
 
       try {
         const healthResponse = await fetch(`${apiUrl}/health`);
@@ -28,7 +28,7 @@ function App() {
         if (videosResponse.ok) {
           const data = await videosResponse.json();
           const list = data?.videos ?? data;
-          setVideos(Array.isArray(list) ? list : []);
+          setVideos(Array.isArray(list) ? list : Object.values(list));
         }
       } catch (e) { console.error('Videos fetch failed:', e); }
 
@@ -36,23 +36,24 @@ function App() {
         const jobsResponse = await fetch(`${apiUrl}/api/jobs`);
         if (jobsResponse.ok) {
           const data = await jobsResponse.json();
-          const list = data?.jobs ?? data;
+          let list = data?.jobs ?? data;
+          if (!Array.isArray(list)) list = Object.values(list);
           setJobs(Array.isArray(list) ? list : []);
         }
       } catch (e) { console.error('Jobs fetch failed:', e); }
 
+      if (isInitial) setError('');
     } catch (error) {
       console.error('Failed to load data:', error);
-      setError('Failed to load data. Check backend connection.');
+      if (isInitial) setError('Failed to load data. Check backend connection.');
     } finally {
-      setLoading(false);
+      if (isInitial) setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadData();
-    // Auto-refresh every 15s when there are active jobs
-    const interval = setInterval(loadData, 15000);
+    loadData(true);
+    const interval = setInterval(() => loadData(false), 15000);
     return () => clearInterval(interval);
   }, []);
 

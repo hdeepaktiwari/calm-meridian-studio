@@ -9,7 +9,7 @@ echo "🌍 Starting Calm Meridian Studio..."
 echo "📡 Starting FastAPI backend on port 3011..."
 cd backend
 source venv/bin/activate
-nohup venv/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 3011 > /tmp/cvs-backend.log 2>&1 &
+nohup venv/bin/python3 -m uvicorn main:app --host 127.0.0.1 --port 3011 > /tmp/cvs-backend.log 2>&1 &
 BACKEND_PID=$!
 echo "Backend PID: $BACKEND_PID"
 cd ..

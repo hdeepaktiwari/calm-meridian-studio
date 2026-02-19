@@ -711,7 +711,14 @@ async def generate_batch(request: BatchRequest, background_tasks: BackgroundTask
     state = load_automation_state()
     domain_names = list(DOMAIN_REGISTRY.keys())
     library = load_music_library()
-    base_durations = [180, 300]
+    # Duration options (seconds). Comment/uncomment to enable/disable.
+    # To re-enable 7 and 10 min, simply uncomment them below:
+    base_durations = [
+        180,   # 3 min
+        300,   # 5 min
+        # 420, # 7 min  — disabled (uncomment to enable)
+        # 600, # 10 min — disabled (uncomment to enable)
+    ]
 
     job_ids = []
     for i in range(request.count):
@@ -782,4 +789,4 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=3011)
+    uvicorn.run(app, host="127.0.0.1", port=3011)

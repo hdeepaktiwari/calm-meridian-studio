@@ -895,5 +895,2479 @@
       "title": "Serene Dawn in a Lush Green Forest | 4K Healing Ambience | Stress Relief",
       "privacy": "public"
     }
+  },
+  "a87d6fa3": {
+    "job_id": "a87d6fa3",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Beautiful Himalayas",
+    "duration": 326,
+    "custom_description": "As dawn breaks over the majestic Himalayas, soft golden rays gently illuminate the pristine alpine meadow, where vibrant prayer flags flutter in the cool morning breeze, their colors a stark contrast against the stone-grey stupas dotting the landscape. Yaks graze peacefully nearby, their silhouettes framed by the towering snow-covered peaks that rise dramatically in the distance, a testament to nature's grandeur. The serene ambiance of a quaint mountain village nestled below comes to life, as the harmonious whispers of the wind and the distant sound of temple bells evoke a profound sense of tranquility and reverence in this untouched sanctuary.",
+    "music_id": "winter_piano",
+    "music_path": "music/winter piano_10_30.mp3",
+    "music_name": "Winter Piano",
+    "created_at": "2026-02-19T17:16:20.104150",
+    "completed_at": "2026-02-19T19:31:06.020081",
+    "video_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/final_video.mp4",
+    "video_url": "/videos/1771508738_Beautiful_Himalayas_326s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "Glacial valley",
+        "description": "The deep glacial valley, carved by ancient ice, glistens under the sunlight, with clear streams winding through lush greenery.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "glacial valley",
+          "clear streams",
+          "lush greenery"
+        ],
+        "mood": "pristine",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_01_glacial_valley.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Alpine meadow",
+        "description": "In the late afternoon, the alpine meadow is vibrant and alive, with birds soaring overhead and the sounds of nature filling the air.",
+        "lighting": "clear blue sky",
+        "key_elements": [
+          "vibrant meadow",
+          "soaring birds",
+          "nature sounds"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_02_alpine_meadow.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Prayer flag ridge",
+        "description": "Prayer flags flutter vibrantly in the wind atop a ridge, creating a riot of colors against the stark stone-grey mountains that loom beyond.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "prayer flags",
+          "stone-grey mountains",
+          "colorful display"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_03_prayer_flag_ridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Mountain village",
+        "description": "A quaint mountain village with traditional stone houses nestled among terraced fields, as the warm light of dawn casts a golden hue over the landscape.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "mountain village",
+          "terraced fields",
+          "stone houses"
+        ],
+        "mood": "serene",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_04_mountain_village.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Snow-capped peaks",
+        "description": "A breathtaking view of the towering snow-capped peaks, their pristine surfaces glistening in the sunlight, showcasing nature's raw beauty.",
+        "lighting": "clear blue sky",
+        "key_elements": [
+          "towering peaks",
+          "glistening snow",
+          "raw beauty"
+        ],
+        "mood": "majestic",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_05_snow-capped_peaks.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "High altitude lake",
+        "description": "A crystal-clear lake at high altitude, surrounded by rugged mountains, reflects the sky and the vibrant hues of the surrounding wildflowers.",
+        "lighting": "clear blue sky",
+        "key_elements": [
+          "crystal-clear lake",
+          "rugged mountains",
+          "vibrant wildflowers"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_06_high_altitude_lake.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Mountain monastery",
+        "description": "The ancient mountain monastery rests atop a rocky outcrop, its vibrant prayer flags fluttering against the backdrop of towering snow-capped peaks, while the sun begins to rise.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "Buddhist monastery",
+          "prayer flags",
+          "rocky outcrop"
+        ],
+        "mood": "spiritual",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_07_mountain_monastery.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Glacial valley",
+        "description": "The glacial valley glimmers with the colors of the earth and sky, where ice meets rock and lush vegetation thrives in the sun's warm embrace.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "glimmering colors",
+          "ice meets rock",
+          "lush vegetation"
+        ],
+        "mood": "pristine",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_08_glacial_valley.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Mountain monastery",
+        "description": "As the sun sets, the mountain monastery glows warmly, with the glow reflecting on the snow-covered slopes surrounding it.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "warm glow",
+          "reflective slopes",
+          "serene beauty"
+        ],
+        "mood": "spiritual",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_09_mountain_monastery.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "Alpine meadow",
+        "description": "A tranquil alpine meadow in the early morning is adorned with wildflowers swaying in the gentle breeze, surrounded by the grandeur of towering mountains.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "pristine meadow",
+          "wildflowers",
+          "snow-covered peaks"
+        ],
+        "mood": "serene",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_10_alpine_meadow.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "High altitude lake",
+        "description": "The still waters of a high altitude lake reflect the majestic surrounding peaks, framed by lush pine forests and vibrant wildflowers on its banks.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "high altitude lake",
+          "pine forests",
+          "reflected peaks"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_11_high_altitude_lake.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Rocky mountain path",
+        "description": "The rocky mountain path offers a rugged yet inviting trail leading to hidden vistas, where nature's beauty reveals itself with every twist and turn.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "rugged trail",
+          "hidden vistas",
+          "nature's beauty"
+        ],
+        "mood": "majestic",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_12_rocky_mountain_path.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Glacial valley",
+        "description": "The glacial valley, now basked in the soft glow of twilight, invites contemplation with its calm waters and majestic reflections of the Himalayas.",
+        "lighting": "misty valleys",
+        "key_elements": [
+          "twilight glow",
+          "calm waters",
+          "majestic reflections"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_13_glacial_valley.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Prayer flag ridge",
+        "description": "A riveting view of the prayer flag ridge, where flags of every color flutter in unison against the expansive backdrop of the Himalayas.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "fluttering flags",
+          "expansive backdrop",
+          "Himalayan mountain range"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_14_prayer_flag_ridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Snow-capped peaks",
+        "description": "The peaks stand tall and proud, their faces glittering under the bright sun, with wispy clouds drifting lazily across the blue expanse.",
+        "lighting": "clear blue sky",
+        "key_elements": [
+          "snow-capped mountains",
+          "bright sun",
+          "wispy clouds"
+        ],
+        "mood": "majestic",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_15_snow-capped_peaks.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "Alpine meadow",
+        "description": "In the heart of the alpine meadow, a small stream meanders through, reflecting the azure sky as yaks graze nearby on lush green grass.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "small stream",
+          "grazing yaks",
+          "lush green grass"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_16_alpine_meadow.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Alpine meadow",
+        "description": "The meadow, alive with the colors of blooming flowers, serves as a serene canvas against the backdrop of towering, snow-clad mountains.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "blooming flowers",
+          "snow-clad mountains",
+          "serene landscape"
+        ],
+        "mood": "serene",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_17_alpine_meadow.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Prayer flag ridge",
+        "description": "A colorful stretch of prayer flags hangs from the rugged ridge, fluttering vibrantly against the stark stone-grey of the cliffs and the bright blue sky.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "prayer flags",
+          "rugged ridge",
+          "dramatic cliffs"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_18_prayer_flag_ridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 19,
+        "location": "Panoramic vista",
+        "description": "From this high vantage point, the majestic Himalayan range unfolds, an intricate tapestry of peaks and valleys painted in the soft light of dawn.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "high vantage point",
+          "intricate tapestry",
+          "soft dawn light"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_19_panoramic_vista.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 20,
+        "location": "Rocky mountain path",
+        "description": "A narrow, rocky path winds through the rugged mountains, providing a breathtaking view of the valley below, with yaks grazing peacefully nearby.",
+        "lighting": "clear blue sky",
+        "key_elements": [
+          "rocky path",
+          "yaks grazing",
+          "majestic valley view"
+        ],
+        "mood": "majestic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_20_rocky_mountain_path.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 21,
+        "location": "Panoramic vista",
+        "description": "A sweeping panoramic vista showcases the breathtaking expanse of the Himalayas, with rolling mountains and vibrant valleys bathed in the warm golden light of sunrise.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "panoramic view",
+          "rolling mountains",
+          "vibrant valleys"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_21_panoramic_vista.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 22,
+        "location": "Rocky mountain path",
+        "description": "The rocky mountain path leads adventurers past breathtaking views filled with lush forests and the distant sound of cascading water from nearby streams.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "rocky path",
+          "lush forests",
+          "cascading water"
+        ],
+        "mood": "majestic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_22_rocky_mountain_path.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 23,
+        "location": "High altitude lake",
+        "description": "The high altitude lake shimmers under the midday sun, its waters mirroring the surrounding peaks and enhancing the ethereal beauty of the landscape.",
+        "lighting": "clear blue sky",
+        "key_elements": [
+          "shimmering lake",
+          "midday sun",
+          "surrounding peaks"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_23_high_altitude_lake.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 24,
+        "location": "Mountain village",
+        "description": "Life in the mountain village unfolds as locals engage in morning rituals, surrounded by the breathtaking beauty of their snow-covered environment.",
+        "lighting": "misty valleys",
+        "key_elements": [
+          "locals engaging",
+          "morning rituals",
+          "snow-covered environment"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_24_mountain_village.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 25,
+        "location": "Mountain monastery",
+        "description": "The monastery, with its intricate architecture, sits in serene isolation amidst the vastness of nature, its silence punctuated only by the distant sound of temple bells.",
+        "lighting": "misty valleys",
+        "key_elements": [
+          "Buddhist monastery",
+          "intricate architecture",
+          "temple bells"
+        ],
+        "mood": "spiritual",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_25_mountain_monastery.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 26,
+        "location": "Snow-capped peaks",
+        "description": "Golden sunlight cascades down the rugged slopes of the snow-capped peaks, illuminating the sharp ridges and creating a breathtaking contrast against the deep blue sky.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "snow-covered mountains",
+          "clear blue sky",
+          "majestic ridges"
+        ],
+        "mood": "majestic",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_26_snow-capped_peaks.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 27,
+        "location": "Mountain monastery",
+        "description": "The monastery, with its bell tower echoing through the valley, stands as a symbol of peace, surrounded by the majestic mountains.",
+        "lighting": "misty valleys",
+        "key_elements": [
+          "bell tower",
+          "symbol of peace",
+          "majestic mountains"
+        ],
+        "mood": "spiritual",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_27_mountain_monastery.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 28,
+        "location": "Prayer flag ridge",
+        "description": "The ridge is alive with vibrant prayer flags glistening in the sunlight, standing resilient against the powerful winds of the Himalayas.",
+        "lighting": "crisp mountain light",
+        "key_elements": [
+          "vibrant flags",
+          "powerful winds",
+          "sunlight"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_28_prayer_flag_ridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 29,
+        "location": "Glacial valley",
+        "description": "The tranquil glacial valley is adorned with turquoise glacial streams and scattered boulders, reflecting the early morning light as it cascades down the rugged terrain.",
+        "lighting": "misty valleys",
+        "key_elements": [
+          "glacial streams",
+          "turquoise water",
+          "boulders"
+        ],
+        "mood": "pristine",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_29_glacial_valley.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 30,
+        "location": "Mountain village",
+        "description": "Morning fog gently lifts over the mountain village, revealing its picturesque layout of stone homes and terraced fields adorned with dew-kissed crops.",
+        "lighting": "misty valleys",
+        "key_elements": [
+          "fog",
+          "dew-kissed crops",
+          "picturesque layout"
+        ],
+        "mood": "serene",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_30_mountain_village.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 31,
+        "location": "Snow-capped peaks",
+        "description": "A close-up of snowflakes gently landing on the icy surfaces of the peaks during the first light of dawn, creating a delicate and serene environment.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "snowflakes",
+          "icy surfaces",
+          "delicate environment"
+        ],
+        "mood": "serene",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_31_snow-capped_peaks.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 32,
+        "location": "Panoramic vista",
+        "description": "The panoramic vista captures the essence of the Himalayas, showcasing the stunning interplay of light and shadow across the mountain ranges.",
+        "lighting": "golden hour peaks",
+        "key_elements": [
+          "interplay of light",
+          "shadowed ranges",
+          "stunning beauty"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508738_Beautiful_Himalayas_326s/images/scene_32_panoramic_vista.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Majestic Dawn Over the Himalayas | 4K Glacial Serenity | Stress Relief",
+      "description": "As dawn breaks over the majestic Himalayas, soft golden rays gently illuminate the pristine alpine meadow, where vibrant prayer flags flutter in the cool morning breeze, their colors a stark contrast against the stone-grey stupas dotting the landscape. Yaks graze peacefully nearby, their silhouettes framed by the towering snow-covered peaks that rise dramatically in the distance, a testament to nature's grandeur. The serene ambiance of a quaint mountain village nestled below comes to life, as the harmonious whispers of the wind and the distant sound of temple bells evoke a profound sense of tranquility and reverence in this untouched sanctuary.\n\nEmbark on a visual journey that transcends the ordinary. Glacial valleys glisten under the rising sun, revealing crystal-clear streams that weave through the rugged terrain. The alpine meadows burst with wildflowers, painting the earth in hues of purple and gold, while prayer flags dance in the refreshing breeze, carrying whispers of ancient prayers into the sky. Venture into the heart of a mountain village, where the warmth of local life fills the air, infused with the scent of woodsmoke and fresh-baked bread.\n\nIn this video:\n\ud83c\udfd4\ufe0f Stunning glacial valleys\n\ud83c\udf3c Vibrant alpine meadows\n\ud83c\udf8f Colorful prayer flag ridges\n\ud83c\udfe1 Charming mountain village scenes\n\ud83c\udfd4\ufe0f Breathtaking snow-capped peaks\n\nKey themes: 4K, 8K HDR, sleep music 2026, ASMR, ambient sounds, white noise, stress relief, anxiety relief, healing frequencies, 432hz, 528hz",
+      "hashtags": [
+        "#4K",
+        "#8K",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#BeautifulHimalayas",
+        "#NatureHealing",
+        "#StressRelief",
+        "#DeepSleep",
+        "#AnxietyRelief",
+        "#HealingFrequencies",
+        "#SleepSounds2026",
+        "#NatureSounds",
+        "#PeacefulVibes",
+        "#MountainRetreat",
+        "#CinematicNature",
+        "#ExploreTheWorld",
+        "#HimalayanViews",
+        "#Wanderlust",
+        "#Mindfulness",
+        "#NatureLovers",
+        "#SoothingVisuals",
+        "#Tranquility",
+        "#SereneLandscapes",
+        "#GlacialValleys",
+        "#AlpineMeadows"
+      ],
+      "primary_keywords": [
+        "4K Himalayas",
+        "breathtaking mountain scenery",
+        "glacial valley visuals",
+        "serene alpine meadows",
+        "healing frequencies",
+        "ambient nature sounds",
+        "stress relief music",
+        "528hz healing music"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "oSjFOJ4fC0Y",
+      "url": "https://www.youtube.com/watch?v=oSjFOJ4fC0Y",
+      "published_at": "2026-02-19T20:10:50.905418",
+      "scheduled_at": "2026-02-20T02:30:00.0Z",
+      "title": "Majestic Dawn Over the Himalayas | 4K Glacial Serenity | Stress Relief",
+      "privacy": "public"
+    }
+  },
+  "ddc6712f": {
+    "job_id": "ddc6712f",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Lakeside Lifestyle",
+    "duration": 196,
+    "custom_description": "As dawn breaks over the serene lake, gentle golden rays of sunlight filter through the towering trees, illuminating the tranquil scene. A cozy BBQ deck beckons with fragrant smoke wafting from sizzling skewers, while a hammock sways lazily between two sturdy trunks, inviting you to lull into its embrace. Nearby, the porch of a charming lake house features a classic swing that creaks softly in rhythm with the lapping water, where wooden boats float lazily amongst clusters of delicate water lilies, embodying the idyllic stillness of a peaceful morning.",
+    "music_id": "light_piano",
+    "music_path": "music/light piano_3_07.mp3",
+    "music_name": "Light Piano",
+    "created_at": "2026-02-19T17:16:24.275936",
+    "completed_at": "2026-02-19T19:24:30.068093",
+    "video_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/final_video.mp4",
+    "video_url": "/videos/1771508739_Lakeside_Lifestyle_196s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "BBQ Deck",
+        "description": "A family gathers around the BBQ deck as evening approaches, laughter and sizzling sounds fill the air. The golden light reflects off the grill and their faces.",
+        "lighting": "golden evening",
+        "key_elements": [
+          "BBQ grill",
+          "dock chairs",
+          "nature green"
+        ],
+        "mood": "cozy",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_01_bbq_deck.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Wooden Dock",
+        "description": "The wooden dock juts out into the calm lake, shrouded in a soft morning mist. Sunlight glimmers on the water's surface, creating sparkles that dance like diamonds. A pair of wooden boats are tied at the dock, gently rocking with the soft waves.",
+        "lighting": "soft morning mist",
+        "key_elements": [
+          "wooden boats",
+          "dock chairs",
+          "lake reflections"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_02_wooden_dock.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Morning Mist on Water",
+        "description": "A tranquil morning scene where the mist hovers over the lake, and birds can be heard chirping in the background, enhancing the peaceful atmosphere.",
+        "lighting": "soft morning mist",
+        "key_elements": [
+          "lake reflections",
+          "nature green",
+          "wooden brown"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_03_morning_mist_on_water.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Lake House Porch",
+        "description": "Children play on the lake house porch, swinging on the swing and laughing. The sun casts playful shadows on the wooden floor, embodying the essence of summer.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "porch swing",
+          "lake reflections",
+          "nature green"
+        ],
+        "mood": "idyllic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_04_lake_house_porch.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Lakeside Fire Pit",
+        "description": "As darkness falls, the fire pit glows brightly against the deepening sky. Friends make memories, sharing stories and roasting marshmallows.",
+        "lighting": "twilight blues",
+        "key_elements": [
+          "campfire",
+          "dock chairs",
+          "wooden brown"
+        ],
+        "mood": "relaxed",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_05_lakeside_fire_pit.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "Boat on Water",
+        "description": "A couple paddles in a canoe, surrounded by blooming water lilies. The sunlight sparkles on the surface, creating a dreamlike effect.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "canoe",
+          "water lilies",
+          "lake reflections"
+        ],
+        "mood": "recreational",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_06_boat_on_water.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Boat on Water",
+        "description": "A single canoe glides across the calm water, mirrored by the tranquil lake. The golden rays of the sun peek through the trees, illuminating the paddler's joyful smile.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "canoe",
+          "lake reflections",
+          "nature green"
+        ],
+        "mood": "recreational",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_07_boat_on_water.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Fishing Spot",
+        "description": "At a peaceful fishing spot, a lone fisherman casts his line into the still waters. The dappled sunlight filters through the trees, creating a serene atmosphere.",
+        "lighting": "soft morning mist",
+        "key_elements": [
+          "fishing rod",
+          "lake reflections",
+          "wooden brown"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_08_fishing_spot.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Sunset Over Lake",
+        "description": "The sun sets over the lake, casting vibrant hues of orange and pink across the sky. The silhouettes of wooden boats float lazily, framed by the vibrant sunset.",
+        "lighting": "golden evening",
+        "key_elements": [
+          "wooden boats",
+          "sunset orange",
+          "lake reflections"
+        ],
+        "mood": "idyllic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_09_sunset_over_lake.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "BBQ Deck",
+        "description": "The BBQ deck is alive with activity, where skewers sizzle over the grill. Smoke curls into the air, infused with the aroma of grilled vegetables. Nearby, dock chairs invite relaxation.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "BBQ grill",
+          "dock chairs",
+          "nature green"
+        ],
+        "mood": "idyllic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_10_bbq_deck.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "Wooden Dock",
+        "description": "As twilight approaches, a couple sits on the dock, their feet dangling over the edge, with the calm waters reflecting the twilight blues of the sky.",
+        "lighting": "twilight blues",
+        "key_elements": [
+          "dock chairs",
+          "lake reflections",
+          "nature green"
+        ],
+        "mood": "relaxed",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_11_wooden_dock.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Sunset Over Lake",
+        "description": "As the sun sets, the sky is painted with strokes of orange and pink hues. Families gather at the edge of the lake, their silhouettes framed by the fiery sky.",
+        "lighting": "golden evening",
+        "key_elements": [
+          "wooden boats",
+          "sunset orange",
+          "lake reflections"
+        ],
+        "mood": "idyllic",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_12_sunset_over_lake.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Morning Mist on Water",
+        "description": "A panoramic view of the lake at dawn, enveloped in a mystical morning mist. The soft hues of blue and green deepen the tranquility, as the water reflects the world above.",
+        "lighting": "soft morning mist",
+        "key_elements": [
+          "lake reflections",
+          "nature green",
+          "wooden brown"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_13_morning_mist_on_water.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Hammock Between Trees",
+        "description": "An elderly couple enjoys a peaceful moment in a hammock, reading books as gentle sunlight filters through the leaves above.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "hammock",
+          "nature green",
+          "wooden brown"
+        ],
+        "mood": "cozy",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_14_hammock_between_trees.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Lakeside Fire Pit",
+        "description": "As twilight descends, the lakeside fire pit crackles with warmth. Flickering flames light the faces of friends gathered around, illuminating their laughter against the backdrop of the darkening lake.",
+        "lighting": "twilight blues",
+        "key_elements": [
+          "campfire",
+          "dock chairs",
+          "nature green"
+        ],
+        "mood": "relaxed",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_15_lakeside_fire_pit.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "Fishing Spot",
+        "description": "The sun is high as a group of friends competes to see who can catch the biggest fish, smiles and joy radiating amongst them.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "fishing rod",
+          "lake reflections",
+          "nature green"
+        ],
+        "mood": "recreational",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_16_fishing_spot.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Lake House Porch",
+        "description": "The porch of a charming lake house, adorned with potted flowers, features a classic swing that creaks softly with each breeze. The view of the lake is unobstructed, with water lilies dotting the surface.",
+        "lighting": "soft morning mist",
+        "key_elements": [
+          "porch swing",
+          "water lilies",
+          "lake reflections"
+        ],
+        "mood": "cozy",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_17_lake_house_porch.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Wooden Dock",
+        "description": "Fishermen prepare their boats on the wooden dock, with life jackets scattered about. The morning sun begins to break through the clouds, casting a warm glow.",
+        "lighting": "soft morning mist",
+        "key_elements": [
+          "life jackets",
+          "wooden boats",
+          "dock chairs"
+        ],
+        "mood": "recreational",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_18_wooden_dock.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 19,
+        "location": "Hammock Between Trees",
+        "description": "A hammock sways gently between two sturdy trees, bathed in the soft light of the afternoon sun. Nearby, leaves rustle, providing a natural lullaby as a gentle breeze passes.",
+        "lighting": "midday sparkle",
+        "key_elements": [
+          "hammock",
+          "nature green",
+          "wooden brown"
+        ],
+        "mood": "cozy",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508739_Lakeside_Lifestyle_196s/images/scene_19_hammock_between_trees.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Serene Morning at the Lake | 4K Lakeside Bliss | Deep Sleep Sounds",
+      "description": "Awaken your senses as dawn breaks over the tranquil lake, where gentle golden rays of sunlight filter through the towering trees, casting a radiance upon the still waters. The air is filled with the rich aroma of a BBQ deck, where fragrant smoke dances upward from sizzling skewers, and the melodic whispers of a morning breeze invite you to breathe deeply. A hammock sways lazily between two sturdy trunks, offering a tranquil embrace that beckons you to surrender to its comforting lull. Nearby, the porch of a charming lake house features a classic swing that creaks softly in harmony with the lapping water, while wooden boats drift effortlessly among clusters of delicate water lilies, painting a picture of idyllic stillness as you slip into a state of serene contemplation.\n\nAs you embark on this visual journey, each scene unfolds like a poetic verse, immersing you deeper into nature\u2019s symphony. The morning mist rises gracefully from the glassy surface of the lake, shrouding the dock in a soft veil, while the crackling fire pit radiates warmth and invites stories to be shared under the expansive sky. The gentle lapping of water against the shore creates an ambient soundscape that soothes the soul, helping you drift into a peaceful state of mind, perfect for relaxation or meditation.\n\nIn this video: \ud83c\udf05 Breathtaking views of morning mist, \ud83c\udf62 BBQ deck filled with delicious aromas, \ud83c\udfe1 Cozy lake house porch with a swing, \ud83d\udd25 Inviting lakeside fire pit, \ud83d\udea4 Wooden dock overlooking the serene waters.\n\nKey themes: 4K, ambient sounds, ASMR, deep sleep, stress relief, anxiety relief, healing frequencies, 432hz, 528hz, lofi beats, sleep music 2026, no ads.",
+      "hashtags": [
+        "#4K",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#LakesideLifestyle",
+        "#DeepSleep",
+        "#StressRelief",
+        "#NatureSounds",
+        "#MorningMist",
+        "#BBQDeck",
+        "#LakeHouse",
+        "#FirePit",
+        "#HealingFrequencies",
+        "#LoFiBeats",
+        "#NatureLovers",
+        "#Serenity",
+        "#PeacefulVibes",
+        "#Calm",
+        "#Mindfulness",
+        "#StressRelief2026",
+        "#AnxietyRelief",
+        "#Tranquility",
+        "#NatureMeditation",
+        "#Ambient",
+        "#WaterSounds",
+        "#HealingMusic",
+        "#NoAds"
+      ],
+      "primary_keywords": [
+        "4K lakeside video",
+        "ambient nature sounds",
+        "deep sleep music 2026",
+        "ASMR lake sounds",
+        "stress relief video",
+        "nature relaxation",
+        "healing frequencies 432hz",
+        "BBQ deck sounds",
+        "lakeside fire pit ambiance",
+        "lofi beats for relaxation"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "r_C4sKN1ViE",
+      "url": "https://www.youtube.com/watch?v=r_C4sKN1ViE",
+      "published_at": "2026-02-19T20:11:57.461528",
+      "scheduled_at": "2026-02-20T02:30:00.0Z",
+      "title": "Serene Morning at the Lake | 4K Lakeside Bliss | Deep Sleep Sounds",
+      "privacy": "public"
+    }
+  },
+  "33d4ee7f": {
+    "job_id": "33d4ee7f",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Colorful American Roads",
+    "duration": 345,
+    "custom_description": "As dawn breaks gently over a winding asphalt country road, soft golden rays filter through the branches of towering trees, casting a serene light that dances on the vibrant tapestry of autumn leaves. The air is crisp and fresh, infused with the earthy scent of fallen foliage, while the colorful canopies of reds, oranges, and yellows create a stunning corridor that invites travelers to meander deeper into nature's embrace. Guard rails glisten with dew, and the white road lines lead the way towards a breathtaking journey, where peace reigns and every turn unveils a new masterpiece of the season.",
+    "music_id": "winter_piano",
+    "music_path": "music/winter piano_10_30.mp3",
+    "music_name": "Winter Piano",
+    "created_at": "2026-02-19T17:16:27.359908",
+    "completed_at": "2026-02-19T19:31:19.498244",
+    "video_path": "generated_videos/1771508740_Colorful_American_Roads_345s/final_video.mp4",
+    "video_url": "/videos/1771508740_Colorful_American_Roads_345s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "Tree Tunnel Drive",
+        "description": "A mesmerizing tree tunnel captivates with its vibrant fall foliage. The sun peeks through the leaves, bathing the asphalt in a warm embrace of light and color, inviting drivers to slow down and enjoy the view.",
+        "lighting": "sun through trees",
+        "key_elements": [
+          "tree canopies",
+          "colorful autumn leaves",
+          "winding asphalt"
+        ],
+        "mood": "colorful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_01_tree_tunnel_drive.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Road Beside Stream",
+        "description": "A serene road follows the gentle curves of a stream, with vibrant foliage reflecting in the water. The air is filled with the sound of rustling leaves as they tumble down, enhancing the peaceful atmosphere of the setting.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "colorful autumn leaves",
+          "fallen leaves",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_02_road_beside_stream.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Road Beside Stream",
+        "description": "A tranquil road runs parallel to a bubbling stream, vibrant leaves falling from the trees into the water. The air is crisp and carries the rich scent of autumn, enhancing the peaceful vibe.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "colorful autumn leaves",
+          "fallen leaves",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_03_road_beside_stream.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Country Road Through Forest",
+        "description": "A serene country road stretches through an enchanting forest, with leaves fluttering down like confetti. The road is bordered by tall trees dressed in shades of gold, while the crisp air is filled with the earthy scent of foliage.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "fallen leaves",
+          "tree canopies",
+          "white road lines"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_04_country_road_through_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Vista Point",
+        "description": "Gazing from the vista point, a stunning fall tapestry unfolds below, with rolling hills and a canopy of dense, colorful foliage. The sunlight breaks through the clouds, illuminating the vibrant landscape.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "colorful autumn leaves",
+          "guard rails"
+        ],
+        "mood": "journey",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_05_vista_point.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "Scenic Overlook",
+        "description": "The overlook offers a breathtaking panorama of mixed greens, golds, and reds, while a sturdy guard rail ensures safety as travelers admire the beauty of the season's changing colors.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "colorful autumn leaves",
+          "guard rails"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_06_scenic_overlook.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Foliage-Lined Highway",
+        "description": "The highway winds through a vibrant scene filled with trees awash in the glory of autumn colors. The vivid oranges and yellows create a stunning backdrop against the clear blue sky.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "tree canopies",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "scenic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_07_foliage-lined_highway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Autumn Parkway",
+        "description": "The parkway glimmers under the golden autumn sun, with lanes flanked by trees in fiery red and orange. A gentle breeze stirs the leaves, creating a symphony of color as they fall softly onto the asphalt.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "colorful",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_08_autumn_parkway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Autumn Parkway",
+        "description": "The autumn parkway winds through a landscape of bright foliage, with trees arching gracefully over the road. The golden light filters down, creating a magical atmosphere that beckons travelers to explore.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "colorful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_09_autumn_parkway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "Covered Bridge",
+        "description": "The covered bridge, framed by trees bursting with fall colors, stands as a testament to the season's beauty. Rays of sunlight highlight the rich texture of the leaves and the historic wood of the bridge.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "guard rails",
+          "winding asphalt"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_10_covered_bridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "Scenic Overlook",
+        "description": "At a scenic overlook, the vista spreads for miles, showcasing a patchwork of autumn colors across rolling hills. In the foreground, a well-defined guard rail runs alongside the viewpoint, adding a sense of safety to the breathtaking view.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "guard rails",
+          "colorful autumn leaves"
+        ],
+        "mood": "journey",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_11_scenic_overlook.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Winding Mountain Road",
+        "description": "As dawn breaks gently, the winding asphalt road snakes through the mountains, flanked by towering trees adorned in bright reds and oranges. Soft golden rays filter through the branches, illuminating the fallen leaves that carpet the ground.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "winding asphalt",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_12_winding_mountain_road.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Road Beside Stream",
+        "description": "The peaceful road alongside the stream is framed by trees casting vibrant reflections on the water. Leaves drift lazily down, enhancing the beauty of the autumn scene as the sun glints on the surface.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "colorful autumn leaves",
+          "fallen leaves",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_13_road_beside_stream.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Foliage-Lined Highway",
+        "description": "The highway is lined with a stunning display of autumn foliage, where deep oranges and yellows contrast against the asphalt. The trees arch over the road, creating a natural canopy that invites travelers into nature's masterpiece.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "tree canopies",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_14_foliage-lined_highway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Autumn Parkway",
+        "description": "The autumn parkway winds gracefully through a landscape ablaze with vibrant colors. Trees dressed in golden yellows and fiery reds form a stunning backdrop for a leisurely drive along the asphalt.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "colorful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_15_autumn_parkway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "Covered Bridge",
+        "description": "A picturesque covered bridge stands stoically over a babbling brook, surrounded by trees showcasing their fall finery. The warm autumn light envelops the structure, highlighting the rich colors of the leaves and the rustic wood of the bridge.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "guard rails",
+          "winding asphalt"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_16_covered_bridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Tree Tunnel Drive",
+        "description": "Traveling through a stunning tree tunnel, sunlight filters through the vibrantly colored leaves, casting a warm glow on the asphalt below. The tunnel forms a natural arch, guiding travelers deeper into the autumn paradise.",
+        "lighting": "sun through trees",
+        "key_elements": [
+          "colorful autumn leaves",
+          "tree canopies",
+          "winding asphalt"
+        ],
+        "mood": "colorful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_17_tree_tunnel_drive.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Vista Point",
+        "description": "Standing at a vista point, one can admire the sprawling landscape tinted in shades of gold and crimson. The sunlight spills across the hills, bringing the vibrant autumn foliage to life.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "colorful autumn leaves",
+          "guard rails"
+        ],
+        "mood": "journey",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_18_vista_point.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 19,
+        "location": "Tree Tunnel Drive",
+        "description": "Driving through a natural tunnel formed by intertwined branches, the sunlight creates a dappled effect on the asphalt. The vibrant foliage overhead filters the light, casting hues of amber and gold onto the road.",
+        "lighting": "sun through trees",
+        "key_elements": [
+          "colorful autumn leaves",
+          "tree canopies",
+          "winding asphalt"
+        ],
+        "mood": "scenic",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_19_tree_tunnel_drive.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 20,
+        "location": "Vista Point",
+        "description": "From a high vista point, the expansive view showcases a valley blanketed in vibrant autumn colors. The sun breaks through the clouds, casting brilliant light that accentuates the rich reds and yellows of the trees below.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "colorful autumn leaves",
+          "guard rails"
+        ],
+        "mood": "journey",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_20_vista_point.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 21,
+        "location": "Autumn Parkway",
+        "description": "The autumn parkway is a visual delight, showcasing trees bursting with hues of red, yellow, and orange. The golden light enhances the colors, making the scene feel warm and inviting for travelers.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "colorful",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_21_autumn_parkway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 22,
+        "location": "Country Road Through Forest",
+        "description": "A tranquil country road weaves through a forest aglow with autumn's vibrant colors. Leaves crunch underfoot as they flutter down, creating a peaceful atmosphere that inspires leisurely exploration.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "fallen leaves",
+          "winding asphalt",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_22_country_road_through_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 23,
+        "location": "Road Beside Stream",
+        "description": "A winding road runs alongside a sparkling stream, with trees bending towards the water, their leaves a fiery palette. The gentle sound of flowing water adds to the serene atmosphere as colorful leaves dance above the roadway.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "colorful autumn leaves",
+          "fallen leaves",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_23_road_beside_stream.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 24,
+        "location": "Foliage-Lined Highway",
+        "description": "The highway is a vibrant display of autumn colors, with foliage lining the road and brilliant hues dotting the landscape. The scene is both inviting and exhilarating, perfect for a colorful autumn drive.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "tree canopies",
+          "winding asphalt",
+          "white road lines"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_24_foliage-lined_highway.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 25,
+        "location": "Scenic Overlook",
+        "description": "From the high vantage point of a scenic overlook, the stunning fall colors spread out like a painted canvas. The sturdy guard rails provide safety as one takes in the breathtaking view of distant mountains and valleys unveiled in their autumn glory.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "colorful autumn leaves",
+          "guard rails"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_25_scenic_overlook.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 26,
+        "location": "Winding Mountain Road",
+        "description": "Surrounded by towering mountains, the winding road is blanketed by colorful leaves from the trees overhead. Morning light spills over the horizon, casting a warm glow on the vibrant autumn landscape.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "winding asphalt",
+          "colorful autumn leaves",
+          "tree canopies"
+        ],
+        "mood": "journey",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_26_winding_mountain_road.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 27,
+        "location": "Tree Tunnel Drive",
+        "description": "This enchanting tree tunnel drive captures the essence of autumn, with leaves filtering the sunlight into warm hues. The road curves gently ahead, promising adventure amidst the vibrant fall colors.",
+        "lighting": "sun through trees",
+        "key_elements": [
+          "tree canopies",
+          "colorful autumn leaves",
+          "winding asphalt"
+        ],
+        "mood": "colorful",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_27_tree_tunnel_drive.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 28,
+        "location": "Covered Bridge",
+        "description": "The covered bridge, framed by trees in their full autumn regalia, stands as a charming relic in a landscape alive with color. The warm sunlight bathes the scene, highlighting both the surrounding foliage and the rustic bridge.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "guard rails",
+          "winding asphalt"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_28_covered_bridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 29,
+        "location": "Country Road Through Forest",
+        "description": "A quiet country road meanders through a forest saturated with autumn hues. Leaves fall gently from the trees, and the soft rustling adds to the tranquility of the scene, inviting a slow, thoughtful drive.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "fallen leaves",
+          "winding asphalt",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_29_country_road_through_forest.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 30,
+        "location": "Winding Mountain Road",
+        "description": "The winding mountain road, veiled in morning light, offers a breathtaking ride through a corridor of fiery foliage. The sun shines through the trees, creating a luminous path that guides the way.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "winding asphalt",
+          "tree canopies"
+        ],
+        "mood": "journey",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_30_winding_mountain_road.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 31,
+        "location": "Winding Mountain Road",
+        "description": "The winding mountain road appears through a misty veil, vibrant autumn leaves lining the way. As the sun rises, it illuminates the dewy guard rails, reflecting the fiery colors of the foliage.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "guard rails",
+          "colorful autumn leaves",
+          "winding asphalt"
+        ],
+        "mood": "journey",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_31_winding_mountain_road.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 32,
+        "location": "Scenic Overlook",
+        "description": "From a scenic overlook, the panoramic view is a riot of color, with valleys painted in shades of red and gold. The guard rail provides safety while allowing travelers to soak in the mesmerizing beauty of the autumnal landscape.",
+        "lighting": "vibrant midday",
+        "key_elements": [
+          "distant mountains",
+          "colorful autumn leaves",
+          "guard rails"
+        ],
+        "mood": "scenic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_32_scenic_overlook.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 33,
+        "location": "Covered Bridge",
+        "description": "Nestled amid vibrant trees, the covered bridge offers a picturesque view into the autumn landscape surrounding it. The warm sunlight highlights both the historic structure and the colorful leaves.",
+        "lighting": "golden autumn light",
+        "key_elements": [
+          "colorful autumn leaves",
+          "guard rails",
+          "winding asphalt"
+        ],
+        "mood": "scenic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_33_covered_bridge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 34,
+        "location": "Country Road Through Forest",
+        "description": "A peaceful country road runs through a forest alive with the colors of autumn. Crisp leaves crunch underfoot, and the tranquil scenery is heightened by the cool, fresh air filled with the scent of the season.",
+        "lighting": "soft overcast",
+        "key_elements": [
+          "fallen leaves",
+          "winding asphalt",
+          "tree canopies"
+        ],
+        "mood": "peaceful",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508740_Colorful_American_Roads_345s/images/scene_34_country_road_through_forest.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Majestic Autumn Bliss | Colorful American Roads in 4K | Stress Relief",
+      "description": "As dawn breaks gently over a winding asphalt country road, soft golden rays filter through the branches of towering trees, casting a serene light that dances on the vibrant tapestry of autumn leaves. The air is crisp and fresh, infused with the earthy scent of fallen foliage, while the colorful canopies of reds, oranges, and yellows create a stunning corridor that invites travelers to meander deeper into nature's embrace. Guard rails glisten with dew, and the white road lines lead the way towards a breathtaking journey, where peace reigns and every turn unveils a new masterpiece of the season.\n\nThe visual symphony begins as you glide through a captivating tree tunnel, where sunlight filters through leaves, creating patterns on the pavement. The gentle sound of a stream whispers alongside your path, its water glistening like diamonds under the morning sun. As the road opens up, a serene vista point beckons, offering sweeping views of rolling hills dressed in autumn's finest attire.\n\nIn this video: \ud83c\udf33 Tree Tunnel Drive, \ud83d\udca7 Road Beside Stream, \ud83c\udf32 Country Road Through Forest, \ud83c\udf04 Vista Point.\n\nKey themes: 4k, 8k hdr, no ads, ambient sounds, deep sleep, stress relief, anxiety relief, healing frequencies, 432hz, 528hz.",
+      "hashtags": [
+        "#4K",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#ColorfulAmericanRoads",
+        "#AutumnVibes",
+        "#NatureTherapy",
+        "#StressRelief",
+        "#HealingFrequencies",
+        "#RoadTrip",
+        "#NatureSounds",
+        "#ScenicDrive",
+        "#Travel",
+        "#ExploreNature",
+        "#Wanderlust",
+        "#NatureLovers",
+        "#Cinematic",
+        "#Peaceful",
+        "#Soothing",
+        "#Mindfulness",
+        "#2026Trends",
+        "#LofiBeats",
+        "#NoAds",
+        "#DeepSleep"
+      ],
+      "primary_keywords": [
+        "4K autumn drive",
+        "colorful country roads",
+        "tree tunnel drive",
+        "ambient nature sounds",
+        "stress relief music",
+        "healing frequencies 432hz",
+        "scenic fall landscapes",
+        "ASMR road sounds",
+        "deep sleep relaxation",
+        "nature therapy music"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "pxP0aZaTL0Q",
+      "url": "https://www.youtube.com/watch?v=pxP0aZaTL0Q",
+      "published_at": "2026-02-19T20:15:53.813502",
+      "scheduled_at": "2026-02-20T02:30:00.0Z",
+      "title": "Majestic Autumn Bliss | Colorful American Roads in 4K | Stress Relief",
+      "privacy": "public"
+    }
+  },
+  "e5ac565d": {
+    "job_id": "e5ac565d",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Antarctica Beauty",
+    "duration": 190,
+    "custom_description": "As dawn breaks over the vast expanse of Antarctica, soft golden rays filter through the ethereal glow of the aurora, illuminating a sprawling field of colossal icebergs that rise majestically from the frozen ocean surface. The pristine white landscape shimmers under the early light, contrasting beautifully against the vibrant greens of the auroras dancing across the sky. In the foreground, a lively colony of penguins frolics among the ice, their black and white forms providing a whimsical touch to the remote, otherworldly scenery, while a solitary research vessel glides gracefully through the serene waters, embodying the spirit of exploration in this extreme and breathtaking environment.",
+    "music_id": "cinematic",
+    "music_path": "music/3_54_cinematic.mp3",
+    "music_name": "Cinematic",
+    "created_at": "2026-02-19T17:16:29.957109",
+    "completed_at": "2026-02-19T19:25:02.451326",
+    "video_path": "generated_videos/1771508741_Antarctica_Beauty_190s/final_video.mp4",
+    "video_url": "/videos/1771508741_Antarctica_Beauty_190s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "Frozen Ocean Surface",
+        "description": "A close-up of the intricate patterns and textures on the surface of the frozen ocean, with subtle light reflecting off its crystalline structure, inviting exploration beneath.",
+        "lighting": "pristine white light",
+        "key_elements": [
+          "frozen ocean patterns",
+          "crystalline light reflections",
+          "inviting textures"
+        ],
+        "mood": "captivating",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_01_frozen_ocean_surface.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Iceberg Field",
+        "description": "A breathtaking drone shot capturing the contrast between dark waters and bright icebergs in a dynamic field. The grandeur of the icebergs is emphasized against the expansive ocean.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "dynamic iceberg field",
+          "dark waters",
+          "grand ice formations"
+        ],
+        "mood": "spectacular",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_02_iceberg_field.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Polar Plateau",
+        "description": "A vast panorama of the polar plateau, showcasing an endless expanse of pristine white snow. The horizon is kissed by a light aurora glow, hinting at the enchanting spectacle above.",
+        "lighting": "aurora glow",
+        "key_elements": [
+          "polar plateau",
+          "pristine white snow",
+          "aurora glow"
+        ],
+        "mood": "remote",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_03_polar_plateau.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Glacial Ice Cave",
+        "description": "A mystic view inside a glacial ice cave, where light filters through cracks in the ice, creating ethereal patterns on the ground. A sense of wonder permeates through the shimmering surfaces.",
+        "lighting": "aurora glow",
+        "key_elements": [
+          "ethereal light",
+          "ice cave textures",
+          "shimmering surfaces"
+        ],
+        "mood": "mystical",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_04_glacial_ice_cave.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Polar Plateau",
+        "description": "An expansive shot of the polar plateau under a mesmerizing display of the aurora australis. The vibrant colors illuminate the vast landscape, turning the ice into a canvas of shimmering light.",
+        "lighting": "aurora glow",
+        "key_elements": [
+          "polar plateau",
+          "aurora australis colors",
+          "shimmering ice"
+        ],
+        "mood": "enchanting",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_05_polar_plateau.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "Glacial Ice Cave",
+        "description": "Inside a stunning glacial ice cave, the walls shimmer in various shades of blue, reflecting the ambient light above. Snowflakes softly fall from the ceiling, while the icy formations create a surreal, dreamlike quality.",
+        "lighting": "pristine white light",
+        "key_elements": [
+          "blue glacial ice",
+          "ice formations",
+          "shimmering walls"
+        ],
+        "mood": "otherworldly",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_06_glacial_ice_cave.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Ice Shelf Edge",
+        "description": "A stunning sunset view at the ice shelf edge, where the colors of the setting sun blend with the icy blues and whites of the landscape. Textured ice formations create dramatic shadows.",
+        "lighting": "pristine white light",
+        "key_elements": [
+          "ice formations",
+          "sunset colors",
+          "textured ice"
+        ],
+        "mood": "dramatic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_07_ice_shelf_edge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Frozen Ocean Surface",
+        "description": "The camera glides over the glassy frozen ocean surface, revealing intricate patterns in the ice. The reflections of nearby icebergs dance across the surface, creating a mesmerizing visual.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "frozen ocean",
+          "reflection of icebergs",
+          "intricate ice patterns"
+        ],
+        "mood": "calm",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_08_frozen_ocean_surface.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Seal Haul-Out",
+        "description": "A serene moment capturing a group of seals lounging on a sunlit ice floe, their sleek bodies glistening in the sunlight. Nearby, the remnants of broken ice provide texture to the scene.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "seals",
+          "ice floe",
+          "pristine white ice"
+        ],
+        "mood": "tranquil",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_09_seal_haul-out.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "Penguin Colony",
+        "description": "An up-close shot of a bustling colony of penguins, flapping their flippers and sliding on the ice. The playful atmosphere is enhanced by the surrounding snowy landscape and the gentle golden light of dawn.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "penguin colonies",
+          "pristine white snow",
+          "soft dawn light"
+        ],
+        "mood": "lively",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_10_penguin_colony.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "Ice Cliffs",
+        "description": "A powerful view of immense ice cliffs with cascading frozen waterfalls, illuminated by the golden light of the setting sun. The sheer scale evokes awe and respect for nature's power.",
+        "lighting": "pristine white light",
+        "key_elements": [
+          "cascading frozen waterfalls",
+          "golden light",
+          "immense scale"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_11_ice_cliffs.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Research Station",
+        "description": "A wide shot of a modern research station nestled against a backdrop of towering snow-covered peaks. The vibrant colors of the station contrast sharply with the white landscape, symbolizing human resilience and curiosity.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "research vessels",
+          "snow-covered peaks",
+          "vibrant research station"
+        ],
+        "mood": "exploratory",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_12_research_station.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Ice Shelf Edge",
+        "description": "As the camera pulls back, the viewer sees the ice shelf edge in all its grandeur, with the setting sun casting long shadows and vibrant colors stretching across the icy plain, leading into the deep ocean.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "ice shelf edge",
+          "setting sun shadows",
+          "vibrant horizons"
+        ],
+        "mood": "epic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_13_ice_shelf_edge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Ice Cliffs",
+        "description": "A dramatic close-up of towering ice cliffs, steep and imposing, with sunlight striking the edges and creating a sparkling effect. The clear blue sky above heightens the majesty of this natural formation.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "ice cliffs",
+          "sparkling sunlight",
+          "blue sky"
+        ],
+        "mood": "majestic",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_14_ice_cliffs.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Iceberg Field",
+        "description": "A sweeping aerial shot of a vast iceberg field, where colossal icebergs float gracefully in the deep blue ocean. The scene is punctuated by sunlit patches on the ice, creating a beautiful contrast against the shadows.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "massive icebergs",
+          "frozen ocean",
+          "deep ocean blue"
+        ],
+        "mood": "pristine",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_15_iceberg_field.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "Penguin Colony",
+        "description": "A heartwarming scene of penguin chicks huddling together for warmth, surrounded by their protective parents. The soft light creates a nurturing atmosphere amidst the harsh surroundings.",
+        "lighting": "pristine white light",
+        "key_elements": [
+          "penguin chicks",
+          "protective parents",
+          "soft light"
+        ],
+        "mood": "nurturing",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_16_penguin_colony.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Seal Haul-Out",
+        "description": "A playful scene of young seals tumbling over each other on a sunny ice floe, surrounded by drifting ice. The joyful atmosphere is accentuated by the vibrant sunlight and blue backdrop.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "playful seals",
+          "sunny ice floe",
+          "drifting ice"
+        ],
+        "mood": "joyful",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_17_seal_haul-out.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Ice Shelf Edge",
+        "description": "A panoramic view of the striking ice shelf edge, where towering glaciers meet the ocean. The sunlight catches the sharp edges of the ice, creating a dazzling array of blue hues, while the calm ocean reflects the soft light.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "massive icebergs",
+          "deep ocean blue",
+          "pristine white ice formations"
+        ],
+        "mood": "majestic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_18_ice_shelf_edge.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 19,
+        "location": "Research Station",
+        "description": "A close-up of researchers conducting experiments outside the research station with icebergs in the background. The determination and commitment to scientific discovery radiates through their focused expressions.",
+        "lighting": "polar daylight",
+        "key_elements": [
+          "researchers in action",
+          "icebergs",
+          "determined expressions"
+        ],
+        "mood": "inspirational",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508741_Antarctica_Beauty_190s/images/scene_19_research_station.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Breathtaking Antarctic Beauty | Majestic Icebergs in 8K | Stress Relief",
+      "description": "As dawn breaks over the vast expanse of Antarctica, soft golden rays filter through the ethereal glow of the aurora, illuminating a sprawling field of colossal icebergs that rise majestically from the frozen ocean surface. The pristine white landscape shimmers under the early light, contrasting beautifully against the vibrant greens of the auroras dancing across the sky. In this serene moment, the air is crisp and invigorating, inviting you to breathe deeply and let the beauty envelop your senses.\n\nJourney through this untouched wilderness, where the ice stretches endlessly before you, each crevice telling a story of time and endurance. The icebergs, towering and mighty, seem to whisper secrets of the ages, while the shadows they cast dance like playful spirits on the ocean's surface. A lively colony of penguins frolics among the ice, their joyous movements providing a whimsical touch to this remote, otherworldly scenery. Meanwhile, a solitary research vessel glides gracefully through the serene waters, embodying the spirit of exploration in this breathtaking environment.\n\nIn this video: \ud83c\udf05 Frozen ocean surface, \ud83e\uddca Iceberg field, \ud83c\udfd4\ufe0f Polar plateau, \u2744\ufe0f Glacial ice cave, \ud83d\udc27 Playful penguins, \ud83d\udea2 Research vessel exploring.\n\nKey themes: 4k, 8k hdr, ambient sounds, stress relief, anxiety relief, deep sleep, healing frequencies, 432hz, 528hz, nature, beauty, tranquility.",
+      "hashtags": [
+        "#4K",
+        "#8K",
+        "#Antarctica",
+        "#Icebergs",
+        "#NatureDocumentary",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#StressRelief",
+        "#AnxietyRelief",
+        "#DeepSleep",
+        "#SleepMusic2026",
+        "#HealingFrequencies",
+        "#432hz",
+        "#528hz",
+        "#FrozenOcean",
+        "#PolarPlateau",
+        "#GlacialCaves",
+        "#Wildlife",
+        "#ExploreNature",
+        "#Documentary",
+        "#Serenity",
+        "#Tranquil",
+        "#WondersOfNature",
+        "#TimeLapse",
+        "#ChillVibes",
+        "#LoFiBeats"
+      ],
+      "primary_keywords": [
+        "Antarctica beauty",
+        "8K icebergs",
+        "polar exploration video",
+        "ambient nature sounds",
+        "stress relief music",
+        "healing frequencies",
+        "glacial caves",
+        "frozen ocean landscape"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "2d2px_JnDj0",
+      "url": "https://www.youtube.com/watch?v=2d2px_JnDj0",
+      "published_at": "2026-02-19T20:16:59.452317",
+      "scheduled_at": "2026-02-20T02:30:00.0Z",
+      "title": "Breathtaking Antarctic Beauty | Majestic Icebergs in 8K | Stress Relief",
+      "privacy": "public"
+    }
+  },
+  "8f5bf799": {
+    "job_id": "8f5bf799",
+    "status": "completed",
+    "progress": 100,
+    "message": "Video generation complete!",
+    "domain": "Life in Space",
+    "duration": 324,
+    "custom_description": "As the camera glides through the mesmerizing depths of space, a breathtaking vista unfolds: a tapestry of nebula purple and star white hues dances against the backdrop of infinite darkness. The soft golden rays of dawn spill from a distant sun, illuminating the delicate contours of the International Space Station, where astronauts float gracefully, their silhouettes framed by the ethereal glow. Meanwhile, below, a distant planetary surface emerges from its shadowed embrace, surrounded by a field of shimmering asteroids and swirling cosmic dust, creating a serene yet awe-inspiring portrait of life at the edge of the universe.",
+    "music_id": "winter_piano",
+    "music_path": "music/winter piano_10_30.mp3",
+    "music_name": "Winter Piano",
+    "created_at": "2026-02-19T17:16:32.649721",
+    "completed_at": "2026-02-19T19:31:37.656651",
+    "video_path": "generated_videos/1771508742_Life_in_Space_324s/final_video.mp4",
+    "video_url": "/videos/1771508742_Life_in_Space_324s/final_video.mp4",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": "Deep space vista",
+        "description": "A breathtaking deep space vista stretches infinitely, dotted with distant galaxies and nebulae twinkling in the darkness, evoking feelings of vastness and solitude.",
+        "lighting": "starlight",
+        "key_elements": [
+          "galaxies",
+          "nebulae",
+          "deep space"
+        ],
+        "mood": "vast",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_01_deep_space_vista.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 2,
+        "location": "Nebula field",
+        "description": "The camera zooms closer into a nebula, revealing intricate details of gas and dust swirling, illuminated by the birth of new stars.",
+        "lighting": "nebula glow",
+        "key_elements": [
+          "gas clouds",
+          "new stars",
+          "nebula details"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_02_nebula_field.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 3,
+        "location": "Lunar landscape",
+        "description": "A close-up of lunar rocks and dust under the bright sun, with a view of stars visible in the sky, creating a stark contrast between light and shadow.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "lunar rocks",
+          "starry sky",
+          "dust"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_03_lunar_landscape.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 4,
+        "location": "Lunar landscape",
+        "description": "A panoramic shot of the Moon's surface bathed in sunlight as the camera lifts to reveal Earth floating in the distance, surrounded by stars.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "Moon surface",
+          "Earth in distance",
+          "starry sky"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_04_lunar_landscape.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 5,
+        "location": "Lunar landscape",
+        "description": "The surface of the Moon appears stark and desolate under a bright sun, with Earth rising in the background, casting a gentle glow on the lunar regolith.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "lunar landscape",
+          "Earth view",
+          "moon dust"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_05_lunar_landscape.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 6,
+        "location": "Planetary surface",
+        "description": "A distant planetary surface comes into focus, revealing a rocky terrain illuminated by the soft glow of a nearby sun, amidst patches of ice and shimmering dust.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "planetary surface",
+          "rocky terrain",
+          "solar glow"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_06_planetary_surface.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 7,
+        "location": "Nebula field",
+        "description": "A deeper exploration of a nebula, showcasing vivid colors and formations where star formation is actively taking place amidst vibrant cosmic clouds.",
+        "lighting": "nebula glow",
+        "key_elements": [
+          "star formation",
+          "cosmic clouds",
+          "nebula details"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_07_nebula_field.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 8,
+        "location": "Asteroid belt",
+        "description": "The camera glides through a dense asteroid belt, where massive rocks reflect starlight and dust clouds swirl around, creating a dynamic and chaotic yet beautiful scene.",
+        "lighting": "starlight",
+        "key_elements": [
+          "asteroids",
+          "cosmic dust",
+          "starlight"
+        ],
+        "mood": "infinite",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_08_asteroid_belt.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 9,
+        "location": "Deep space vista",
+        "description": "The vastness of deep space is highlighted, with a cluster of distant galaxies glowing softly, providing an enchanting contrast against the black void.",
+        "lighting": "starlight",
+        "key_elements": [
+          "distant galaxies",
+          "black void",
+          "soft glow"
+        ],
+        "mood": "vast",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_09_deep_space_vista.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 10,
+        "location": "Planetary surface",
+        "description": "A panoramic view of another planetary surface, with large craters and vibrant blue oceans visible, illuminated by the soft rays of a distant star.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "planetary surface",
+          "craters",
+          "oceans"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_10_planetary_surface.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 11,
+        "location": "Planetary surface",
+        "description": "The rugged surface of a distant planet with towering peaks and deep valleys, illuminated by sunlight that highlights its unique geological features.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "rugged surface",
+          "towering peaks",
+          "geological features"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_11_planetary_surface.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 12,
+        "location": "Asteroid belt",
+        "description": "A dramatic fly-through of the asteroid belt, capturing a barrage of asteroids colliding, sending shards of rock and dust spiraling through space.",
+        "lighting": "starlight",
+        "key_elements": [
+          "asteroid collisions",
+          "shards of rock",
+          "space dust"
+        ],
+        "mood": "infinite",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_12_asteroid_belt.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 13,
+        "location": "Mars terrain",
+        "description": "A sweeping view of the Martian terrain at sunset, where shadows stretch across the landscape and vibrant oranges and reds dominate the sky.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "Martian terrain",
+          "sunset",
+          "shadows"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_13_mars_terrain.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 14,
+        "location": "Planetary surface",
+        "description": "A close-up of the rocky surface of a colorful planet under direct solar light, revealing intricate patterns and textures that tell the story of its formation.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "rocky surface",
+          "patterns",
+          "solar light"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_14_planetary_surface.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 15,
+        "location": "Starfield",
+        "description": "A rich starfield fills the screen, with countless twinkling stars scattered against the blackness of space, creating a mesmerizing effect of depth and infinity.",
+        "lighting": "starlight",
+        "key_elements": [
+          "stars",
+          "starfield",
+          "cosmic depth"
+        ],
+        "mood": "infinite",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_15_starfield.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 16,
+        "location": "International Space Station",
+        "description": "A moment of tranquility as the International Space Station drifts silently, framed against a backdrop of vibrant solar flares and twinkling stars.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "International Space Station",
+          "solar flares",
+          "twinkling stars"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_16_international_space_station.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 17,
+        "location": "Nebula field",
+        "description": "The camera captures a breathtaking explosion of colors in a nebula, revealing the birth of new stars surrounded by swirling gas clouds.",
+        "lighting": "nebula glow",
+        "key_elements": [
+          "new stars",
+          "gas clouds",
+          "explosion of colors"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_17_nebula_field.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 18,
+        "location": "Space station interior",
+        "description": "Astronauts engage in a scientific discussion around a holographic display of Earth, with the station brightly lit by artificial lights reflecting a colorful atmosphere.",
+        "lighting": "Earth shine",
+        "key_elements": [
+          "holographic display",
+          "astronauts",
+          "artificial lights"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_18_space_station_interior.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 19,
+        "location": "Space station interior",
+        "description": "Inside the International Space Station, astronauts conduct experiments with Earth visible through large windows, illuminated by soft LED lights and filtered sunlight.",
+        "lighting": "Earth shine",
+        "key_elements": [
+          "space station modules",
+          "astronauts",
+          "Earth view"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_19_space_station_interior.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 20,
+        "location": "Mars terrain",
+        "description": "The reddish terrain of Mars is revealed, with its rocky features bathed in warm sunlight, showcasing distant mountains and dust storms swirling in the thin atmosphere.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "Mars terrain",
+          "dust storms",
+          "red rocks"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_20_mars_terrain.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 21,
+        "location": "Starfield",
+        "description": "The camera gently pans across a starfield, with stars twinkling at different intensities, evoking a sense of wonder about the universe.",
+        "lighting": "starlight",
+        "key_elements": [
+          "twinkling stars",
+          "starfield",
+          "cosmic wonder"
+        ],
+        "mood": "infinite",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_21_starfield.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 22,
+        "location": "International Space Station",
+        "description": "Another angle of the International Space Station, highlighting the connection modules as astronauts pass between them, framed by the backdrop of a swirling nebula.",
+        "lighting": "nebula glow",
+        "key_elements": [
+          "International Space Station",
+          "astronauts",
+          "connection modules"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_22_international_space_station.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 23,
+        "location": "Starfield",
+        "description": "An immersive experience within a starfield, with stars vanishing and reappearing as the camera shifts, creating a dynamic celestial dance.",
+        "lighting": "starlight",
+        "key_elements": [
+          "dynamic stars",
+          "starfield",
+          "celestial dance"
+        ],
+        "mood": "infinite",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_23_starfield.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 24,
+        "location": "International Space Station",
+        "description": "A dramatic view of the International Space Station passing over the Earth, with a backdrop of bright stars and a glowing horizon.",
+        "lighting": "Earth shine",
+        "key_elements": [
+          "International Space Station",
+          "Earth",
+          "horizon glow"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "tilt_up",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_24_international_space_station.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 25,
+        "location": "Mars terrain",
+        "description": "An aerial view of the sprawling Martian terrain, with valleys and plateaus catching the sunlight, while a dust storm begins to rise in the distance.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "aerial view",
+          "valleys",
+          "dust storm"
+        ],
+        "mood": "awe-inspiring",
+        "camera_movement": "pan_left",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_25_mars_terrain.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 26,
+        "location": "Nebula field",
+        "description": "The camera ventures into a colorful nebula field, where shades of purple and pink swirl around luminous stars, creating an ethereal atmosphere filled with cosmic dust.",
+        "lighting": "nebula glow",
+        "key_elements": [
+          "nebula",
+          "stars",
+          "cosmic dust"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "zoom_in",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_26_nebula_field.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 27,
+        "location": "Space station interior",
+        "description": "Inside the space station, a serene moment where astronauts gaze out a window to view the Earth below, illuminated softly by the station lights.",
+        "lighting": "Earth shine",
+        "key_elements": [
+          "window view",
+          "astronauts",
+          "Earth below"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_27_space_station_interior.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 28,
+        "location": "Deep space vista",
+        "description": "A view of deep space filled with hues of blue and purple, where a bright supernova bursts into view, illuminating its surroundings with an otherworldly light.",
+        "lighting": "starlight",
+        "key_elements": [
+          "supernova",
+          "cosmic colors",
+          "deep space"
+        ],
+        "mood": "mysterious",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_28_deep_space_vista.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 29,
+        "location": "International Space Station",
+        "description": "A sweeping view of the International Space Station, its metallic surfaces reflecting starlight, with astronauts floating in zero gravity, silhouetted against the vibrant nebula glow that envelops the station.",
+        "lighting": "solar illumination",
+        "key_elements": [
+          "International Space Station",
+          "astronauts",
+          "nebula glow"
+        ],
+        "mood": "cosmic",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_29_international_space_station.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 30,
+        "location": "Asteroid belt",
+        "description": "Zooming out from a massive asteroid, revealing dozens of rocks floating in various orbits, each reflecting starlight and surrounded by clouds of space dust.",
+        "lighting": "starlight",
+        "key_elements": [
+          "massive asteroid",
+          "orbital paths",
+          "space dust"
+        ],
+        "mood": "infinite",
+        "camera_movement": "zoom_out",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_30_asteroid_belt.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 31,
+        "location": "Asteroid belt",
+        "description": "The camera dives into a narrow canyon between two massive asteroids, showcasing the rugged edges and the play of light and shadow on their surfaces.",
+        "lighting": "starlight",
+        "key_elements": [
+          "canyon",
+          "massive asteroids",
+          "play of light"
+        ],
+        "mood": "infinite",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_31_asteroid_belt.jpg",
+        "duration": 10.0
+      },
+      {
+        "scene_number": 32,
+        "location": "Deep space vista",
+        "description": "The final scene showcases a serene deep space vista, where the camera slowly pulls away from a cluster of galaxies, leaving a trail of starry light in its wake.",
+        "lighting": "starlight",
+        "key_elements": [
+          "clusters of galaxies",
+          "starry light",
+          "deep space"
+        ],
+        "mood": "vast",
+        "camera_movement": "pan_right",
+        "image_path": "generated_videos/1771508742_Life_in_Space_324s/images/scene_32_deep_space_vista.jpg",
+        "duration": 10.0
+      }
+    ],
+    "seo_metadata": {
+      "title": "Breathtaking Cosmic Journey | Deep Space in 8K | Stress Relief",
+      "description": "Step into a world beyond imagination, where the cosmos unfolds in vibrant hues of deep purple and shimmering white. As the camera glides through the mesmerizing depths of space, you'll feel a sense of weightlessness wash over you. The tapestry of colors dances against the backdrop of infinite darkness, inviting you to lose yourself in the beauty of the universe. Soft golden rays of dawn spill from a distant sun, illuminating the delicate contours of the International Space Station, where astronauts float gracefully, their silhouettes framed by the ethereal glow.\n\nJourney deeper as a distant planetary surface emerges from its shadowed embrace, surrounded by a field of shimmering asteroids and swirling cosmic dust. Each scene reveals the serene yet awe-inspiring portrait of life at the edge of the universe, as the ambient sounds of space provide a soothing backdrop to this visual odyssey. Feel your worries drift away as you succumb to the tranquility of this celestial experience.\n\nIn this video:\n\ud83c\udf0c A breathtaking nebula field in rich purples and blues\n\ud83c\udf20 The serene landscape of distant planets bathed in starlight\n\ud83c\udf15 The delicate beauty of the lunar surface, capturing the essence of life beyond Earth\n\ud83c\udf0c A soft display of cosmic dust swirling in the endless void\n\nKey themes: 4k, 8k hdr, deep space, nebula, lunar landscape, ambient sounds, sleep music 2026, stress relief, healing frequencies, 432hz, anxiety relief, white noise",
+      "hashtags": [
+        "#4K",
+        "#8K",
+        "#StressRelief",
+        "#DeepSpace",
+        "#Nebula",
+        "#LunarLandscape",
+        "#Relaxation",
+        "#Meditation",
+        "#ASMR",
+        "#AmbientMusic",
+        "#CosmicJourney",
+        "#SpaceExploration",
+        "#HealingFrequencies",
+        "#SleepMusic2026",
+        "#AnxietyRelief",
+        "#WhiteNoise"
+      ],
+      "primary_keywords": [
+        "4k cosmic visuals",
+        "8k nebula scenery",
+        "deep space relaxation",
+        "lunar landscapes",
+        "ambient space sounds",
+        "stress relief music",
+        "ASMR space experience",
+        "sleep music for deep sleep",
+        "healing frequencies 432hz"
+      ],
+      "trending_keywords_used": [
+        "4k",
+        "8k hdr",
+        "no ads",
+        "10 hours",
+        "sleep music 2026",
+        "asmr",
+        "lofi beats",
+        "ambient sounds",
+        "white noise",
+        "deep sleep",
+        "stress relief",
+        "anxiety relief",
+        "healing frequencies",
+        "432hz",
+        "528hz"
+      ]
+    },
+    "error": null,
+    "batch": true,
+    "youtube_info": {
+      "video_id": "RRkfM-SVkLE",
+      "url": "https://www.youtube.com/watch?v=RRkfM-SVkLE",
+      "published_at": "2026-02-19T20:13:47.382654",
+      "scheduled_at": "2026-02-20T02:30:00.0Z",
+      "title": "Breathtaking Cosmic Journey | Deep Space in 8K | Stress Relief",
+      "privacy": "public"
+    }
   }
 }

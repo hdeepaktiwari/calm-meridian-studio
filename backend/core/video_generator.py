@@ -323,8 +323,13 @@ Return only valid JSON."""},
         
         return prompt.strip()
     
-    def generate_image(self, prompt, scene_name, images_dir, progress_callback=None):
-        """Generate image using Leonardo AI"""
+    def generate_image(self, prompt, scene_name, images_dir, progress_callback=None, is_thumbnail=False):
+        """Generate image using Leonardo AI.
+        
+        Args:
+            is_thumbnail: If True, generate at highest quality (Alchemy + Ultra enabled)
+                          for use as YouTube thumbnail.
+        """
         image_path = images_dir / f"{scene_name}.jpg"
         
         if image_path.exists():
@@ -333,6 +338,11 @@ Return only valid JSON."""},
         if progress_callback:
             progress_callback(f"🎨 {scene_name}")
         
+        # Kino 2.1 model doesn't support alchemy or ultra — enhance via prompt instead
+        enhanced_prompt = prompt
+        if is_thumbnail:
+            enhanced_prompt = f"{prompt}. Masterpiece, award-winning photography, ultra-sharp details, perfect composition, breathtaking beauty, hyper-realistic, museum quality."
+        
         generation_data = {
             "alchemy": False,
             "height": 1080,
@@ -340,9 +350,9 @@ Return only valid JSON."""},
             "contrast": 3.5,
             "num_images": 1,
             "styleUUID": "111dc692-d470-4eec-b791-3475abac4c46",
-            "prompt": prompt,
+            "prompt": enhanced_prompt,
             "width": 1920,
-            "ultra": False
+            "ultra": False,
         }
         
         response = requests.post(
@@ -470,9 +480,11 @@ Return only valid JSON."""},
                 json.dump({**scene, "prompt": prompt}, f, indent=2)
             
             progress = 15 + int((50 * (i + 1)) / total_scenes)
-            progress_callback(progress, f"🎨 Image {i+1}/{total_scenes}: {scene['location']}")
+            is_thumb = (i == 0)  # First image = thumbnail, generate at highest quality
+            quality_label = "🌟 THUMBNAIL (ultra quality)" if is_thumb else f"Image {i+1}/{total_scenes}"
+            progress_callback(progress, f"🎨 {quality_label}: {scene['location']}")
             
-            scene['image_path'] = self.generate_image(prompt, scene_name, images_dir)
+            scene['image_path'] = self.generate_image(prompt, scene_name, images_dir, is_thumbnail=is_thumb)
             scene['duration'] = 10.0
         
         # Step 3: Apply camera effects
