@@ -1,8 +1,214 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+function CalendarTab({ apiUrl, ideaStats, calendarStats, autopublishStatus, calendarMonth, calendarYear, setCalendarMonth, setCalendarYear, isGeneratingIdeas, setIsGeneratingIdeas, selectedDay, setSelectedDay, onRefresh }: any) {
+  const [calendarData, setCalendarData] = useState<any>(null);
+  const [genProgress, setGenProgress] = useState<any>(null);
+
+  const loadCalendar = async () => {
+    try {
+      const r = await fetch(`${apiUrl}/api/calendar/${calendarYear}/${calendarMonth}`);
+      if (r.ok) setCalendarData(await r.json());
+    } catch (e) {}
+  };
+
+  useEffect(() => { loadCalendar(); }, [calendarMonth, calendarYear]);
+
+  useEffect(() => {
+    if (!isGeneratingIdeas) return;
+    const iv = setInterval(async () => {
+      try {
+        const r = await fetch(`${apiUrl}/api/ideas/generating`);
+        if (r.ok) {
+          const d = await r.json();
+          setGenProgress(d);
+          if (!d.active) { setIsGeneratingIdeas(false); onRefresh(); }
+        }
+      } catch (e) {}
+    }, 3000);
+    return () => clearInterval(iv);
+  }, [isGeneratingIdeas]);
+
+  const handleGenerateIdeas = async () => {
+    setIsGeneratingIdeas(true);
+    try {
+      await fetch(`${apiUrl}/api/ideas/generate`, { method: 'POST' });
+    } catch (e) { setIsGeneratingIdeas(false); }
+  };
+
+  const handleToggleAutopublish = async () => {
+    await fetch(`${apiUrl}/api/autopublish/toggle`, { method: 'POST' });
+    onRefresh();
+  };
+
+  const prevMonth = () => {
+    if (calendarMonth === 1) { setCalendarMonth(12); setCalendarYear(calendarYear - 1); }
+    else setCalendarMonth(calendarMonth - 1);
+  };
+  const nextMonth = () => {
+    if (calendarMonth === 12) { setCalendarMonth(1); setCalendarYear(calendarYear + 1); }
+    else setCalendarMonth(calendarMonth + 1);
+  };
+
+  const monthName = new Date(calendarYear, calendarMonth - 1).toLocaleString('default', { month: 'long' });
+  const firstDayOfWeek = new Date(calendarYear, calendarMonth - 1, 1).getDay();
+  const daysInMonth = new Date(calendarYear, calendarMonth, 0).getDate();
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+  const ideasAvailable = ideaStats?.available ?? 0;
+  const ideasColor = ideasAvailable > 20 ? 'text-green-400' : ideasAvailable > 10 ? 'text-yellow-400' : 'text-red-400';
+
+  const getDayEntries = (day: number) => {
+    const dateStr = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    return calendarData?.days?.[dateStr] || [];
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Stats Bar */}
+      <section className="glass rounded-xl p-6">
+        <div className="flex flex-wrap items-center gap-6">
+          <div>
+            <span className="text-white/60 text-sm">Ideas Available</span>
+            <div className={`text-2xl font-bold ${ideasColor}`}>{ideasAvailable}</div>
+          </div>
+          <button
+            onClick={handleGenerateIdeas}
+            disabled={isGeneratingIdeas}
+            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-800 disabled:opacity-50 text-white rounded-lg transition-all flex items-center gap-2"
+          >
+            {isGeneratingIdeas ? (
+              <><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div> Generating... {genProgress?.generated || 0}/{genProgress?.total || 100}</>
+            ) : '🧠 Generate 100 Ideas'}
+          </button>
+          <div>
+            <span className="text-white/60 text-sm">Published This Month</span>
+            <div className="text-2xl font-bold text-purple-400">{calendarStats?.this_month ?? 0}</div>
+          </div>
+          <div>
+            <span className="text-white/60 text-sm">Scheduled</span>
+            <div className="text-2xl font-bold text-yellow-400">{calendarStats?.total_scheduled ?? 0}</div>
+          </div>
+          <div>
+            <span className="text-white/60 text-sm">This Week</span>
+            <div className="text-2xl font-bold text-blue-400">{calendarStats?.this_week ?? 0}</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calendar Grid */}
+      <section className="glass rounded-xl p-6">
+        <div className="flex items-center justify-between mb-6">
+          <button onClick={prevMonth} className="px-3 py-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-all">&lt; Prev</button>
+          <h2 className="text-xl font-bold text-white">{monthName} {calendarYear}</h2>
+          <button onClick={nextMonth} className="px-3 py-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-all">Next &gt;</button>
+        </div>
+        <div className="grid grid-cols-7 gap-1 mb-2">
+          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
+            <div key={d} className="text-center text-white/50 text-sm py-1">{d}</div>
+          ))}
+        </div>
+        <div className="grid grid-cols-7 gap-1">
+          {Array.from({ length: firstDayOfWeek }).map((_, i) => (
+            <div key={`e${i}`} className="h-20 rounded bg-white/5"></div>
+          ))}
+          {Array.from({ length: daysInMonth }).map((_, i) => {
+            const day = i + 1;
+            const dateStr = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const entries = getDayEntries(day);
+            const isToday = dateStr === todayStr;
+            return (
+              <div
+                key={day}
+                onClick={() => setSelectedDay(selectedDay === dateStr ? null : dateStr)}
+                className={`h-20 rounded p-1 cursor-pointer transition-all hover:bg-white/15 ${
+                  isToday ? 'bg-indigo-500/20 border border-indigo-400/50' : 'bg-white/5'
+                } ${selectedDay === dateStr ? 'ring-2 ring-indigo-400' : ''}`}
+              >
+                <div className={`text-xs ${isToday ? 'text-indigo-300 font-bold' : 'text-white/60'}`}>{day}</div>
+                <div className="flex flex-wrap gap-0.5 mt-1">
+                  {entries.map((e: any, idx: number) => (
+                    <span key={idx} className="text-xs" title={`${e.title} (${e.status})`}>
+                      {e.type === 'long' ? '🔵' : e.status === 'published' ? '🟣' : e.status === 'scheduled' || e.status === 'generating' ? '🟡' : '🔴'}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Selected Day Details */}
+        {selectedDay && (
+          <div className="mt-4 p-4 bg-white/5 rounded-lg">
+            <h3 className="text-white font-semibold mb-2">{selectedDay}</h3>
+            {(calendarData?.days?.[selectedDay] || []).length === 0 ? (
+              <p className="text-white/50 text-sm">No content this day</p>
+            ) : (
+              <div className="space-y-2">
+                {(calendarData?.days?.[selectedDay] || []).map((e: any, i: number) => (
+                  <div key={i} className="flex items-center gap-3 text-sm">
+                    <span>{e.type === 'long' ? '🔵' : '🟣'}</span>
+                    <span className="text-white/60">{e.time}</span>
+                    <span className="text-white">{e.title}</span>
+                    <span className={`px-2 py-0.5 rounded text-xs ${
+                      e.status === 'published' ? 'bg-green-500/20 text-green-400' :
+                      e.status === 'scheduled' ? 'bg-yellow-500/20 text-yellow-400' :
+                      e.status === 'failed' ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/20 text-blue-400'
+                    }`}>{e.status}</span>
+                    {e.youtube_url && <a href={e.youtube_url} target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">YouTube ↗</a>}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </section>
+
+      {/* Auto-Publish Controls */}
+      <section className="glass rounded-xl p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-bold text-white">Auto-Publish Shorts</h2>
+          <button
+            onClick={handleToggleAutopublish}
+            className={`relative w-14 h-7 rounded-full transition-all ${
+              autopublishStatus?.enabled ? 'bg-green-500' : 'bg-white/20'
+            }`}
+          >
+            <div className={`absolute w-5 h-5 bg-white rounded-full top-1 transition-all ${
+              autopublishStatus?.enabled ? 'left-8' : 'left-1'
+            }`}></div>
+          </button>
+        </div>
+        <p className="text-white/60 text-sm mb-4">2 shorts/day at 7:00 AM &amp; 9:30 PM EST</p>
+
+        <div className="flex items-center gap-2 mb-4">
+          <span className="text-white/60 text-sm">Idea Bank:</span>
+          <span className={`text-sm font-semibold ${
+            autopublishStatus?.idea_bank_health === 'good' ? 'text-green-400' :
+            autopublishStatus?.idea_bank_health === 'low' ? 'text-yellow-400' : 'text-red-400'
+          }`}>
+            {autopublishStatus?.ideas_available ?? 0} ideas ({autopublishStatus?.idea_bank_health ?? 'unknown'})
+          </span>
+        </div>
+
+        <h3 className="text-white/80 font-semibold mb-2 text-sm">Next 7 Publish Slots</h3>
+        <div className="space-y-1">
+          {(autopublishStatus?.next_slots || []).slice(0, 7).map((slot: any, i: number) => (
+            <div key={i} className="flex gap-3 text-sm">
+              <span className="text-white/50 w-20">{slot.day}</span>
+              <span className="text-white/80">{slot.time_est}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function App() {
-  const [activeTab, setActiveTab] = useState<'videos' | 'config'>('videos');
+  const [activeTab, setActiveTab] = useState<'videos' | 'shorts' | 'calendar' | 'config'>('videos');
   const [videos, setVideos] = useState<any[]>([]);
   const [jobs, setJobs] = useState<any[]>([]);
   const [health, setHealth] = useState<any>(null);
@@ -11,12 +217,33 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
 
+  // Shorts state
+  const [shortsJobs, setShortsJobs] = useState<any[]>([]);
+  const [shortsVideos, setShortsVideos] = useState<any[]>([]);
+  const [shortsCount, setShortsCount] = useState(3);
+  const [shortsDomain, setShortsDomain] = useState('');
+  const [shortsHookCat, setShortsHookCat] = useState('');
+  const [isGeneratingShorts, setIsGeneratingShorts] = useState(false);
+  const [domains, setDomains] = useState<string[]>([]);
+  const [hookCategories, setHookCategories] = useState<string[]>([]);
+  const [hooksData, setHooksData] = useState<any>(null);
+  const [showHooks, setShowHooks] = useState(false);
+
+  // Calendar state
+  const [calendarMonth, setCalendarMonth] = useState(new Date().getMonth() + 1);
+  const [calendarYear, setCalendarYear] = useState(new Date().getFullYear());
+  const [calendarData, setCalendarData] = useState<any>(null);
+  const [calendarStats, setCalendarStats] = useState<any>(null);
+  const [ideaStats, setIdeaStats] = useState<any>(null);
+  const [isGeneratingIdeas, setIsGeneratingIdeas] = useState(false);
+  const [autopublishStatus, setAutopublishStatus] = useState<any>(null);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
+
   const apiUrl = 'http://localhost:3011';
 
   const loadData = async (isInitial = false) => {
     try {
       if (isInitial) setLoading(true);
-      // Don't setError('') on background refreshes — avoids flicker
 
       try {
         const healthResponse = await fetch(`${apiUrl}/health`);
@@ -41,6 +268,54 @@ function App() {
           setJobs(Array.isArray(list) ? list : []);
         }
       } catch (e) { console.error('Jobs fetch failed:', e); }
+
+      // Shorts data
+      try {
+        const sjResp = await fetch(`${apiUrl}/api/shorts/jobs`);
+        if (sjResp.ok) {
+          const d = await sjResp.json();
+          setShortsJobs(Array.isArray(d?.jobs) ? d.jobs : []);
+        }
+      } catch (e) {}
+
+      try {
+        const svResp = await fetch(`${apiUrl}/api/shorts/videos`);
+        if (svResp.ok) {
+          const d = await svResp.json();
+          setShortsVideos(Array.isArray(d?.videos) ? d.videos : []);
+        }
+      } catch (e) {}
+
+      // Domains (for dropdown)
+      try {
+        const dResp = await fetch(`${apiUrl}/api/domains`);
+        if (dResp.ok) {
+          const d = await dResp.json();
+          setDomains(Object.keys(d));
+        }
+      } catch (e) {}
+
+      // Hook categories
+      try {
+        const hResp = await fetch(`${apiUrl}/api/shorts/hooks`);
+        if (hResp.ok) {
+          const d = await hResp.json();
+          setHookCategories(Object.keys(d?.categories || {}));
+          setHooksData(d);
+        }
+      } catch (e) {}
+
+      // Calendar data
+      try {
+        const [ideaR, calStatsR, apR] = await Promise.all([
+          fetch(`${apiUrl}/api/ideas/stats`),
+          fetch(`${apiUrl}/api/calendar/stats`),
+          fetch(`${apiUrl}/api/autopublish/status`),
+        ]);
+        if (ideaR.ok) setIdeaStats(await ideaR.json());
+        if (calStatsR.ok) setCalendarStats(await calStatsR.json());
+        if (apR.ok) setAutopublishStatus(await apR.json());
+      } catch (e) {}
 
       if (isInitial) setError('');
     } catch (error) {
@@ -77,6 +352,35 @@ function App() {
     }
   };
 
+  const handleGenerateShorts = async () => {
+    if (isGeneratingShorts) return;
+    try {
+      setIsGeneratingShorts(true);
+      setError('');
+      if (shortsCount === 1) {
+        const body: any = { duration: 45 };
+        if (shortsDomain) body.domain = shortsDomain;
+        if (shortsHookCat) body.hook_category = shortsHookCat;
+        const resp = await fetch(`${apiUrl}/api/shorts/generate`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (!resp.ok) throw new Error(`Failed: ${resp.status}`);
+      } else {
+        const resp = await fetch(`${apiUrl}/api/shorts/generate-batch`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ count: shortsCount }),
+        });
+        if (!resp.ok) throw new Error(`Failed: ${resp.status}`);
+      }
+      setTimeout(loadData, 1000);
+    } catch (error: any) {
+      setError(error.message || 'Failed to generate shorts.');
+    } finally {
+      setIsGeneratingShorts(false);
+    }
+  };
+
   const [publishingJobs, setPublishingJobs] = useState<Record<string, 'publishing' | 'published' | 'failed'>>({});
 
   const handlePublish = async (jobId: string) => {
@@ -99,7 +403,6 @@ function App() {
     }
   };
 
-  // Map video url → job_id for publish
   const getJobForVideo = (videoUrl: string) => {
     return jobs.find(j => j.video_url === videoUrl && j.status === 'completed');
   };
@@ -142,6 +445,22 @@ function App() {
               }`}
             >
               Videos
+            </button>
+            <button
+              onClick={() => setActiveTab('shorts')}
+              className={`px-6 py-3 rounded-md font-medium transition-all ${
+                activeTab === 'shorts' ? 'tab-active' : 'tab-inactive'
+              }`}
+            >
+              Shorts
+            </button>
+            <button
+              onClick={() => setActiveTab('calendar')}
+              className={`px-6 py-3 rounded-md font-medium transition-all ${
+                activeTab === 'calendar' ? 'tab-active' : 'tab-inactive'
+              }`}
+            >
+              Calendar
             </button>
             <button
               onClick={() => setActiveTab('config')}
@@ -295,6 +614,171 @@ function App() {
             </section>
           </div>
         )}
+
+        {/* Shorts Tab */}
+        {activeTab === 'shorts' && (
+          <div className="space-y-8">
+            {/* Generate Shorts */}
+            <section className="glass rounded-xl p-6">
+              <h2 className="text-2xl font-bold mb-6 text-white">Generate Shorts</h2>
+              <div className="flex flex-wrap items-end gap-4 mb-6">
+                <div>
+                  <label className="block text-white/80 mb-2">Count</label>
+                  <input
+                    type="number" min="1" max="10"
+                    value={shortsCount}
+                    onChange={(e) => setShortsCount(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
+                    className="w-20 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    disabled={isGeneratingShorts}
+                  />
+                </div>
+                <div>
+                  <label className="block text-white/80 mb-2">Domain (optional)</label>
+                  <select
+                    value={shortsDomain}
+                    onChange={(e) => setShortsDomain(e.target.value)}
+                    className="px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    disabled={isGeneratingShorts}
+                  >
+                    <option value="">Random</option>
+                    {domains.map(d => <option key={d} value={d}>{d}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-white/80 mb-2">Hook Category (optional)</label>
+                  <select
+                    value={shortsHookCat}
+                    onChange={(e) => setShortsHookCat(e.target.value)}
+                    className="px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    disabled={isGeneratingShorts}
+                  >
+                    <option value="">Auto</option>
+                    {hookCategories.map(c => <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>)}
+                  </select>
+                </div>
+                <button
+                  onClick={handleGenerateShorts}
+                  disabled={isGeneratingShorts}
+                  className="btn-primary px-8 py-2 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isGeneratingShorts ? 'Generating...' : `Generate ${shortsCount} Short${shortsCount > 1 ? 's' : ''}`}
+                </button>
+              </div>
+
+              {/* Shorts Jobs */}
+              {shortsJobs.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-white">Shorts Jobs ({shortsJobs.length})</h3>
+                  {shortsJobs.map((job: any) => {
+                    const status = job.status || 'unknown';
+                    const progress = job.progress || 0;
+                    const isCompleted = status === 'completed';
+                    const isFailed = status === 'failed';
+                    return (
+                      <div key={job.job_id} className="glass-subtle rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center space-x-3">
+                            <span className="text-2xl">{isCompleted ? '✅' : isFailed ? '❌' : '⏳'}</span>
+                            <div>
+                              <p className="text-white font-medium">{job.domain || 'Unknown'}</p>
+                              <p className="text-white/60 text-sm">
+                                {job.duration}s • {job.hook_text ? `"${job.hook_text.slice(0, 50)}..."` : job.message || status}
+                              </p>
+                            </div>
+                          </div>
+                          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${
+                            isCompleted ? 'bg-green-500/20 text-green-400' :
+                            isFailed ? 'bg-red-500/20 text-red-400' :
+                            'bg-blue-500/20 text-blue-400'
+                          }`}>
+                            {status}
+                          </span>
+                        </div>
+                        <div className="w-full bg-white/10 rounded-full h-2">
+                          <div className="progress-bar h-2 rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+                        </div>
+                        <p className="text-white/50 text-xs mt-1">{progress}% — {job.message}</p>
+                      </div>
+                    );
+                  })}
+                  <button onClick={loadData} className="btn-secondary px-4 py-2 rounded-lg text-sm font-medium">Refresh</button>
+                </div>
+              )}
+            </section>
+
+            {/* Completed Shorts Grid */}
+            <section>
+              <h2 className="text-2xl font-bold mb-6 text-white">Shorts Gallery ({shortsVideos.length})</h2>
+              {shortsVideos.length === 0 ? (
+                <div className="glass rounded-xl p-8 text-center">
+                  <p className="text-white/60 text-lg">No shorts yet. Generate some!</p>
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-6">
+                  {shortsVideos.map((v: any) => (
+                    <div key={v.id} className="glass rounded-xl p-3 card-hover" style={{ width: 200 }}>
+                      <video controls className="rounded-lg bg-black/30" style={{ width: 176, height: 313 }}>
+                        <source src={`${apiUrl}${v.url}`} type="video/mp4" />
+                      </video>
+                      <div className="mt-2 space-y-1">
+                        <p className="text-white text-xs font-semibold leading-tight line-clamp-2">{v.title || v.id}</p>
+                        {v.hook_text && <p className="text-indigo-300 text-xs italic line-clamp-2">"{v.hook_text}"</p>}
+                        <p className="text-white/40 text-xs">{v.size_mb} MB</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+
+            {/* Hook Library Browser */}
+            <section className="glass rounded-xl p-6">
+              <button onClick={() => setShowHooks(!showHooks)} className="flex items-center space-x-2 text-white font-bold text-lg">
+                <span>{showHooks ? '▼' : '▶'}</span>
+                <span>Hook Library ({hooksData?.total_hooks || 0} hooks, {hooksData?.total_closers || 0} closers)</span>
+              </button>
+              {showHooks && hooksData && (
+                <div className="mt-4 space-y-4">
+                  {Object.entries(hooksData.categories || {}).map(([cat, hooks]: [string, any]) => (
+                    <div key={cat}>
+                      <h4 className="text-indigo-300 font-semibold capitalize mb-2">{cat} ({hooks.length})</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                        {hooks.map((h: string, i: number) => (
+                          <p key={i} className="text-white/60 text-sm">• {h}</p>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                  <div>
+                    <h4 className="text-purple-300 font-semibold mb-2">Emotional Closers ({hooksData.emotional_closers?.length})</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                      {hooksData.emotional_closers?.map((c: string, i: number) => (
+                        <p key={i} className="text-white/60 text-sm">• {c}</p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </section>
+          </div>
+        )}
+
+        {/* Calendar Tab */}
+        {activeTab === 'calendar' && <CalendarTab
+          apiUrl={apiUrl}
+          ideaStats={ideaStats}
+          calendarStats={calendarStats}
+          autopublishStatus={autopublishStatus}
+          calendarMonth={calendarMonth}
+          calendarYear={calendarYear}
+          setCalendarMonth={setCalendarMonth}
+          setCalendarYear={setCalendarYear}
+          isGeneratingIdeas={isGeneratingIdeas}
+          setIsGeneratingIdeas={setIsGeneratingIdeas}
+          selectedDay={selectedDay}
+          setSelectedDay={setSelectedDay}
+          onRefresh={() => loadData(false)}
+        />}
 
         {/* Config Tab */}
         {activeTab === 'config' && (

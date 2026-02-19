@@ -1,0 +1,14 @@
+{
+  "ambient": [
+    {"id": "ocean_waves", "name": "Ocean Waves", "filename": "ambient/ocean_waves.mp3", "category": "ocean", "duration_seconds": 120},
+    {"id": "gentle_rain", "name": "Gentle Rain", "filename": "ambient/gentle_rain.mp3", "category": "rain", "duration_seconds": 120},
+    {"id": "forest_morning", "name": "Forest Morning", "filename": "ambient/forest_morning.mp3", "category": "forest", "duration_seconds": 120},
+    {"id": "soft_wind", "name": "Soft Wind", "filename": "ambient/soft_wind.mp3", "category": "wind", "duration_seconds": 120},
+    {"id": "crackling_fire", "name": "Crackling Fire", "filename": "ambient/crackling_fire.mp3", "category": "fire", "duration_seconds": 120},
+    {"id": "night_crickets", "name": "Night Crickets", "filename": "ambient/night_crickets.mp3", "category": "night", "duration_seconds": 120},
+    {"id": "morning_birds", "name": "Morning Birds", "filename": "ambient/morning_birds.mp3", "category": "birds", "duration_seconds": 120},
+    {"id": "mountain_stream", "name": "Mountain Stream", "filename": "ambient/mountain_stream.mp3", "category": "stream", "duration_seconds": 120},
+    {"id": "heavy_rain", "name": "Heavy Rain", "filename": "ambient/heavy_rain.mp3", "category": "rain", "duration_seconds": 120},
+    {"id": "deep_ocean", "name": "Deep Ocean", "filename": "ambient/deep_ocean.mp3", "category": "ocean", "duration_seconds": 120}
+  ]
+}

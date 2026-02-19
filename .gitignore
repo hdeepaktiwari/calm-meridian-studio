@@ -24,3 +24,21 @@ nohup.out
 # OS
 .DS_Store
 *.mp3
+
+# Generated content
+generated_shorts/
+generated_videos/
+*.mp4
+*.mp3
+*.wav
+
+# State files (local)
+ideas_bank.json
+autopublish_state.json
+content_calendar.json
+publish_schedule.json
+shorts_jobs_store.json
+
+# Credentials
+youtube_token.pickle
+*.pickle

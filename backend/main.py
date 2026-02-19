@@ -106,8 +106,28 @@ def load_music_library():
             return json.load(f)
     return {"short": [], "long": []}
 
+from ideas.idea_bank import IdeaBank
+from ideas.calendar import ContentCalendar
+from ideas.auto_publisher import AutoPublisher
+
+idea_bank = IdeaBank()
+content_calendar = ContentCalendar()
+auto_publisher = AutoPublisher()
+
+_scheduler_task = None
+
+async def _autopublish_scheduler():
+    """Background scheduler that checks every 30 minutes for publishing."""
+    while True:
+        try:
+            await auto_publisher.run_scheduled_publish()
+        except Exception as e:
+            print(f"⚠️ Scheduler error: {e}")
+        await asyncio.sleep(30 * 60)  # 30 minutes
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    global _scheduler_task
     load_jobs()
     # Mark any running jobs as interrupted on startup
     for jid, job in jobs.items():
@@ -116,8 +136,12 @@ async def lifespan(app: FastAPI):
             job["error"] = "Server restarted during generation"
             job["message"] = "Interrupted by server restart"
     save_jobs()
+    _scheduler_task = asyncio.create_task(_autopublish_scheduler())
     print("🎬 Cinematic Video Studio API starting...")
+    print("📅 Auto-publish scheduler started (every 30 min)")
     yield
+    if _scheduler_task:
+        _scheduler_task.cancel()
     save_jobs()
     print("👋 Shutting down...")
 
@@ -786,6 +810,280 @@ async def health_check():
             "pending": sum(1 for j in jobs.values() if j["status"] == "pending"),
         }
     }
+
+# ============== Shorts Generation ==============
+
+from core.shorts_generator import ShortsGenerator
+from shorts.hooks import HOOK_LINES, EMOTIONAL_CLOSERS
+
+SHORTS_JOBS_FILE = Path("shorts_jobs_store.json")
+shorts_jobs: Dict[str, Dict[str, Any]] = {}
+SHORTS_VIDEOS_DIR = Path("generated_shorts")
+SHORTS_VIDEOS_DIR.mkdir(exist_ok=True)
+
+app.mount("/shorts", StaticFiles(directory="generated_shorts"), name="shorts")
+
+def load_shorts_jobs():
+    global shorts_jobs
+    if SHORTS_JOBS_FILE.exists():
+        try:
+            with open(SHORTS_JOBS_FILE) as f:
+                shorts_jobs = json.load(f)
+        except Exception:
+            shorts_jobs = {}
+
+def save_shorts_jobs():
+    try:
+        with open(SHORTS_JOBS_FILE, "w") as f:
+            json.dump(shorts_jobs, f, indent=2, default=str)
+    except Exception:
+        pass
+
+def update_shorts_job(job_id: str, **kwargs):
+    if job_id in shorts_jobs:
+        shorts_jobs[job_id].update(kwargs)
+        save_shorts_jobs()
+        event_data = json.dumps(shorts_jobs[job_id], default=str)
+        for q in sse_subscribers:
+            try:
+                q.put_nowait({"event": "shorts_job_update", "data": event_data})
+            except asyncio.QueueFull:
+                pass
+
+# Load shorts jobs on startup - hook into lifespan via post-init
+load_shorts_jobs()
+
+class ShortsRequest(BaseModel):
+    domain: Optional[str] = None
+    hook_category: Optional[str] = None
+    duration: int = 45
+
+class ShortsBatchRequest(BaseModel):
+    count: int = 1
+
+@app.post("/api/shorts/generate")
+async def generate_short(request: ShortsRequest, background_tasks: BackgroundTasks):
+    domain_name = request.domain
+    if domain_name and domain_name not in DOMAIN_REGISTRY:
+        raise HTTPException(status_code=400, detail=f"Invalid domain: {domain_name}")
+    if not domain_name:
+        domain_name = random.choice(list(DOMAIN_REGISTRY.keys()))
+    if request.duration < 30 or request.duration > 60:
+        raise HTTPException(status_code=400, detail="Duration must be 30-60 seconds")
+
+    job_id = "s-" + str(uuid.uuid4())[:8]
+    shorts_jobs[job_id] = {
+        "job_id": job_id, "status": "pending", "progress": 0,
+        "message": "Queued", "domain": domain_name,
+        "duration": request.duration, "hook_category": request.hook_category,
+        "created_at": datetime.now().isoformat(), "completed_at": None,
+        "video_path": None, "video_url": None, "hook_text": None,
+        "seo_metadata": None, "error": None,
+    }
+    save_shorts_jobs()
+    broadcast_sse("shorts_job_created", shorts_jobs[job_id])
+    background_tasks.add_task(run_shorts_generation, job_id)
+    return {"job_id": job_id, "status": "pending", "message": "Short generation started"}
+
+@app.post("/api/shorts/generate-batch")
+async def generate_shorts_batch(request: ShortsBatchRequest, background_tasks: BackgroundTasks):
+    if request.count < 1 or request.count > 20:
+        raise HTTPException(status_code=400, detail="Count must be 1-20")
+    domain_names = list(DOMAIN_REGISTRY.keys())
+    categories = list(HOOK_LINES.keys())
+    job_ids = []
+    for i in range(request.count):
+        domain_name = domain_names[i % len(domain_names)]
+        cat = categories[i % len(categories)]
+        dur = random.randint(35, 55)
+        job_id = "s-" + str(uuid.uuid4())[:8]
+        shorts_jobs[job_id] = {
+            "job_id": job_id, "status": "pending", "progress": 0,
+            "message": "Queued (batch)", "domain": domain_name,
+            "duration": dur, "hook_category": cat,
+            "created_at": datetime.now().isoformat(), "completed_at": None,
+            "video_path": None, "video_url": None, "hook_text": None,
+            "seo_metadata": None, "error": None,
+        }
+        job_ids.append(job_id)
+        broadcast_sse("shorts_job_created", shorts_jobs[job_id])
+    save_shorts_jobs()
+    background_tasks.add_task(run_shorts_batch, job_ids)
+    return {"job_ids": job_ids, "count": len(job_ids), "message": f"Queued {len(job_ids)} shorts"}
+
+@app.get("/api/shorts/hooks")
+async def list_hooks():
+    return {
+        "categories": {k: v for k, v in HOOK_LINES.items()},
+        "emotional_closers": EMOTIONAL_CLOSERS,
+        "total_hooks": sum(len(v) for v in HOOK_LINES.values()),
+        "total_closers": len(EMOTIONAL_CLOSERS),
+    }
+
+@app.get("/api/shorts/jobs")
+async def list_shorts_jobs():
+    return {"jobs": list(shorts_jobs.values())}
+
+@app.get("/api/shorts/videos")
+async def list_shorts_videos():
+    videos = []
+    for folder in SHORTS_VIDEOS_DIR.iterdir():
+        if folder.is_dir():
+            vf = folder / "short_video.mp4"
+            if vf.exists():
+                info = {
+                    "id": folder.name,
+                    "url": f"/shorts/{folder.name}/short_video.mp4",
+                    "size_mb": round(vf.stat().st_size / (1024 * 1024), 1),
+                    "created": datetime.fromtimestamp(vf.stat().st_mtime).isoformat(),
+                }
+                meta = folder / "seo_metadata.json"
+                if meta.exists():
+                    with open(meta) as f:
+                        seo = json.load(f)
+                    info["title"] = seo.get("title", folder.name)
+                    info["description"] = seo.get("description", "")
+                sd = folder / "short_data.json"
+                if sd.exists():
+                    with open(sd) as f:
+                        d = json.load(f)
+                    info["hook_text"] = d.get("hook_text", "")
+                    info["domain"] = folder.name.split("_")[0] if "_" in folder.name else ""
+                videos.append(info)
+    return {"videos": sorted(videos, key=lambda x: x["created"], reverse=True)}
+
+@app.delete("/api/shorts/jobs/{job_id}")
+async def delete_shorts_job(job_id: str):
+    if job_id not in shorts_jobs:
+        raise HTTPException(status_code=404, detail="Shorts job not found")
+    del shorts_jobs[job_id]
+    save_shorts_jobs()
+    return {"message": "Shorts job deleted"}
+
+async def run_shorts_generation(job_id: str):
+    job = shorts_jobs.get(job_id)
+    if not job or job.get("status") == "cancelled":
+        return
+    try:
+        update_shorts_job(job_id, status="running", message="Initializing...")
+        domain = DOMAIN_REGISTRY[job["domain"]]
+        gen = ShortsGenerator()
+        folder_name = f"{domain.name.replace(' ', '')}_{job['duration']}s_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        project_folder = SHORTS_VIDEOS_DIR / folder_name
+        project_folder.mkdir(parents=True, exist_ok=True)
+
+        def progress_cb(pct, msg):
+            update_shorts_job(job_id, progress=pct, message=msg)
+
+        loop = asyncio.get_event_loop()
+        output_path, scene_data, seo = await loop.run_in_executor(
+            None,
+            lambda: gen.generate_short(
+                domain=domain,
+                hook_category=job.get("hook_category"),
+                target_duration=job["duration"],
+                project_folder=project_folder,
+                progress_callback=progress_cb,
+            ),
+        )
+        update_shorts_job(
+            job_id, status="completed", progress=100,
+            message="Short complete!", completed_at=datetime.now().isoformat(),
+            video_path=str(output_path),
+            video_url=f"/shorts/{folder_name}/short_video.mp4",
+            hook_text=scene_data.get("hook_text"),
+            seo_metadata=seo,
+        )
+    except Exception as e:
+        update_shorts_job(job_id, status="failed", error=str(e), message=f"Error: {e}")
+
+async def run_shorts_batch(job_ids: list):
+    for jid in job_ids:
+        if shorts_jobs.get(jid, {}).get("status") == "cancelled":
+            continue
+        await run_shorts_generation(jid)
+
+
+# ============== Ideas Bank ==============
+
+@app.get("/api/ideas/stats")
+async def get_idea_stats():
+    """Get idea bank stats."""
+    return idea_bank.get_stats()
+
+@app.get("/api/ideas")
+async def list_ideas(status: str = None, limit: int = 20):
+    """List ideas, optionally filtered by status."""
+    ideas = idea_bank.get_all_ideas(status=status)
+    return {"ideas": ideas[:limit], "total": len(ideas)}
+
+@app.post("/api/ideas/generate")
+async def generate_ideas_endpoint(background_tasks: BackgroundTasks):
+    """Generate 100 new unique ideas in background."""
+    progress = idea_bank.get_generation_progress()
+    if progress.get("active"):
+        return {"message": "Generation already in progress", "progress": progress}
+
+    def _gen_sync():
+        import asyncio
+        try:
+            print("[IDEAS] Starting idea generation...")
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            result = loop.run_until_complete(idea_bank.generate_ideas(100))
+            print(f"[IDEAS] Generation complete: {result} ideas generated")
+            loop.close()
+        except Exception as e:
+            import traceback
+            print(f"[IDEAS] Generation error: {e}")
+            traceback.print_exc()
+
+    background_tasks.add_task(_gen_sync)
+    return {"message": "Generating 100 ideas in background", "status": "started"}
+
+@app.get("/api/ideas/generating")
+async def ideas_generation_status():
+    """Check idea generation progress."""
+    return idea_bank.get_generation_progress()
+
+# ============== Calendar ==============
+
+@app.get("/api/calendar/{year}/{month}")
+async def get_calendar(year: int, month: int):
+    """Get content calendar for a month."""
+    import calendar as cal_mod
+    entries = content_calendar.get_month(year, month)
+    # Build day slots
+    _, days_in_month = cal_mod.monthrange(year, month)
+    days = {}
+    for day in range(1, days_in_month + 1):
+        date_str = f"{year}-{month:02d}-{day:02d}"
+        days[date_str] = [e for e in entries if e.get("date") == date_str]
+    return {"year": year, "month": month, "days": days, "entries": entries}
+
+@app.get("/api/calendar/stats")
+async def get_calendar_stats():
+    """Publishing stats."""
+    return content_calendar.get_stats()
+
+# ============== Auto Publisher ==============
+
+@app.get("/api/autopublish/status")
+async def autopublish_status():
+    """Auto-publisher status."""
+    return auto_publisher.get_status()
+
+@app.post("/api/autopublish/toggle")
+async def toggle_autopublish():
+    """Enable/disable auto-publishing."""
+    enabled = auto_publisher.toggle()
+    return {"enabled": enabled}
+
+@app.get("/api/autopublish/schedule")
+async def get_publish_schedule():
+    """Get upcoming 14-day publish schedule."""
+    return {"slots": auto_publisher.get_next_publish_slots(28)}
+
 
 if __name__ == "__main__":
     import uvicorn

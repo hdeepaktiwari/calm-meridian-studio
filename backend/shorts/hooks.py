@@ -1,0 +1,187 @@
+"""
+Hook lines and emotional closers for YouTube Shorts.
+100+ hooks organized by category, 15+ emotional closers.
+"""
+import random
+from typing import Optional
+
+HOOK_LINES = {
+    "awareness": [
+        "You haven't taken a deep breath in hours",
+        "Your shoulders are tense right now",
+        "When was the last time you looked up from your screen?",
+        "You've been holding your breath",
+        "Your jaw is clenched. Let it go.",
+        "Notice how fast your mind is moving right now",
+        "Your eyes are tired. You can feel it.",
+        "How long have you been sitting like that?",
+        "Your hands are gripping your phone too tight",
+        "You forgot to blink",
+        "There's tension in your forehead right now",
+        "Your back hasn't been straight in a while",
+        "You're breathing shallow. Feel it change.",
+        "When did you last feel your feet on the ground?",
+        "Your neck is holding all of today's stress",
+        "You've been clenching muscles you didn't know about",
+        "Notice where you're holding tension right now",
+        "Your body has been asking for a break",
+        "You haven't looked at the sky today",
+        "Feel your heartbeat. It's been working all day for you.",
+        "Your eyes haven't rested since you woke up",
+        "You're carrying weight that isn't yours",
+    ],
+    "permission": [
+        "Nobody's asking anything of you right now",
+        "You don't have to respond to anything for 60 seconds",
+        "This is your permission to pause",
+        "For the next minute, nothing is urgent",
+        "You're allowed to just... be still",
+        "No one needs you for the next 60 seconds",
+        "You have permission to do absolutely nothing",
+        "Right now, you owe nothing to anyone",
+        "This minute belongs only to you",
+        "You don't need to be productive right now",
+        "Let yourself just exist for a moment",
+        "There is nothing to fix in this moment",
+        "You can stop trying so hard. Just for now.",
+        "The world will wait. Take this minute.",
+        "No emails. No tasks. Just this.",
+        "You're allowed to rest before you're exhausted",
+        "This is your moment. No one else's.",
+        "Put everything down. Just for 60 seconds.",
+        "You don't have to earn this break",
+        "Nothing on your to-do list matters for the next minute",
+        "Let the urgency go. Just for now.",
+    ],
+    "curiosity": [
+        "This is what 60 seconds of silence feels like",
+        "What if you did nothing for one minute?",
+        "Can you watch this without checking your phone?",
+        "Most people can't stay still for 30 seconds",
+        "What happens when you stop scrolling?",
+        "Try not to think about anything for 60 seconds",
+        "Watch this until the end. See how you feel.",
+        "Your brain doesn't want you to finish this. Prove it wrong.",
+        "How long can you just... watch?",
+        "See if you can breathe slower than this video moves",
+        "What if peace was only 60 seconds away?",
+        "The average person won't make it past 15 seconds",
+        "This video has no point. That's the point.",
+        "Bet you can't watch this without thinking about work",
+        "See how different you feel in 60 seconds",
+        "What does doing nothing actually feel like?",
+        "Try to think about absolutely nothing. Go.",
+        "One minute. No skipping. Can you do it?",
+        "What if this is the calmest you'll feel all day?",
+        "Slow down. Just see what happens.",
+        "Give yourself 60 seconds. That's all.",
+    ],
+    "gratitude": [
+        "You woke up today. That's enough.",
+        "Somewhere right now, this place exists",
+        "The world is still beautiful",
+        "This moment will never happen again",
+        "You made it through another day",
+        "Someone somewhere is thinking of you right now",
+        "The earth kept spinning for you today",
+        "You're alive and watching this. That's a gift.",
+        "Sunsets don't wait for anyone. But this one is for you.",
+        "Everything you've survived brought you here",
+        "There are places on earth this peaceful",
+        "Nature doesn't rush. And it's perfect.",
+        "Beauty like this exists whether you see it or not",
+        "You've already done enough today",
+        "The fact that you stopped to watch this says something good about you",
+        "Not every moment needs to be productive",
+        "Right now, somewhere, the ocean sounds exactly like this",
+        "You're here. That matters.",
+        "Some moments are just meant to be felt",
+        "This planet made this view just because it could",
+        "Gratitude doesn't need a reason",
+    ],
+    "contrast": [
+        "30 seconds ago you were scrolling. Now breathe.",
+        "The noise stops here",
+        "Everything else can wait",
+        "Pause.",
+        "Stop. Look. Breathe.",
+        "You went from chaos to this in one swipe",
+        "The algorithm brought you here for a reason",
+        "From notifications to nature in 3 seconds",
+        "Your timeline was loud. This isn't.",
+        "This is the opposite of everything you just scrolled past",
+        "One second you're stressed. The next... this.",
+        "The world is screaming. This corner is quiet.",
+        "Between the noise, there's this",
+        "You were rushing. Now you're here.",
+        "Slow down. The feed will still be there.",
+        "From deadlines to this. Feel the shift.",
+        "This is the break your brain was looking for",
+        "Silence hits different after all that noise",
+        "The internet is chaos. This is the eye of the storm.",
+        "Everything was moving fast. Now it's not.",
+        "You found the quiet part of the internet",
+    ],
+}
+
+EMOTIONAL_CLOSERS = [
+    "You just took a break. You needed that.",
+    "Remember this feeling.",
+    "Come back whenever you need to.",
+    "One minute of peace. Yours to keep.",
+    "The calm is always here. So are we.",
+    "You can return to this moment anytime.",
+    "Breathe. You're going to be okay.",
+    "That pause? Your mind needed it.",
+    "Take this feeling with you.",
+    "Stillness looks good on you.",
+    "The world can wait a little longer.",
+    "You just gave yourself a gift.",
+    "This calm lives inside you. Always.",
+    "See you in the next quiet moment.",
+    "One minute changed something. You felt it.",
+    "Peace isn't somewhere else. It was right here.",
+    "Your nervous system just said thank you.",
+    "That's what slowing down feels like.",
+    "Carry this stillness into your next hour.",
+    "You didn't need to earn that. It was always yours.",
+]
+
+# Domain-to-hook-category affinity mapping
+_DOMAIN_CATEGORY_AFFINITY = {
+    "Ocean & Sea Creatures": ["awareness", "gratitude", "curiosity"],
+    "Beautiful Beaches": ["permission", "gratitude", "contrast"],
+    "Lush Green Forests": ["awareness", "permission", "curiosity"],
+    "Beautiful Himalayas": ["gratitude", "awareness", "contrast"],
+    "Life in Space": ["curiosity", "gratitude", "contrast"],
+    "Buddhist Lifestyle": ["awareness", "permission", "gratitude"],
+    "Japanese Beauty": ["awareness", "permission", "curiosity"],
+    "Amazon Rainforest": ["curiosity", "awareness", "gratitude"],
+    "Lakeside Lifestyle": ["permission", "gratitude", "awareness"],
+    "Desert Life Worldwide": ["contrast", "curiosity", "gratitude"],
+    "Antarctica Beauty": ["curiosity", "gratitude", "contrast"],
+    "Tropical Greenery": ["permission", "gratitude", "awareness"],
+    "Ancient Places": ["curiosity", "gratitude", "contrast"],
+    "Ancient European Cities": ["curiosity", "gratitude", "awareness"],
+    "Luxury Palace Interiors": ["contrast", "permission", "curiosity"],
+    "Modern Luxury Mansions": ["permission", "contrast", "curiosity"],
+    "Lush Agricultural Farmhouses": ["permission", "gratitude", "awareness"],
+    "Colorful American Roads": ["contrast", "curiosity", "gratitude"],
+    "Luxury Cruise Ships": ["permission", "contrast", "gratitude"],
+    "Luxury Yachts": ["permission", "contrast", "gratitude"],
+}
+
+
+def get_hook_for_domain(domain_name: str, category: str = None) -> tuple[str, str]:
+    """Returns (hook_line, emotional_closer) — picks contextually if possible."""
+    if category and category in HOOK_LINES:
+        cats = [category]
+    elif domain_name in _DOMAIN_CATEGORY_AFFINITY:
+        cats = _DOMAIN_CATEGORY_AFFINITY[domain_name]
+    else:
+        cats = list(HOOK_LINES.keys())
+
+    chosen_cat = random.choice(cats)
+    hook = random.choice(HOOK_LINES[chosen_cat])
+    closer = random.choice(EMOTIONAL_CLOSERS)
+    return hook, closer
