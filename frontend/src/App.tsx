@@ -218,6 +218,8 @@ function App() {
   const [error, setError] = useState<string>('');
 
   // Shorts state
+  const [leoCredits, setLeoCredits] = useState<any>(null);
+  const [leoLoading, setLeoLoading] = useState(false);
   const [shortsJobs, setShortsJobs] = useState<any[]>([]);
   const [shortsVideos, setShortsVideos] = useState<any[]>([]);
   const [shortsCount, setShortsCount] = useState(3);
@@ -1019,6 +1021,48 @@ function App() {
                 </div>
               ) : (
                 <p className="text-white/60">Unable to check API status</p>
+              )}
+            </section>
+
+            {/* Leonardo Credits */}
+            <section className="glass rounded-xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-white">Leonardo AI Credits</h2>
+                <button
+                  onClick={async () => {
+                    setLeoCredits(null);
+                    setLeoLoading(true);
+                    try {
+                      const res = await fetch(`${API}/api/leonardo/credits`);
+                      const data = await res.json();
+                      setLeoCredits(data);
+                    } catch { setLeoCredits({ error: true }); }
+                    setLeoLoading(false);
+                  }}
+                  className="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors"
+                >
+                  {leoLoading ? '⏳ Checking...' : '🎨 Check Credits'}
+                </button>
+              </div>
+              {leoCredits && !('error' in leoCredits) && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-white/5 rounded-lg p-4">
+                    <div className="text-white/60 text-sm">API Tokens</div>
+                    <div className="text-3xl font-bold text-purple-400">{leoCredits.total_available?.toLocaleString()}</div>
+                    <div className="text-white/40 text-xs mt-1">Paid: {leoCredits.api_paid_tokens?.toLocaleString()} | Sub: {leoCredits.api_subscription_tokens?.toLocaleString()}</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4">
+                    <div className="text-white/60 text-sm">Renewal Date</div>
+                    <div className="text-lg font-bold text-white">{leoCredits.renewal_date ? new Date(leoCredits.renewal_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A'}</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4">
+                    <div className="text-white/60 text-sm">Concurrency Slots</div>
+                    <div className="text-3xl font-bold text-green-400">{leoCredits.concurrency_slots}</div>
+                  </div>
+                </div>
+              )}
+              {leoCredits && 'error' in leoCredits && (
+                <p className="text-red-400">Failed to fetch credits. Check API key.</p>
               )}
             </section>
           </div>

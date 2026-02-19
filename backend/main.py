@@ -1170,6 +1170,31 @@ async def get_publish_schedule():
     return {"slots": auto_publisher.get_next_publish_slots(28)}
 
 
+@app.get("/api/leonardo/credits")
+async def leonardo_credits():
+    """Get Leonardo AI credit balance and renewal info."""
+    import requests as req
+    api_key = os.getenv("LEONARDO_API_KEY")
+    if not api_key:
+        raise HTTPException(status_code=400, detail="Leonardo API key not configured")
+    resp = req.get(
+        "https://cloud.leonardo.ai/api/rest/v1/me",
+        headers={"authorization": f"Bearer {api_key}", "accept": "application/json"},
+        timeout=10,
+    )
+    data = resp.json()
+    user = data.get("user_details", [{}])[0]
+    return {
+        "api_paid_tokens": user.get("apiPaidTokens", 0),
+        "api_subscription_tokens": user.get("apiSubscriptionTokens", 0),
+        "subscription_tokens": user.get("subscriptionTokens", 0),
+        "paid_tokens": user.get("paidTokens", 0),
+        "total_available": (user.get("apiPaidTokens", 0) + user.get("apiSubscriptionTokens", 0)),
+        "renewal_date": user.get("apiPlanTokenRenewalDate"),
+        "concurrency_slots": user.get("apiConcurrencySlots", 0),
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=3011)
