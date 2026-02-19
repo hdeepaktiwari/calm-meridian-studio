@@ -418,6 +418,10 @@ function App() {
   const [ceoLogs, setCeoLogs] = useState<any[]>([]);
   const [longformStatus, setLongformStatus] = useState<any>(null);
   const [isRunningCeoCheck, setIsRunningCeoCheck] = useState(false);
+  const [commentStatus, setCommentStatus] = useState<any>(null);
+  const [commentReplies, setCommentReplies] = useState<any[]>([]);
+  const [isRunningCommentCheck, setIsRunningCommentCheck] = useState(false);
+  const [showRecentReplies, setShowRecentReplies] = useState(false);
 
   // Calendar state
   const [calendarMonth, setCalendarMonth] = useState(new Date().getMonth() + 1);
@@ -509,14 +513,18 @@ function App() {
 
       // CEO data
       try {
-        const [ceoR, ceoLogsR, lfR] = await Promise.all([
+        const [ceoR, ceoLogsR, lfR, cmtR, cmtRepliesR] = await Promise.all([
           fetch(`${apiUrl}/api/ceo/status`),
           fetch(`${apiUrl}/api/ceo/logs?count=20`),
           fetch(`${apiUrl}/api/longform/status`),
+          fetch(`${apiUrl}/api/comments/status`),
+          fetch(`${apiUrl}/api/comments/recent?count=5`),
         ]);
         if (ceoR.ok) setCeoStatus(await ceoR.json());
         if (ceoLogsR.ok) { const d = await ceoLogsR.json(); setCeoLogs(d.logs || []); }
         if (lfR.ok) setLongformStatus(await lfR.json());
+        if (cmtR.ok) setCommentStatus(await cmtR.json());
+        if (cmtRepliesR.ok) { const d = await cmtRepliesR.json(); setCommentReplies(d.replies || []); }
       } catch (e) {}
 
       if (isInitial) setError('');
@@ -1124,6 +1132,87 @@ function App() {
                 </p>
               </div>
             </div>
+
+            {/* Comment Responder Card */}
+            <section className="glass rounded-xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">💬</span>
+                  <h3 className="text-white font-bold text-lg">Comment Responder</h3>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={async () => {
+                      setIsRunningCommentCheck(true);
+                      try {
+                        await fetch(`${apiUrl}/api/comments/check`, { method: 'POST' });
+                        await loadData(false);
+                      } catch (e) {}
+                      setIsRunningCommentCheck(false);
+                    }}
+                    disabled={isRunningCommentCheck}
+                    className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-800 disabled:opacity-50 text-white rounded-lg transition-all text-sm font-medium"
+                  >
+                    {isRunningCommentCheck ? '⏳ Checking...' : '🔍 Check Now'}
+                  </button>
+                  <button
+                    onClick={async () => {
+                      await fetch(`${apiUrl}/api/comments/toggle`, { method: 'POST' });
+                      loadData(false);
+                    }}
+                    className={`px-3 py-1.5 rounded-lg text-sm font-semibold ${
+                      commentStatus?.enabled ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+                    }`}
+                  >{commentStatus?.enabled ? 'ON' : 'OFF'}</button>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-4 mb-4">
+                <div>
+                  <p className="text-white/40 text-xs uppercase">Total Replies</p>
+                  <p className="text-white text-xl font-bold">{commentStatus?.total_replies ?? 0}</p>
+                </div>
+                <div>
+                  <p className="text-white/40 text-xs uppercase">Last Check</p>
+                  <p className="text-white/70 text-sm">
+                    {commentStatus?.last_check
+                      ? new Date(commentStatus.last_check).toLocaleString()
+                      : 'Never'}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-white/40 text-xs uppercase">Status</p>
+                  <p className={`text-sm font-semibold ${commentStatus?.enabled ? 'text-green-400' : 'text-red-400'}`}>
+                    {commentStatus?.enabled ? '✅ Active' : '❌ Disabled'}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <button
+                  onClick={() => setShowRecentReplies(!showRecentReplies)}
+                  className="text-white/60 text-sm hover:text-white/80 transition-colors"
+                >
+                  {showRecentReplies ? '▼' : '▶'} Recent Replies ({commentReplies.length})
+                </button>
+                {showRecentReplies && (
+                  <div className="mt-3 space-y-3">
+                    {commentReplies.length === 0 ? (
+                      <p className="text-white/40 text-sm">No replies yet</p>
+                    ) : (
+                      commentReplies.map((r: any, i: number) => (
+                        <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1">
+                          <p className="text-white/40 text-xs">{r.video_title}</p>
+                          <p className="text-white/70 text-sm">
+                            <span className="text-blue-400 font-medium">{r.author}:</span> {r.comment_text}
+                          </p>
+                          <p className="text-green-400 text-sm">↳ {r.reply_text}</p>
+                          <p className="text-white/30 text-xs">{new Date(r.timestamp).toLocaleString()}</p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+            </section>
 
             {/* Alerts */}
             {(ceoStatus?.recent_alerts?.length ?? 0) > 0 && (

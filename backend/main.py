@@ -125,6 +125,7 @@ async def _autopublish_scheduler():
     """Combined scheduler for all autonomous operations."""
     last_ceo_check = 0
     last_longform_check = 0
+    last_comment_check = 0
 
     while True:
         # Shorts auto-publish (every 30 min)
@@ -156,6 +157,19 @@ async def _autopublish_scheduler():
                 last_longform_check = now
             except Exception as e:
                 print(f"[LONGFORM] Publisher error: {e}")
+
+        # Comment check every 6 hours
+        if now - last_comment_check >= 6 * 60 * 60:
+            try:
+                from comments.responder import CommentResponder
+                responder = CommentResponder()
+                if responder.get_status().get("enabled", True):
+                    result = await responder.check_and_reply()
+                    if result.get("replied", 0) > 0:
+                        print(f"[COMMENTS] Replied to {result['replied']} comments")
+                last_comment_check = now
+            except Exception as e:
+                print(f"[COMMENTS] Error: {e}")
 
         await asyncio.sleep(30 * 60)  # 30 minutes
 
@@ -949,6 +963,35 @@ async def trigger_longform_generate(background_tasks: BackgroundTasks):
             print(f"[LONGFORM] Manual trigger error: {e}")
     background_tasks.add_task(lambda: asyncio.run(_run()))
     return {"message": "Long-form generation triggered"}
+
+# ============== Comment Responder ==============
+
+@app.get("/api/comments/status")
+async def comments_status():
+    """Comment responder status."""
+    from comments.responder import CommentResponder
+    return CommentResponder().get_status()
+
+@app.post("/api/comments/toggle")
+async def toggle_comments():
+    """Enable/disable auto-replies."""
+    from comments.responder import CommentResponder
+    enabled = CommentResponder().toggle()
+    return {"enabled": enabled}
+
+@app.post("/api/comments/check")
+async def manual_comment_check():
+    """Trigger manual comment check + reply."""
+    from comments.responder import CommentResponder
+    responder = CommentResponder()
+    result = await responder.check_and_reply()
+    return result
+
+@app.get("/api/comments/recent")
+async def recent_replies(count: int = 20):
+    """Get recent auto-replies."""
+    from comments.responder import CommentResponder
+    return {"replies": CommentResponder().get_recent_replies(count)}
 
 # ============== Health Check ==============
 

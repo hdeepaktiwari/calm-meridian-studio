@@ -45,6 +45,7 @@ class CEOAgent:
         await self._check_idea_bank(report)
         await self._check_shorts_publisher(report)
         await self._check_longform_pipeline(report)
+        await self._check_comment_responder(report)
         await self._check_youtube_token(report)
         await self._check_disk_space(report)
         await self._check_failed_jobs(report)
@@ -137,6 +138,30 @@ class CEOAgent:
             report["checks"]["longform_pipeline"] = check
         except Exception as e:
             report["checks"]["longform_pipeline"] = {"status": "error", "error": str(e)}
+
+    async def _check_comment_responder(self, report):
+        """Verify comment responder is enabled and last check was within 12 hours."""
+        try:
+            from comments.responder import CommentResponder
+            responder = CommentResponder()
+            status = responder.get_status()
+            check = {
+                "status": "healthy",
+                "enabled": status.get("enabled", False),
+                "total_replies": status.get("total_replies", 0),
+                "last_check": status.get("last_check"),
+            }
+            if not status.get("enabled", False):
+                check["status"] = "warning"
+                check["note"] = "Comment responder is disabled"
+            elif status.get("last_check"):
+                last = datetime.fromisoformat(status["last_check"])
+                if (datetime.now(IST) - last).total_seconds() > 12 * 60 * 60:
+                    check["status"] = "warning"
+                    check["note"] = "Last comment check was over 12 hours ago"
+            report["checks"]["comment_responder"] = check
+        except Exception as e:
+            report["checks"]["comment_responder"] = {"status": "error", "error": str(e)}
 
     async def _check_youtube_token(self, report):
         try:
