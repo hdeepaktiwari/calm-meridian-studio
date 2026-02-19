@@ -4,11 +4,21 @@ import './App.css';
 function CalendarTab({ apiUrl, ideaStats, calendarStats, autopublishStatus, calendarMonth, calendarYear, setCalendarMonth, setCalendarYear, isGeneratingIdeas, setIsGeneratingIdeas, selectedDay, setSelectedDay, onRefresh }: any) {
   const [calendarData, setCalendarData] = useState<any>(null);
   const [genProgress, setGenProgress] = useState<any>(null);
+  const [analytics, setAnalytics] = useState<any>(null);
+  const [upcoming, setUpcoming] = useState<any[]>([]);
+  const [syncing, setSyncing] = useState(false);
+  const [syncResult, setSyncResult] = useState<any>(null);
 
   const loadCalendar = async () => {
     try {
-      const r = await fetch(`${apiUrl}/api/calendar/${calendarYear}/${calendarMonth}`);
-      if (r.ok) setCalendarData(await r.json());
+      const [calR, anaR, upR] = await Promise.all([
+        fetch(`${apiUrl}/api/calendar/${calendarYear}/${calendarMonth}`),
+        fetch(`${apiUrl}/api/calendar/analytics`),
+        fetch(`${apiUrl}/api/calendar/upcoming`),
+      ]);
+      if (calR.ok) setCalendarData(await calR.json());
+      if (anaR.ok) setAnalytics(await anaR.json());
+      if (upR.ok) { const d = await upR.json(); setUpcoming(d.upcoming || []); }
     } catch (e) {}
   };
 
@@ -22,12 +32,36 @@ function CalendarTab({ apiUrl, ideaStats, calendarStats, autopublishStatus, cale
         if (r.ok) {
           const d = await r.json();
           setGenProgress(d);
-          if (!d.active) { setIsGeneratingIdeas(false); onRefresh(); }
+          if (!d.active) { setIsGeneratingIdeas(false); onRefresh(); loadCalendar(); }
         }
       } catch (e) {}
     }, 3000);
     return () => clearInterval(iv);
   }, [isGeneratingIdeas]);
+
+  const handleSync = async () => {
+    setSyncing(true);
+    setSyncResult(null);
+    try {
+      await fetch(`${apiUrl}/api/calendar/sync`, { method: 'POST' });
+      // Poll sync status
+      const poll = setInterval(async () => {
+        try {
+          const r = await fetch(`${apiUrl}/api/calendar/sync-status`);
+          if (r.ok) {
+            const d = await r.json();
+            if (!d.in_progress) {
+              clearInterval(poll);
+              setSyncing(false);
+              setSyncResult(d.last_result);
+              loadCalendar();
+              onRefresh();
+            }
+          }
+        } catch (e) {}
+      }, 2000);
+    } catch (e) { setSyncing(false); }
+  };
 
   const handleGenerateIdeas = async () => {
     setIsGeneratingIdeas(true);
@@ -56,153 +90,299 @@ function CalendarTab({ apiUrl, ideaStats, calendarStats, autopublishStatus, cale
   const today = new Date();
   const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
-  const ideasAvailable = ideaStats?.available ?? 0;
-  const ideasColor = ideasAvailable > 20 ? 'text-green-400' : ideasAvailable > 10 ? 'text-yellow-400' : 'text-red-400';
-
   const getDayEntries = (day: number) => {
     const dateStr = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     return calendarData?.days?.[dateStr] || [];
   };
 
+  const formatDuration = (s: number) => {
+    if (!s) return '';
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
+  };
+
+  const formatViews = (v: number) => {
+    if (!v) return '0';
+    if (v >= 1000000) return `${(v / 1000000).toFixed(1)}M`;
+    if (v >= 1000) return `${(v / 1000).toFixed(1)}K`;
+    return String(v);
+  };
+
+  const stats = analytics || calendarStats || {};
+  const domainDist = stats.domain_distribution || {};
+  const maxDomainCount = Math.max(...Object.values(domainDist).map(Number), 1);
+
   return (
     <div className="space-y-6">
-      {/* Stats Bar */}
-      <section className="glass rounded-xl p-6">
-        <div className="flex flex-wrap items-center gap-6">
-          <div>
-            <span className="text-white/60 text-sm">Ideas Available</span>
-            <div className={`text-2xl font-bold ${ideasColor}`}>{ideasAvailable}</div>
+      {/* Analytics Summary Bar */}
+      <section className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        {[
+          { icon: '📹', label: 'Total Videos', value: stats.total_entries ?? stats.total_published ?? 0, color: 'text-white' },
+          { icon: '📊', label: 'This Month', value: stats.this_month ?? 0, color: 'text-purple-400' },
+          { icon: '👁️', label: 'Total Views', value: formatViews(stats.total_views ?? 0), color: 'text-blue-400' },
+          { icon: '🎬', label: 'Shorts', value: stats.by_type?.short ?? 0, color: 'text-fuchsia-400' },
+          { icon: '📹', label: 'Long-Form', value: stats.by_type?.long ?? 0, color: 'text-sky-400' },
+          { icon: '⏰', label: 'Scheduled', value: stats.total_scheduled ?? 0, color: 'text-yellow-400' },
+          { icon: '✅', label: 'Consistency', value: `${stats.consistency ?? 0}%`, color: 'text-green-400' },
+        ].map((card, i) => (
+          <div key={i} className="glass rounded-xl p-4 text-center">
+            <div className="text-lg mb-1">{card.icon}</div>
+            <div className={`text-xl font-bold ${card.color}`}>{card.value}</div>
+            <div className="text-white/50 text-xs mt-1">{card.label}</div>
           </div>
+        ))}
+      </section>
+
+      {/* Best Video + Sync */}
+      <section className="glass rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+        {stats.best_video && stats.best_video.views > 0 && (
+          <div className="flex items-center gap-3">
+            <span className="text-lg">📈</span>
+            <div>
+              <span className="text-white/60 text-sm">Best: </span>
+              <span className="text-white text-sm font-medium">{stats.best_video.title}</span>
+              <span className="text-green-400 text-sm ml-2">({formatViews(stats.best_video.views)} views)</span>
+            </div>
+          </div>
+        )}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleSync}
+            disabled={syncing}
+            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-800 disabled:opacity-50 text-white rounded-lg transition-all flex items-center gap-2 text-sm font-medium"
+          >
+            {syncing ? (
+              <><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div> Syncing...</>
+            ) : '🔄 Sync with YouTube'}
+          </button>
+          {syncResult && !syncResult.error && (
+            <span className="text-green-400 text-sm">✅ {syncResult.new} new, {syncResult.updated} updated</span>
+          )}
+          {syncResult?.error && (
+            <span className="text-red-400 text-sm">❌ {syncResult.error}</span>
+          )}
           <button
             onClick={handleGenerateIdeas}
             disabled={isGeneratingIdeas}
-            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-800 disabled:opacity-50 text-white rounded-lg transition-all flex items-center gap-2"
+            className="px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white rounded-lg transition-all flex items-center gap-2 text-sm font-medium"
           >
             {isGeneratingIdeas ? (
-              <><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div> Generating... {genProgress?.generated || 0}/{genProgress?.total || 100}</>
-            ) : '🧠 Generate 100 Ideas'}
+              <><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div> {genProgress?.generated || 0}/{genProgress?.total || 100}</>
+            ) : '🧠 Generate Ideas'}
           </button>
-          <div>
-            <span className="text-white/60 text-sm">Published This Month</span>
-            <div className="text-2xl font-bold text-purple-400">{calendarStats?.this_month ?? 0}</div>
-          </div>
-          <div>
-            <span className="text-white/60 text-sm">Scheduled</span>
-            <div className="text-2xl font-bold text-yellow-400">{calendarStats?.total_scheduled ?? 0}</div>
-          </div>
-          <div>
-            <span className="text-white/60 text-sm">This Week</span>
-            <div className="text-2xl font-bold text-blue-400">{calendarStats?.this_week ?? 0}</div>
-          </div>
         </div>
       </section>
 
-      {/* Calendar Grid */}
-      <section className="glass rounded-xl p-6">
-        <div className="flex items-center justify-between mb-6">
-          <button onClick={prevMonth} className="px-3 py-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-all">&lt; Prev</button>
-          <h2 className="text-xl font-bold text-white">{monthName} {calendarYear}</h2>
-          <button onClick={nextMonth} className="px-3 py-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-all">Next &gt;</button>
-        </div>
-        <div className="grid grid-cols-7 gap-1 mb-2">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
-            <div key={d} className="text-center text-white/50 text-sm py-1">{d}</div>
-          ))}
-        </div>
-        <div className="grid grid-cols-7 gap-1">
-          {Array.from({ length: firstDayOfWeek }).map((_, i) => (
-            <div key={`e${i}`} className="h-20 rounded bg-white/5"></div>
-          ))}
-          {Array.from({ length: daysInMonth }).map((_, i) => {
-            const day = i + 1;
-            const dateStr = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            const entries = getDayEntries(day);
-            const isToday = dateStr === todayStr;
-            return (
-              <div
-                key={day}
-                onClick={() => setSelectedDay(selectedDay === dateStr ? null : dateStr)}
-                className={`h-20 rounded p-1 cursor-pointer transition-all hover:bg-white/15 ${
-                  isToday ? 'bg-indigo-500/20 border border-indigo-400/50' : 'bg-white/5'
-                } ${selectedDay === dateStr ? 'ring-2 ring-indigo-400' : ''}`}
-              >
-                <div className={`text-xs ${isToday ? 'text-indigo-300 font-bold' : 'text-white/60'}`}>{day}</div>
-                <div className="flex flex-wrap gap-0.5 mt-1">
-                  {entries.map((e: any, idx: number) => (
-                    <span key={idx} className="text-xs" title={`${e.title} (${e.status})`}>
-                      {e.type === 'long' ? '🔵' : e.status === 'published' ? '🟣' : e.status === 'scheduled' || e.status === 'generating' ? '🟡' : '🔴'}
-                    </span>
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Main Calendar Area */}
+        <div className="flex-1 space-y-6">
+          {/* Calendar Grid */}
+          <section className="glass rounded-xl p-6">
+            <div className="flex items-center justify-between mb-6">
+              <button onClick={prevMonth} className="px-3 py-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-all">&lt; Prev</button>
+              <h2 className="text-xl font-bold text-white">{monthName} {calendarYear}</h2>
+              <button onClick={nextMonth} className="px-3 py-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-all">Next &gt;</button>
+            </div>
+            <div className="grid grid-cols-7 gap-1 mb-2">
+              {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
+                <div key={d} className="text-center text-white/50 text-sm py-1">{d}</div>
+              ))}
+            </div>
+            <div className="grid grid-cols-7 gap-1">
+              {Array.from({ length: firstDayOfWeek }).map((_, i) => (
+                <div key={`e${i}`} className="h-24 rounded bg-white/5"></div>
+              ))}
+              {Array.from({ length: daysInMonth }).map((_, i) => {
+                const day = i + 1;
+                const dateStr = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const entries = getDayEntries(day);
+                const isToday = dateStr === todayStr;
+                const isFuture = dateStr > todayStr;
+                const isEmpty = entries.length === 0;
+                const hasGap = isFuture && isEmpty && autopublishStatus?.enabled;
+                return (
+                  <div
+                    key={day}
+                    onClick={() => setSelectedDay(selectedDay === dateStr ? null : dateStr)}
+                    className={`h-24 rounded p-1.5 cursor-pointer transition-all hover:bg-white/15 ${
+                      isToday ? 'bg-indigo-500/20 border-2 border-indigo-400/60' :
+                      hasGap ? 'bg-red-500/5 border border-red-500/20' :
+                      'bg-white/5'
+                    } ${selectedDay === dateStr ? 'ring-2 ring-indigo-400' : ''}`}
+                  >
+                    <div className={`text-xs font-medium ${isToday ? 'text-indigo-300 font-bold' : 'text-white/60'}`}>{day}</div>
+                    <div className="flex flex-wrap gap-0.5 mt-1">
+                      {entries.slice(0, 6).map((e: any, idx: number) => {
+                        const dot = e.type === 'long' && e.status === 'published' ? '🔵' :
+                                    e.type === 'short' && e.status === 'published' ? '🟣' :
+                                    e.status === 'scheduled' ? '🟡' :
+                                    e.status === 'generating' ? '⚪' : '🔴';
+                        return (
+                          <span key={idx} className="text-xs cursor-default" title={`${e.title || ''} • ${e.domain || ''} • ${formatViews(e.views || 0)} views`}>
+                            {dot}
+                          </span>
+                        );
+                      })}
+                      {entries.length > 6 && <span className="text-white/40 text-xs">+{entries.length - 6}</span>}
+                    </div>
+                    {hasGap && <div className="text-red-400/60 text-xs mt-0.5">gap</div>}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Day Detail Panel */}
+          {selectedDay && (
+            <section className="glass rounded-xl p-6">
+              <h3 className="text-white font-bold text-lg mb-4">
+                {new Date(selectedDay + 'T00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
+              </h3>
+              {(calendarData?.days?.[selectedDay] || []).length === 0 ? (
+                <p className="text-white/50">No content for this day</p>
+              ) : (
+                <div className="space-y-3">
+                  {(calendarData?.days?.[selectedDay] || []).map((e: any, i: number) => (
+                    <div key={i} className="glass-subtle rounded-lg p-4 flex items-start gap-4">
+                      {/* Thumbnail */}
+                      {e.thumbnail_url ? (
+                        <img src={e.thumbnail_url} alt="" className="w-24 h-14 rounded object-cover flex-shrink-0" />
+                      ) : (
+                        <div className="w-24 h-14 rounded bg-white/10 flex items-center justify-center flex-shrink-0 text-2xl">
+                          {e.type === 'short' ? '🎬' : '📹'}
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="text-white font-semibold text-sm truncate">{e.title || 'Untitled'}</span>
+                        </div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className={`px-2 py-0.5 rounded text-xs font-semibold ${
+                            e.type === 'short' ? 'bg-fuchsia-500/20 text-fuchsia-400' : 'bg-sky-500/20 text-sky-400'
+                          }`}>{e.type === 'short' ? 'Short' : 'Long'}</span>
+                          <span className={`px-2 py-0.5 rounded text-xs font-semibold ${
+                            e.status === 'published' ? 'bg-green-500/20 text-green-400' :
+                            e.status === 'scheduled' ? 'bg-yellow-500/20 text-yellow-400' :
+                            e.status === 'generating' ? 'bg-blue-500/20 text-blue-400' :
+                            e.status === 'failed' ? 'bg-red-500/20 text-red-400' : 'bg-white/10 text-white/60'
+                          }`}>
+                            {e.status === 'published' ? '✅ Published' :
+                             e.status === 'scheduled' ? '⏰ Scheduled' :
+                             e.status === 'generating' ? '⚙️ Generating' :
+                             e.status === 'failed' ? '❌ Failed' : e.status}
+                          </span>
+                          {e.domain && e.domain !== 'Unknown' && (
+                            <span className="px-2 py-0.5 rounded text-xs bg-white/10 text-white/70">{e.domain}</span>
+                          )}
+                          {e.duration > 0 && (
+                            <span className="text-white/50 text-xs">{formatDuration(e.duration)}</span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-4 mt-2">
+                          {(e.views > 0 || e.likes > 0) && (
+                            <span className="text-white/50 text-xs">👁️ {formatViews(e.views || 0)} • ❤️ {e.likes || 0}</span>
+                          )}
+                          {e.time && <span className="text-white/40 text-xs">🕐 {e.time}</span>}
+                          {e.youtube_url && (
+                            <a href={e.youtube_url} target="_blank" rel="noreferrer" className="text-indigo-400 hover:text-indigo-300 text-xs font-medium">YouTube ↗</a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              )}
+            </section>
+          )}
 
-        {/* Selected Day Details */}
-        {selectedDay && (
-          <div className="mt-4 p-4 bg-white/5 rounded-lg">
-            <h3 className="text-white font-semibold mb-2">{selectedDay}</h3>
-            {(calendarData?.days?.[selectedDay] || []).length === 0 ? (
-              <p className="text-white/50 text-sm">No content this day</p>
-            ) : (
+          {/* Domain Distribution */}
+          {Object.keys(domainDist).length > 0 && (
+            <section className="glass rounded-xl p-6">
+              <h3 className="text-white font-bold text-lg mb-4">📊 Domain Distribution</h3>
               <div className="space-y-2">
-                {(calendarData?.days?.[selectedDay] || []).map((e: any, i: number) => (
-                  <div key={i} className="flex items-center gap-3 text-sm">
-                    <span>{e.type === 'long' ? '🔵' : '🟣'}</span>
-                    <span className="text-white/60">{e.time}</span>
-                    <span className="text-white">{e.title}</span>
-                    <span className={`px-2 py-0.5 rounded text-xs ${
-                      e.status === 'published' ? 'bg-green-500/20 text-green-400' :
-                      e.status === 'scheduled' ? 'bg-yellow-500/20 text-yellow-400' :
-                      e.status === 'failed' ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/20 text-blue-400'
-                    }`}>{e.status}</span>
-                    {e.youtube_url && <a href={e.youtube_url} target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">YouTube ↗</a>}
+                {Object.entries(domainDist).map(([domain, count]: [string, any]) => (
+                  <div key={domain} className="flex items-center gap-3">
+                    <span className="text-white/70 text-sm w-48 truncate">{domain}</span>
+                    <div className="flex-1 bg-white/10 rounded-full h-3">
+                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full transition-all"
+                        style={{ width: `${(Number(count) / maxDomainCount) * 100}%` }} />
+                    </div>
+                    <span className="text-white/50 text-xs w-8 text-right">{count}</span>
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-        )}
-      </section>
-
-      {/* Auto-Publish Controls */}
-      <section className="glass rounded-xl p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-white">Auto-Publish Shorts</h2>
-          <button
-            onClick={handleToggleAutopublish}
-            className={`relative w-14 h-7 rounded-full transition-all ${
-              autopublishStatus?.enabled ? 'bg-green-500' : 'bg-white/20'
-            }`}
-          >
-            <div className={`absolute w-5 h-5 bg-white rounded-full top-1 transition-all ${
-              autopublishStatus?.enabled ? 'left-8' : 'left-1'
-            }`}></div>
-          </button>
-        </div>
-        <p className="text-white/60 text-sm mb-4">2 shorts/day at 7:00 AM &amp; 9:30 PM EST</p>
-
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-white/60 text-sm">Idea Bank:</span>
-          <span className={`text-sm font-semibold ${
-            autopublishStatus?.idea_bank_health === 'good' ? 'text-green-400' :
-            autopublishStatus?.idea_bank_health === 'low' ? 'text-yellow-400' : 'text-red-400'
-          }`}>
-            {autopublishStatus?.ideas_available ?? 0} ideas ({autopublishStatus?.idea_bank_health ?? 'unknown'})
-          </span>
+            </section>
+          )}
         </div>
 
-        <h3 className="text-white/80 font-semibold mb-2 text-sm">Next 7 Publish Slots</h3>
-        <div className="space-y-1">
-          {(autopublishStatus?.next_slots || []).slice(0, 7).map((slot: any, i: number) => (
-            <div key={i} className="flex gap-3 text-sm">
-              <span className="text-white/50 w-20">{slot.day}</span>
-              <span className="text-white/80">{slot.time_est}</span>
+        {/* Right Sidebar: Upcoming + Auto-Publish */}
+        <div className="lg:w-80 space-y-6">
+          {/* Upcoming Schedule */}
+          <section className="glass rounded-xl p-5">
+            <h3 className="text-white font-bold mb-4">📅 Next 7 Days</h3>
+            <div className="space-y-2">
+              {upcoming.slice(0, 7).map((day: any, i: number) => (
+                <div key={i} className={`rounded-lg p-3 ${
+                  day.has_content ? 'bg-green-500/10 border border-green-500/20' : 'bg-white/5 border border-white/10'
+                }`}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-white/80 text-sm font-medium">{day.day}</span>
+                    <span className="text-white/40 text-xs">{day.date}</span>
+                  </div>
+                  {day.has_content ? (
+                    <div className="space-y-1">
+                      {day.entries.map((e: any, j: number) => (
+                        <div key={j} className="flex items-center gap-2">
+                          <span className="text-xs">{e.type === 'short' ? '🟣' : '🔵'}</span>
+                          <span className="text-white/70 text-xs truncate">{e.title || 'Untitled'}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-white/30 text-xs">No content scheduled</p>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
+          </section>
+
+          {/* Auto-Publish Controls */}
+          <section className="glass rounded-xl p-5">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-white font-bold text-sm">Auto-Publish Shorts</h3>
+              <button
+                onClick={handleToggleAutopublish}
+                className={`relative w-12 h-6 rounded-full transition-all ${
+                  autopublishStatus?.enabled ? 'bg-green-500' : 'bg-white/20'
+                }`}
+              >
+                <div className={`absolute w-4 h-4 bg-white rounded-full top-1 transition-all ${
+                  autopublishStatus?.enabled ? 'left-7' : 'left-1'
+                }`}></div>
+              </button>
+            </div>
+            <p className="text-white/50 text-xs mb-3">2 shorts/day • 7AM & 9:30PM EST</p>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-white/50 text-xs">Ideas:</span>
+              <span className={`text-xs font-semibold ${
+                autopublishStatus?.idea_bank_health === 'good' ? 'text-green-400' :
+                autopublishStatus?.idea_bank_health === 'low' ? 'text-yellow-400' : 'text-red-400'
+              }`}>
+                {autopublishStatus?.ideas_available ?? 0} ({autopublishStatus?.idea_bank_health ?? '?'})
+              </span>
+            </div>
+            <div className="space-y-1">
+              {(autopublishStatus?.next_slots || []).slice(0, 4).map((slot: any, i: number) => (
+                <div key={i} className="flex gap-2 text-xs">
+                  <span className="text-white/40 w-14">{slot.day?.slice(0, 3)}</span>
+                  <span className="text-white/60">{slot.time_est?.split(' ').slice(1).join(' ')}</span>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

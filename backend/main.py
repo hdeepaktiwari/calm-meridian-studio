@@ -159,6 +159,24 @@ async def _autopublish_scheduler():
 
         await asyncio.sleep(30 * 60)  # 30 minutes
 
+async def _startup_calendar_sync():
+    """Sync calendar from YouTube on startup, then every 6 hours."""
+    try:
+        await asyncio.sleep(5)  # Wait for startup to complete
+        result = await content_calendar.sync_from_youtube()
+        print(f"📅 [CALENDAR] Startup sync: {result}")
+    except Exception as e:
+        print(f"📅 [CALENDAR] Startup sync error: {e}")
+
+    # Re-sync every 6 hours
+    while True:
+        await asyncio.sleep(6 * 60 * 60)
+        try:
+            result = await content_calendar.sync_from_youtube()
+            print(f"📅 [CALENDAR] Periodic sync: {result}")
+        except Exception as e:
+            print(f"📅 [CALENDAR] Periodic sync error: {e}")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global _scheduler_task
@@ -171,8 +189,11 @@ async def lifespan(app: FastAPI):
             job["message"] = "Interrupted by server restart"
     save_jobs()
     _scheduler_task = asyncio.create_task(_autopublish_scheduler())
+    # Sync calendar from YouTube on startup
+    asyncio.create_task(_startup_calendar_sync())
     print("🎬 Cinematic Video Studio API starting...")
     print("📅 Auto-publish scheduler started (every 30 min)")
+    print("📅 Calendar YouTube sync triggered on startup")
     yield
     if _scheduler_task:
         _scheduler_task.cancel()
@@ -648,6 +669,31 @@ async def publish_to_youtube(job_id: str, request: PublishRequest):
             jobs[job_id]["youtube_info"] = yt_info
             save_jobs()
 
+        # Log to content calendar
+        try:
+            scheduled_at = result.get("scheduled_at")
+            cal_date = datetime.now().strftime("%Y-%m-%d")
+            if scheduled_at:
+                try:
+                    dt = datetime.fromisoformat(scheduled_at.replace("Z", "+00:00").replace(".0Z", "+00:00"))
+                    cal_date = dt.strftime("%Y-%m-%d")
+                except Exception:
+                    pass
+            content_calendar.add_entry({
+                "date": cal_date,
+                "time": datetime.now().strftime("%I:%M %p"),
+                "type": "long",
+                "domain": jobs.get(job_id, {}).get("domain", "Unknown"),
+                "title": title,
+                "status": "scheduled" if scheduled_at else "published",
+                "youtube_url": result["url"],
+                "youtube_id": result["video_id"],
+                "video_path": str(video_path),
+                "duration": jobs.get(job_id, {}).get("duration"),
+            })
+        except Exception as e:
+            print(f"[CALENDAR] Failed to log publish: {e}")
+
         return {
             "video_id": result["video_id"], "youtube_url": result["url"],
             "scheduled_at": result.get("scheduled_at"),
@@ -712,6 +758,31 @@ async def bulk_publish(request: BulkPublishRequest, background_tasks: Background
                 json.dump(yt_info, f, indent=2)
 
             results.append({"video_id": video_id, "youtube_url": result["url"]})
+
+            # Log to content calendar
+            try:
+                scheduled_at = result.get("scheduled_at")
+                cal_date = datetime.now().strftime("%Y-%m-%d")
+                if scheduled_at:
+                    try:
+                        dt = datetime.fromisoformat(scheduled_at.replace("Z", "+00:00").replace(".0Z", "+00:00"))
+                        cal_date = dt.strftime("%Y-%m-%d")
+                    except Exception:
+                        pass
+                content_calendar.add_entry({
+                    "date": cal_date,
+                    "time": datetime.now().strftime("%I:%M %p"),
+                    "type": "long",
+                    "domain": video_id.split("_")[0] if "_" in video_id else "Unknown",
+                    "title": title,
+                    "status": "scheduled" if scheduled_at else "published",
+                    "youtube_url": result["url"],
+                    "youtube_id": result["video_id"],
+                    "video_path": str(video_path),
+                })
+            except Exception as e:
+                print(f"[CALENDAR] Failed to log bulk publish: {e}")
+
         except Exception as e:
             errors.append({"video_id": video_id, "error": str(e)})
 
@@ -1133,18 +1204,61 @@ async def ideas_generation_status():
 
 # ============== Calendar ==============
 
+@app.post("/api/calendar/sync")
+async def sync_calendar(background_tasks: BackgroundTasks):
+    """Sync calendar with YouTube — pulls all videos, updates statuses."""
+    status = content_calendar.get_sync_status()
+    if status.get("in_progress"):
+        return {"message": "Sync already in progress"}
+
+    async def _run_sync():
+        result = await content_calendar.sync_from_youtube()
+        print(f"[CALENDAR] Sync complete: {result}")
+
+    background_tasks.add_task(_run_sync)
+    return {"message": "Sync started", "status": "running"}
+
+@app.get("/api/calendar/sync-status")
+async def calendar_sync_status():
+    """Check if sync is in progress."""
+    return content_calendar.get_sync_status()
+
+@app.get("/api/calendar/upcoming")
+async def get_upcoming():
+    """Next 14 days of scheduled content with gaps."""
+    from datetime import date as date_cls
+    entries = content_calendar.get_all_entries()
+    today = date_cls.today()
+    result = []
+    for i in range(14):
+        d = today + timedelta(days=i)
+        d_str = d.isoformat()
+        day_entries = [e for e in entries if e.get("date") == d_str]
+        result.append({
+            "date": d_str,
+            "day": d.strftime("%A"),
+            "entries": day_entries,
+            "has_content": len(day_entries) > 0,
+        })
+    return {"upcoming": result}
+
+@app.get("/api/calendar/analytics")
+async def calendar_analytics():
+    """Content analytics."""
+    return content_calendar.get_stats()
+
 @app.get("/api/calendar/{year}/{month}")
 async def get_calendar(year: int, month: int):
     """Get content calendar for a month."""
     import calendar as cal_mod
     entries = content_calendar.get_month(year, month)
-    # Build day slots
     _, days_in_month = cal_mod.monthrange(year, month)
     days = {}
     for day in range(1, days_in_month + 1):
         date_str = f"{year}-{month:02d}-{day:02d}"
         days[date_str] = [e for e in entries if e.get("date") == date_str]
-    return {"year": year, "month": month, "days": days, "entries": entries}
+    stats = content_calendar.get_stats()
+    return {"year": year, "month": month, "days": days, "entries": entries, "stats": stats}
 
 @app.get("/api/calendar/stats")
 async def get_calendar_stats():

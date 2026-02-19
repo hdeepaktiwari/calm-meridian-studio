@@ -156,5 +156,45 @@
     "actions_taken": [],
     "alerts": [],
     "overall_status": "degraded"
+  },
+  {
+    "timestamp": "2026-02-19T23:20:32.817667+05:30",
+    "checks": {
+      "idea_bank": {
+        "status": "healthy",
+        "available": 174,
+        "total": 174
+      },
+      "shorts_publisher": {
+        "status": "healthy",
+        "enabled": true,
+        "recent_slots": 0
+      },
+      "longform_pipeline": {
+        "status": "warning",
+        "enabled": true,
+        "days_of_buffer": 0,
+        "last_generated": null
+      },
+      "youtube_token": {
+        "status": "healthy",
+        "token_exists": true,
+        "valid": true,
+        "expired": false
+      },
+      "disk_space": {
+        "status": "healthy",
+        "free_gb": 328.2,
+        "total_gb": 460.4
+      },
+      "failed_jobs": {
+        "status": "healthy",
+        "failed_count": 0,
+        "stuck_count": 0
+      }
+    },
+    "actions_taken": [],
+    "alerts": [],
+    "overall_status": "degraded"
   }
 ]

@@ -208,10 +208,13 @@ class AutoPublisher:
             self.idea_bank.mark_used(idea["id"], cal_entry["id"])
 
             # Update calendar entry
+            youtube_id = result.get("video_id") if isinstance(result, dict) else None
             self.calendar.update_entry(cal_entry["id"],
                 status="published" if youtube_url else "scheduled",
                 youtube_url=youtube_url or "",
+                youtube_id=youtube_id or "",
                 video_path=str(output_path),
+                duration=scene_data.get("duration", 45),
             )
 
             print(f"✅ Published: {idea['title']}")
