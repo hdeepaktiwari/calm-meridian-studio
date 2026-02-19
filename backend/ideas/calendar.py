@@ -227,21 +227,56 @@ class ContentCalendar:
                     else:
                         vid_status = "processing"
 
-                    # Match domain from title
+                    # Match domain from title using keywords
                     title = snippet.get("title", "")
                     matched_domain = "Unknown"
-                    title_lower = title.lower()
-                    for dn in domain_names:
-                        if dn.lower() in title_lower:
-                            matched_domain = dn
-                            break
-                    # Also check description
-                    if matched_domain == "Unknown":
-                        desc_lower = snippet.get("description", "").lower()
+                    text_lower = (title + " " + snippet.get("description", "")).lower()
+                    
+                    # Keyword map: domain name → keywords to search for
+                    domain_keywords = {
+                        "Ancient Places": ["ancient", "ruins", "temple", "pyramid", "fortress"],
+                        "Lush Agricultural Farmhouses": ["farm", "agricultural", "harvest", "barn", "crop"],
+                        "Ocean & Sea Creatures": ["ocean", "sea", "underwater", "coral", "marine", "dolphin"],
+                        "Lush Green Forests": ["forest", "woodland", "green forest", "canopy", "lush green"],
+                        "Beautiful Himalayas": ["himalaya", "glacial", "sherpa", "everest", "mountain village"],
+                        "Lakeside Lifestyle": ["lake", "lakeside", "pond", "dock"],
+                        "Antarctica Beauty": ["antarctic", "iceberg", "penguin", "polar", "glacier"],
+                        "Life in Space": ["space", "cosmic", "nebula", "astronaut", "galaxy", "deep space"],
+                        "Luxury Cruise Ships": ["cruise", "yacht", "ship", "deck", "marina"],
+                        "Desert Life Worldwide": ["desert", "sahara", "dune", "oasis", "arid"],
+                        "Tropical Greenery": ["tropical", "palm", "jungle", "exotic", "paradise"],
+                        "Buddhist Lifestyle": ["buddhist", "monk", "meditation temple", "zen garden", "dharma"],
+                        "Ancient European Cities": ["european", "gothic", "medieval", "cobblestone", "cathedral"],
+                        "Japanese Beauty": ["japan", "cherry blossom", "zen", "torii", "kimono", "japanese"],
+                        "Amazon Rainforest": ["amazon", "rainforest", "tribal"],
+                        "Beautiful Beaches": ["beach", "coastal", "shore", "surf", "seaside"],
+                        "Luxury Palace Interiors": ["palace", "mansion", "luxury living", "chandelier", "opulent", "luxury interior"],
+                        "Rainy Cozy Interiors": ["rain", "cozy", "fireplace", "book nook"],
+                        "Northern Lights & Aurora": ["aurora", "northern light"],
+                        "Alpine Villages": ["alpine", "swiss", "chalet", "bavarian"],
+                        "Waterfalls & Rivers": ["waterfall", "river", "cascade", "stream"],
+                        "Wildlife in Nature": ["wildlife", "deer", "elephant", "bird", "fox"],
+                        "Café & Bookshop Ambience": ["cafe", "café", "bookshop", "coffee", "library"],
+                    }
+                    
+                    best_match = "Unknown"
+                    best_score = 0
+                    for dn, keywords in domain_keywords.items():
+                        if dn not in domain_names:
+                            continue
+                        score = sum(1 for kw in keywords if kw in text_lower)
+                        if score > best_score:
+                            best_score = score
+                            best_match = dn
+                    
+                    # Also try exact domain name match
+                    if best_score == 0:
                         for dn in domain_names:
-                            if dn.lower() in desc_lower:
-                                matched_domain = dn
+                            if dn.lower() in text_lower:
+                                best_match = dn
                                 break
+                    
+                    matched_domain = best_match
 
                     entry_data = {
                         "date": cal_date,
