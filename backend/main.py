@@ -1226,12 +1226,12 @@ async def calendar_sync_status():
 @app.get("/api/calendar/upcoming")
 async def get_upcoming():
     """Next 14 days of scheduled content with gaps."""
-    from datetime import date as date_cls
+    from datetime import date as date_cls, timedelta as td
     entries = content_calendar.get_all_entries()
     today = date_cls.today()
     result = []
     for i in range(14):
-        d = today + timedelta(days=i)
+        d = today + td(days=i)
         d_str = d.isoformat()
         day_entries = [e for e in entries if e.get("date") == d_str]
         result.append({

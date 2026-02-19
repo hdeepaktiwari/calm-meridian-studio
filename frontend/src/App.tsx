@@ -200,7 +200,9 @@ function CalendarTab({ apiUrl, ideaStats, calendarStats, autopublishStatus, cale
                 const isToday = dateStr === todayStr;
                 const isFuture = dateStr > todayStr;
                 const isEmpty = entries.length === 0;
-                const hasGap = isFuture && isEmpty && autopublishStatus?.enabled;
+                // Only flag as gap if within next 3 days and no content scheduled
+                const daysFromToday = isFuture ? Math.round((new Date(dateStr).getTime() - new Date(todayStr).getTime()) / 86400000) : 0;
+                const hasGap = isFuture && isEmpty && autopublishStatus?.enabled && daysFromToday <= 3;
                 return (
                   <div
                     key={day}
