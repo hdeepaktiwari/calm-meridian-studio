@@ -7,6 +7,7 @@ import uuid
 import json
 import shutil
 import asyncio
+import time
 import httpx
 import random
 from pathlib import Path
@@ -109,20 +110,53 @@ def load_music_library():
 from ideas.idea_bank import IdeaBank
 from ideas.calendar import ContentCalendar
 from ideas.auto_publisher import AutoPublisher
+from ideas.long_form_publisher import LongFormPublisher
+from ceo.agent import CEOAgent
 
 idea_bank = IdeaBank()
 content_calendar = ContentCalendar()
 auto_publisher = AutoPublisher()
+long_form_publisher = LongFormPublisher()
+ceo_agent = CEOAgent()
 
 _scheduler_task = None
 
 async def _autopublish_scheduler():
-    """Background scheduler that checks every 30 minutes for publishing."""
+    """Combined scheduler for all autonomous operations."""
+    last_ceo_check = 0
+    last_longform_check = 0
+
     while True:
+        # Shorts auto-publish (every 30 min)
         try:
             await auto_publisher.run_scheduled_publish()
         except Exception as e:
             print(f"⚠️ Scheduler error: {e}")
+
+        now = time.time()
+
+        # CEO health check every 30 min
+        if now - last_ceo_check >= 30 * 60:
+            try:
+                report = await ceo_agent.run_health_check()
+                if report["overall_status"] != "healthy":
+                    print(f"[CEO] Status: {report['overall_status']}")
+                    for action in report["actions_taken"]:
+                        print(f"[CEO] Action: {action}")
+                    for alert in report["alerts"]:
+                        print(f"[CEO] ⚠️ Alert: {alert}")
+                last_ceo_check = now
+            except Exception as e:
+                print(f"[CEO] Health check error: {e}")
+
+        # Long-form check every 2 hours
+        if now - last_longform_check >= 2 * 60 * 60:
+            try:
+                await long_form_publisher.check_and_publish()
+                last_longform_check = now
+            except Exception as e:
+                print(f"[LONGFORM] Publisher error: {e}")
+
         await asyncio.sleep(30 * 60)  # 30 minutes
 
 @asynccontextmanager
@@ -793,6 +827,57 @@ async def run_batch_jobs(job_ids: list):
         if jobs.get(job_id, {}).get("status") == "cancelled":
             continue
         await run_generation(job_id)
+
+# ============== CEO Dashboard ==============
+
+@app.get("/api/ceo/status")
+async def ceo_status():
+    """Get CEO agent dashboard overview."""
+    return ceo_agent.get_dashboard()
+
+@app.get("/api/ceo/logs")
+async def ceo_logs(count: int = 20):
+    """Get recent CEO health check reports."""
+    return {"logs": ceo_agent.get_recent_logs(count)}
+
+@app.post("/api/ceo/check")
+async def ceo_manual_check(background_tasks: BackgroundTasks):
+    """Trigger manual CEO health check."""
+    report = await ceo_agent.run_health_check()
+    return report
+
+# ============== Long-Form Auto-Publisher ==============
+
+@app.get("/api/longform/status")
+async def longform_status():
+    """Long-form publisher status."""
+    status = long_form_publisher.get_status()
+    # Try to get buffer async
+    try:
+        days = await long_form_publisher._get_days_of_buffer()
+        status["days_of_buffer"] = days
+    except Exception:
+        status["days_of_buffer"] = None
+    return status
+
+@app.post("/api/longform/toggle")
+async def toggle_longform():
+    """Enable/disable long-form auto-publishing."""
+    enabled = long_form_publisher.toggle()
+    return {"enabled": enabled}
+
+@app.post("/api/longform/generate")
+async def trigger_longform_generate(background_tasks: BackgroundTasks):
+    """Manually trigger a long-form video generation + publish."""
+    async def _run():
+        try:
+            job = await long_form_publisher.generate_one_video()
+            if job and job.get("video_path"):
+                await long_form_publisher.publish_video(job)
+        except Exception as e:
+            print(f"[LONGFORM] Manual trigger error: {e}")
+    background_tasks.add_task(lambda: asyncio.run(_run()))
+    return {"message": "Long-form generation triggered"}
 
 # ============== Health Check ==============
 

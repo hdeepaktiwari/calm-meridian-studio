@@ -42,3 +42,6 @@ shorts_jobs_store.json
 # Credentials
 youtube_token.pickle
 *.pickle
+ceo_log.json
+longform_publish_state.json
+variation_history.json

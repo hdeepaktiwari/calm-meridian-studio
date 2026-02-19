@@ -208,7 +208,7 @@ function CalendarTab({ apiUrl, ideaStats, calendarStats, autopublishStatus, cale
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'videos' | 'shorts' | 'calendar' | 'config'>('videos');
+  const [activeTab, setActiveTab] = useState<'videos' | 'shorts' | 'calendar' | 'ceo' | 'config'>('videos');
   const [videos, setVideos] = useState<any[]>([]);
   const [jobs, setJobs] = useState<any[]>([]);
   const [health, setHealth] = useState<any>(null);
@@ -228,6 +228,12 @@ function App() {
   const [hookCategories, setHookCategories] = useState<string[]>([]);
   const [hooksData, setHooksData] = useState<any>(null);
   const [showHooks, setShowHooks] = useState(false);
+
+  // CEO state
+  const [ceoStatus, setCeoStatus] = useState<any>(null);
+  const [ceoLogs, setCeoLogs] = useState<any[]>([]);
+  const [longformStatus, setLongformStatus] = useState<any>(null);
+  const [isRunningCeoCheck, setIsRunningCeoCheck] = useState(false);
 
   // Calendar state
   const [calendarMonth, setCalendarMonth] = useState(new Date().getMonth() + 1);
@@ -315,6 +321,18 @@ function App() {
         if (ideaR.ok) setIdeaStats(await ideaR.json());
         if (calStatsR.ok) setCalendarStats(await calStatsR.json());
         if (apR.ok) setAutopublishStatus(await apR.json());
+      } catch (e) {}
+
+      // CEO data
+      try {
+        const [ceoR, ceoLogsR, lfR] = await Promise.all([
+          fetch(`${apiUrl}/api/ceo/status`),
+          fetch(`${apiUrl}/api/ceo/logs?count=20`),
+          fetch(`${apiUrl}/api/longform/status`),
+        ]);
+        if (ceoR.ok) setCeoStatus(await ceoR.json());
+        if (ceoLogsR.ok) { const d = await ceoLogsR.json(); setCeoLogs(d.logs || []); }
+        if (lfR.ok) setLongformStatus(await lfR.json());
       } catch (e) {}
 
       if (isInitial) setError('');
@@ -461,6 +479,14 @@ function App() {
               }`}
             >
               Calendar
+            </button>
+            <button
+              onClick={() => setActiveTab('ceo')}
+              className={`px-6 py-3 rounded-md font-medium transition-all ${
+                activeTab === 'ceo' ? 'tab-active' : 'tab-inactive'
+              }`}
+            >
+              CEO
             </button>
             <button
               onClick={() => setActiveTab('config')}
@@ -779,6 +805,188 @@ function App() {
           setSelectedDay={setSelectedDay}
           onRefresh={() => loadData(false)}
         />}
+
+        {/* CEO Tab */}
+        {activeTab === 'ceo' && (
+          <div className="space-y-6">
+            {/* Overall Status Banner */}
+            <section className="glass rounded-xl p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl">
+                    {ceoStatus?.overall_status === 'healthy' ? '🟢' :
+                     ceoStatus?.overall_status === 'degraded' ? '🟡' :
+                     ceoStatus?.overall_status === 'critical' ? '🔴' : '⚪'}
+                  </span>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white capitalize">
+                      {ceoStatus?.overall_status || 'Unknown'}
+                    </h2>
+                    <p className="text-white/60 text-sm">
+                      Last check: {ceoStatus?.latest_check?.timestamp
+                        ? new Date(ceoStatus.latest_check.timestamp).toLocaleString()
+                        : 'Never'}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={async () => {
+                    setIsRunningCeoCheck(true);
+                    try {
+                      await fetch(`${apiUrl}/api/ceo/check`, { method: 'POST' });
+                      await loadData(false);
+                    } catch (e) {}
+                    setIsRunningCeoCheck(false);
+                  }}
+                  disabled={isRunningCeoCheck}
+                  className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-800 disabled:opacity-50 text-white rounded-lg transition-all font-medium"
+                >
+                  {isRunningCeoCheck ? '⏳ Running...' : '🔍 Run Check Now'}
+                </button>
+              </div>
+            </section>
+
+            {/* System Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* Shorts Pipeline */}
+              <div className={`glass rounded-xl p-5 border-l-4 ${
+                ceoStatus?.latest_check?.checks?.shorts_publisher?.status === 'healthy' ? 'border-green-500' :
+                ceoStatus?.latest_check?.checks?.shorts_publisher?.status === 'warning' ? 'border-yellow-500' : 'border-red-500'
+              }`}>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-white font-semibold">Shorts Pipeline</h3>
+                  <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                    autopublishStatus?.enabled ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+                  }`}>{autopublishStatus?.enabled ? 'ON' : 'OFF'}</span>
+                </div>
+                <p className="text-white/60 text-sm">Ideas: {autopublishStatus?.ideas_available ?? '?'}</p>
+                <p className="text-white/60 text-sm">Health: {autopublishStatus?.idea_bank_health ?? 'unknown'}</p>
+              </div>
+
+              {/* Long-Form Pipeline */}
+              <div className={`glass rounded-xl p-5 border-l-4 ${
+                longformStatus?.enabled ? 'border-green-500' : 'border-yellow-500'
+              }`}>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-white font-semibold">Long-Form Pipeline</h3>
+                  <button
+                    onClick={async () => {
+                      await fetch(`${apiUrl}/api/longform/toggle`, { method: 'POST' });
+                      loadData(false);
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-semibold ${
+                      longformStatus?.enabled ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+                    }`}
+                  >{longformStatus?.enabled ? 'ON' : 'OFF'}</button>
+                </div>
+                <p className="text-white/60 text-sm">Buffer: {longformStatus?.days_of_buffer ?? '?'} days</p>
+                <p className="text-white/60 text-sm">Last: {longformStatus?.last_generated
+                  ? new Date(longformStatus.last_generated).toLocaleDateString() : 'Never'}</p>
+              </div>
+
+              {/* YouTube Health */}
+              <div className={`glass rounded-xl p-5 border-l-4 ${
+                ceoStatus?.latest_check?.checks?.youtube_token?.status === 'healthy' ? 'border-green-500' :
+                ceoStatus?.latest_check?.checks?.youtube_token?.status === 'warning' ? 'border-yellow-500' : 'border-red-500'
+              }`}>
+                <h3 className="text-white font-semibold mb-3">YouTube Health</h3>
+                <p className="text-white/60 text-sm">
+                  Token: {ceoStatus?.latest_check?.checks?.youtube_token?.token_exists ? '✅ Present' : '❌ Missing'}
+                </p>
+                <p className="text-white/60 text-sm">
+                  Valid: {ceoStatus?.latest_check?.checks?.youtube_token?.valid ? '✅' : '❌'}
+                </p>
+              </div>
+
+              {/* Idea Bank */}
+              <div className={`glass rounded-xl p-5 border-l-4 ${
+                (ideaStats?.available ?? 0) > 20 ? 'border-green-500' :
+                (ideaStats?.available ?? 0) > 10 ? 'border-yellow-500' : 'border-red-500'
+              }`}>
+                <h3 className="text-white font-semibold mb-3">Idea Bank</h3>
+                <p className="text-2xl font-bold text-white">{ideaStats?.available ?? 0}</p>
+                <p className="text-white/60 text-sm">available ideas</p>
+                <div className="mt-2 w-full bg-white/10 rounded-full h-2">
+                  <div className={`h-2 rounded-full ${
+                    (ideaStats?.available ?? 0) > 20 ? 'bg-green-500' :
+                    (ideaStats?.available ?? 0) > 10 ? 'bg-yellow-500' : 'bg-red-500'
+                  }`} style={{ width: `${Math.min(100, ((ideaStats?.available ?? 0) / 100) * 100)}%` }}></div>
+                </div>
+              </div>
+
+              {/* Disk Space */}
+              <div className={`glass rounded-xl p-5 border-l-4 ${
+                ceoStatus?.latest_check?.checks?.disk_space?.status === 'healthy' ? 'border-green-500' :
+                ceoStatus?.latest_check?.checks?.disk_space?.status === 'warning' ? 'border-yellow-500' : 'border-red-500'
+              }`}>
+                <h3 className="text-white font-semibold mb-3">Disk Space</h3>
+                <p className="text-2xl font-bold text-white">
+                  {ceoStatus?.latest_check?.checks?.disk_space?.free_gb ?? '?'} GB
+                </p>
+                <p className="text-white/60 text-sm">free of {ceoStatus?.latest_check?.checks?.disk_space?.total_gb ?? '?'} GB</p>
+              </div>
+
+              {/* Error Rate */}
+              <div className={`glass rounded-xl p-5 border-l-4 ${
+                (ceoStatus?.latest_check?.checks?.failed_jobs?.failed_count ?? 0) === 0 ? 'border-green-500' : 'border-red-500'
+              }`}>
+                <h3 className="text-white font-semibold mb-3">Error Rate</h3>
+                <p className="text-2xl font-bold text-white">
+                  {ceoStatus?.latest_check?.checks?.failed_jobs?.failed_count ?? 0}
+                </p>
+                <p className="text-white/60 text-sm">failed jobs</p>
+                <p className="text-white/60 text-sm">
+                  {ceoStatus?.latest_check?.checks?.failed_jobs?.stuck_count ?? 0} stuck
+                </p>
+              </div>
+            </div>
+
+            {/* Alerts */}
+            {(ceoStatus?.recent_alerts?.length ?? 0) > 0 && (
+              <section className="glass rounded-xl p-6 border border-red-400/50 bg-red-400/5">
+                <h3 className="text-red-400 font-bold mb-3">⚠️ Alerts</h3>
+                <div className="space-y-2">
+                  {ceoStatus.recent_alerts.map((alert: string, i: number) => (
+                    <p key={i} className="text-red-300 text-sm">• {alert}</p>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Recent Actions Log */}
+            <section className="glass rounded-xl p-6">
+              <h3 className="text-white font-bold text-lg mb-4">Recent Actions Log</h3>
+              <div className="space-y-2 max-h-96 overflow-y-auto">
+                {ceoLogs.length === 0 ? (
+                  <p className="text-white/50 text-sm">No health checks recorded yet</p>
+                ) : (
+                  [...ceoLogs].reverse().map((log: any, i: number) => (
+                    <div key={i} className="flex items-start gap-3 py-2 border-b border-white/5">
+                      <span className="text-xs mt-0.5">
+                        {log.overall_status === 'healthy' ? '🟢' :
+                         log.overall_status === 'degraded' ? '🟡' : '🔴'}
+                      </span>
+                      <div className="flex-1">
+                        <p className="text-white/60 text-xs">
+                          {new Date(log.timestamp).toLocaleString()}
+                        </p>
+                        {(log.actions_taken || []).map((a: string, j: number) => (
+                          <p key={j} className="text-green-400 text-sm">✓ {a}</p>
+                        ))}
+                        {(log.alerts || []).map((a: string, j: number) => (
+                          <p key={j} className="text-red-400 text-sm">⚠️ {a}</p>
+                        ))}
+                        {(log.actions_taken || []).length === 0 && (log.alerts || []).length === 0 && (
+                          <p className="text-white/40 text-sm">All systems nominal</p>
+                        )}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </section>
+          </div>
+        )}
 
         {/* Config Tab */}
         {activeTab === 'config' && (
