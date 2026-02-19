@@ -61,24 +61,41 @@ class IdeaBank:
         return data["ideas"]
 
     def pick_idea(self) -> Optional[dict]:
-        """Pick one random available idea, preferring domains not recently used."""
+        """Pick one available idea using strict round-robin across domains.
+        
+        Maintains a domain_index that cycles through all domains in order.
+        If the next domain has no available ideas, skip to the one after, etc.
+        """
+        from domains import DOMAIN_REGISTRY
+        
         data = _load_data()
         available = [i for i in data["ideas"] if i["status"] == "available"]
         if not available:
             return None
 
-        # Find recently used domains
-        used = [i for i in data["ideas"] if i["status"] == "used"]
-        recent_domains = set()
-        for idea in sorted(used, key=lambda x: x.get("used_at", ""), reverse=True)[:10]:
-            recent_domains.add(idea["domain"])
-
-        # Prefer ideas from domains not recently used
-        preferred = [i for i in available if i["domain"] not in recent_domains]
-        pool = preferred if preferred else available
-
-        picked = random.choice(pool)
+        domain_names = list(DOMAIN_REGISTRY.keys())
+        num_domains = len(domain_names)
+        
+        # Get current round-robin index
+        domain_index = data.get("shorts_domain_index", 0)
+        
+        # Try each domain in order starting from current index
+        for offset in range(num_domains):
+            idx = (domain_index + offset) % num_domains
+            target_domain = domain_names[idx]
+            candidates = [i for i in available if i["domain"] == target_domain]
+            if candidates:
+                picked = random.choice(candidates)
+                picked["status"] = "scheduled"
+                # Advance index to NEXT domain for next pick
+                data["shorts_domain_index"] = (idx + 1) % num_domains
+                _save_data(data)
+                return picked
+        
+        # Fallback: pick any available (shouldn't happen if ideas exist)
+        picked = random.choice(available)
         picked["status"] = "scheduled"
+        data["shorts_domain_index"] = (domain_index + 1) % num_domains
         _save_data(data)
         return picked
 

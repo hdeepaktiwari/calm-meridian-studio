@@ -8,6 +8,7 @@ import time
 import random
 import requests
 from openai import OpenAI
+from core.variation_tracker import VariationTracker
 from moviepy import AudioFileClip, concatenate_videoclips, VideoClip, concatenate_audioclips, CompositeAudioClip
 from moviepy.audio.fx import AudioFadeOut
 import numpy as np
@@ -31,30 +32,59 @@ class VideoGenerator:
         self.base_style = """Ultra detailed 8k cinematic photography, photorealistic, 
         dramatic lighting, atmospheric depth, volumetric rays, museum quality composition, 
         professional color grading, cinematic framing"""
+        self.variation_tracker = VariationTracker()
     
     def generate_scene_plan(self, domain, duration, custom_description, include_signature, optimize_lighting):
         """Generate AI scene plan tailored to domain with custom user description"""
         num_scenes = duration // 10
         
-        # Select locations and elements
-        locations = random.sample(domain.locations, min(num_scenes, len(domain.locations)))
-        if len(locations) < num_scenes:
-            locations.extend(random.choices(domain.locations, k=num_scenes - len(locations)))
+        # Generate a unique video identity using variation tracker
+        has_dimensions = bool(getattr(domain, 'time_periods', None))
+        if has_dimensions:
+            video_identity = self.variation_tracker.get_fresh_identity(domain.name, domain)
+        else:
+            video_identity = None
         
-        # Build prompt with domain knowledge
-        elements_str = ", ".join(domain.signature_elements[:10])
+        # Select a SUBSET of locations so GPT doesn't default to the most obvious ones
+        location_sample_size = min(max(num_scenes + 4, 12), len(domain.locations))
+        sampled_locations = random.sample(domain.locations, location_sample_size)
+        
+        # Select locations and elements
+        locations = random.sample(sampled_locations, min(num_scenes, len(sampled_locations)))
+        if len(locations) < num_scenes:
+            locations.extend(random.choices(sampled_locations, k=num_scenes - len(locations)))
+        
+        # Build prompt with domain knowledge — use a random subset of elements too
+        elements_sample = random.sample(domain.signature_elements, min(12, len(domain.signature_elements)))
+        elements_str = ", ".join(elements_sample)
         lighting_str = ", ".join(domain.lighting_conditions)
-        locations_str = "\n".join([f"- {loc}" for loc in domain.locations])
+        locations_str = "\n".join([f"- {loc}" for loc in sampled_locations])
         
         # Add custom description if provided
         custom_instructions = ""
         if custom_description and custom_description.strip():
             custom_instructions = f"\n\nUSER REQUIREMENTS:\n{custom_description}\nEnsure the scenes align with these specific requirements while maintaining the domain style."
         
+        # Build video identity block
+        identity_block = ""
+        if video_identity:
+            perspective1 = video_identity['perspectives'][0] if video_identity.get('perspectives') else "wide angle"
+            perspective2 = video_identity['perspectives'][1] if len(video_identity.get('perspectives', [])) > 1 else "close-up"
+            identity_block = f"""
+VIDEO IDENTITY (make ALL scenes reflect this cohesive vision):
+- Time: {video_identity['time_period']}
+- Season: {video_identity['season']}
+- Weather: {video_identity['weather_condition']}
+- Primary perspective: {perspective1}, Secondary: {perspective2}
+- Narrative arc: {video_identity['narrative_theme']}
+
+IMPORTANT: These scenes must feel DIFFERENT from a typical {domain.name} video. Avoid the most obvious/clichéd interpretations. Find unexpected angles, lesser-known locations, and surprising visual moments within this domain.
+"""
+        
         prompt = f"""You are a cinematographer creating a {duration}-second video for: {domain.name}
 
 Description: {domain.description}{custom_instructions}
-
+{identity_block}
 Create {num_scenes} distinct cinematic scenes using these locations:
 {locations_str}
 
@@ -88,7 +118,7 @@ Return ONLY valid JSON:
                 {"role": "system", "content": f"You are an expert {domain.name} cinematographer. Return only valid JSON with rich visual details."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.9,
+            temperature=0.95,
             max_tokens=4000
         )
         
@@ -112,6 +142,12 @@ Return ONLY valid JSON:
                 list(domain.camera_weights.keys()),
                 weights=list(domain.camera_weights.values())
             )[0]
+        
+        # Store video identity on scenes for use in image prompts, and record it
+        if video_identity:
+            for scene in scenes:
+                scene['_video_identity'] = video_identity
+            self.variation_tracker.record_identity(domain.name, video_identity)
         
         return scenes
     
@@ -310,16 +346,32 @@ Return only valid JSON."""},
             }
     
     def create_image_prompt(self, scene, domain):
-        """Create Leonardo AI prompt with domain styling"""
+        """Create Leonardo AI prompt with domain styling and video identity dimensions"""
         description = scene['description']
         lighting = scene['lighting']
         elements = ", ".join(scene['key_elements'])
         mood = scene.get('mood', domain.mood_keywords[0])
         
-        prompt = f"""{description}. {lighting} lighting. 
-        Mood: {mood}. Key elements: {elements}.
-        {domain.style_prompt}. Color palette: {', '.join(domain.color_palette)}.
-        {self.base_style}. {domain.name} cinematography."""
+        # Include video identity dimensions if available
+        identity = scene.get('_video_identity')
+        if identity:
+            time_period = identity.get('time_period', '')
+            season = identity.get('season', '')
+            weather = identity.get('weather_condition', '')
+            perspective = identity.get('perspectives', [''])[0]
+            narrative = identity.get('narrative_theme', '')
+            
+            prompt = f"""{description}. {time_period} lighting during {season}.
+{weather} weather. Shot from {perspective} angle.
+Mood: {mood}. Theme: {narrative}.
+Key elements: {elements}.
+{domain.style_prompt}. Color palette: {', '.join(domain.color_palette)}.
+{self.base_style}. {domain.name} cinematography."""
+        else:
+            prompt = f"""{description}. {lighting} lighting. 
+Mood: {mood}. Key elements: {elements}.
+{domain.style_prompt}. Color palette: {', '.join(domain.color_palette)}.
+{self.base_style}. {domain.name} cinematography."""
         
         return prompt.strip()
     
