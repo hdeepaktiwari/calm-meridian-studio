@@ -1,5 +1,5 @@
 """
-Domain Registry - All 20 Specialized Cinematic Domains
+Domain Registry - All 23 Specialized Cinematic Domains
 Each domain has expert knowledge about its subject matter
 """
 from dataclasses import dataclass, field
@@ -98,80 +98,6 @@ ancient_places = Domain(
         "echoes of daily life", "the weight of centuries", "forgotten grandeur",
         "archaeological discovery", "spiritual pilgrimage", "the last stones standing",
         "dialogue between ruin and sky"
-    ]
-)
-
-# Domain 2: Modern Mansions
-modern_mansions = Domain(
-    name="Modern Luxury Mansions",
-    icon="🏠",
-    description="Contemporary luxury homes with minimalist design, clean lines, and sophisticated interiors",
-    locations=[
-        "Open concept living room with double-height ceiling", "Infinity pool terrace overlooking city lights",
-        "Chef's kitchen with waterfall island", "Master bedroom suite with panoramic glass wall",
-        "Private home cinema with tiered seating", "Temperature-controlled wine cellar",
-        "Rooftop lounge with fire pit", "Spa bathroom with rain shower and soaking tub",
-        "Smart home office with library wall", "Indoor-outdoor courtyard with mature olive tree",
-        "Glass-walled staircase with floating steps", "Underground garage with car turntable",
-        "Meditation garden with water feature", "Art gallery hallway with track lighting",
-        "Cantilevered balcony over a ravine", "Pool house with retractable glass walls",
-        "Walk-in closet with island and chandelier", "Basement entertainment bar with aquarium wall",
-        "Outdoor kitchen and dining pavilion", "Japanese-inspired entrance with stone path",
-        "Gym with floor-to-ceiling mirrors and city view", "Guest casita with private garden",
-        "Koi pond courtyard visible from living room", "Green roof terrace with wildflowers",
-        "Library with rolling ladder and reading nook", "Breakfast nook in a glass conservatory"
-    ],
-    signature_elements=[
-        "floor-to-ceiling windows", "minimalist furniture with clean geometry", "marble countertops and backsplashes",
-        "designer pendant lighting fixtures", "curated indoor plant arrangements", "large-scale abstract art pieces",
-        "sleek integrated appliances", "neutral tones with texture contrast", "geometric patterns in tile and wood",
-        "cantilevered concrete overhangs", "water features with LED underlighting", "bespoke millwork and cabinetry",
-        "statement fireplace with stone surround", "smart home control panels", "polished concrete floors",
-        "custom wine displays", "floating vanity with vessel sink", "retractable glass walls opening to garden",
-        "sculptural furniture as focal point", "hidden door to secret room", "green living wall",
-        "skylight flooding space with light", "brass and matte black hardware", "terrazzo flooring",
-        "infinity edge detail on pool or countertop"
-    ],
-    lighting_conditions=[
-        "natural daylight flooding through glass walls", "ambient LED strip lighting at night",
-        "warm evening glow from designer fixtures", "architectural spotlights on art",
-        "candlelit dinner atmosphere", "blue hour exterior with interior warmth glowing",
-        "morning sun casting long shadows through louvers", "moonlight reflecting off pool into living space"
-    ],
-    camera_weights={"pan_right": 0.35, "zoom_out": 0.25, "zoom_in": 0.2, "pan_left": 0.15, "tilt_up": 0.05},
-    color_palette=["pristine white", "charcoal grey", "warm oak", "matte black"],
-    mood_keywords=["sophisticated", "minimalist", "luxurious", "contemporary", "elegant", "serene", "aspirational", "refined"],
-    style_prompt="contemporary luxury interior design, minimalist architecture, high-end residential",
-    time_periods=[
-        "sunrise with first light entering east-facing glass", "mid-morning bright and airy",
-        "golden hour warming the facade", "blue hour with interior lights on",
-        "late evening ambient mood", "midnight pool glow",
-        "overcast midday soft and diffused", "dawn mist around the exterior"
-    ],
-    seasons=[
-        "summer with lush landscaping", "autumn with warm-toned decor accents",
-        "winter evening with fireplace lit", "spring with garden in bloom",
-        "rainy season with water on glass walls", "dry summer with pool as focal point",
-        "holiday season with subtle elegant decor", "early spring cleaning freshness"
-    ],
-    weather_conditions=[
-        "clear day with sharp shadows", "overcast giving soft flat light",
-        "rain streaming down glass walls", "fog outside with cozy interior",
-        "snow on rooftop terrace", "golden light after afternoon storm",
-        "wind rippling pool surface", "humid evening with condensation on glass"
-    ],
-    perspectives=[
-        "aerial drone showing rooftop and pool", "ground level entrance approach",
-        "macro close-up of material textures", "through floor-to-ceiling window from outside",
-        "reflection in pool surface", "looking up through glass atrium",
-        "from courtyard into living space", "symmetrical front elevation",
-        "tracking shot through connected rooms", "overhead plan view of living area"
-    ],
-    narrative_themes=[
-        "sanctuary from the world", "architecture as art", "light and shadow play",
-        "indoor-outdoor living", "material luxury", "curated minimalism",
-        "technology meets comfort", "private paradise", "design intentionality",
-        "the quiet of wealth"
     ]
 )
 
@@ -562,84 +488,6 @@ lakeside_lifestyle = Domain(
     ]
 )
 
-# Domain 8: Colorful American Roads
-colorful_roads = Domain(
-    name="Colorful American Roads",
-    icon="🛣️",
-    description="Scenic highways covered with autumn foliage and vibrant tree canopies",
-    locations=[
-        "Winding mountain road through forest", "Tree tunnel with arching branches",
-        "Scenic overlook with valley view", "Country road through autumn forest",
-        "Blue Ridge Parkway in fall color", "Covered bridge on back road",
-        "Road beside a rushing mountain stream", "Vista point at mountain summit",
-        "Foliage-lined highway with center stripe", "Desert highway through red rock country",
-        "Pacific Coast Highway cliff section", "New England village road with white church",
-        "Appalachian ridgetop road above clouds", "Farm road lined with stone walls and maples",
-        "Road through aspen grove in Colorado", "Bayou road with Spanish moss canopy",
-        "Road switchback revealing valley below", "Historic Route 66 section with neon",
-        "Mountain pass road with snowcapped peaks", "Road through Joshua Tree landscape",
-        "Coastal road with crashing waves below", "Road through rolling Kansas wheat fields",
-        "Autumn road with leaves blowing across", "Bridge road over wide river valley",
-        "Forest service road with wildflower shoulders", "Two-lane road vanishing to horizon"
-    ],
-    signature_elements=[
-        "colorful autumn leaves in full spectrum", "winding asphalt disappearing around curve",
-        "tree canopies forming tunnel overhead", "mountain vistas in layered blue",
-        "fallen leaves carpeting road shoulders", "white and yellow road lines",
-        "rustic guard rails along drops", "road signs weathered by seasons",
-        "distant mountains framing the road", "stone walls along country roads",
-        "pickup truck on empty road", "morning mist on road surface",
-        "deer crossing sign", "covered bridge entrance framing fall color",
-        "mile marker posts", "roadside wildflower patches", "reflective road markers at dusk",
-        "double yellow line on curve", "steam rising from wet asphalt after rain",
-        "old gas station at crossroads", "mailboxes along rural road",
-        "split rail fence beside road", "road cutting through rock face",
-        "bridge over creek with autumn reflections", "motorcyclist on sweeping curve"
-    ],
-    lighting_conditions=[
-        "golden autumn light filtering through leaves", "soft overcast enhancing fall colors",
-        "sun through trees creating shadow stripes", "vibrant midday saturating colors",
-        "early morning with long road shadows", "sunset behind mountain road",
-        "fog diffusing headlights", "rain-wet road reflecting autumn color"
-    ],
-    camera_weights={"pan_right": 0.35, "zoom_in": 0.25, "pan_left": 0.2, "zoom_out": 0.15, "tilt_up": 0.05},
-    color_palette=["autumn red", "golden yellow", "orange", "forest green"],
-    mood_keywords=["scenic", "colorful", "peaceful", "journey", "autumnal", "nostalgic", "wanderlust", "free"],
-    style_prompt="autumn road cinematography, colorful foliage, scenic highway",
-    time_periods=[
-        "pre-dawn empty road with rising mist", "sunrise painting treetops",
-        "golden hour with warm road glow", "midday with peak color saturation",
-        "late afternoon with long shadows", "blue hour with headlights beginning",
-        "twilight with last color in sky", "night with moonlit road"
-    ],
-    seasons=[
-        "early autumn first color changes", "peak fall foliage",
-        "late autumn mostly bare with some holdouts", "early winter bare trees and first snow",
-        "spring green tunnel forming", "summer full green canopy",
-        "Indian summer late warmth", "spring with roadside wildflowers"
-    ],
-    weather_conditions=[
-        "light fog in valleys", "crisp clear autumn day",
-        "after rain with glistening leaves", "light drizzle with moody sky",
-        "wind blowing leaves across road", "first snowflakes mixing with fall color",
-        "approaching storm with dramatic sky", "golden light breaking through clouds"
-    ],
-    perspectives=[
-        "aerial drone following road from above", "driver's POV through windshield",
-        "macro close-up of wet leaves on asphalt", "standing in center of empty road",
-        "from hillside looking down at switchback", "through car mirror at road behind",
-        "low angle along road surface", "from covered bridge looking out",
-        "panoramic from overlook", "between stone wall and road edge"
-    ],
-    narrative_themes=[
-        "the open road calls", "journey over destination",
-        "nature's last hurrah", "roads less traveled",
-        "solitary drive", "changing seasons changing landscapes",
-        "America's backroads", "wandering without purpose",
-        "the curve ahead", "freedom of the road"
-    ]
-)
-
 # Domain 9: Antarctica Beauty
 antarctica = Domain(
     name="Antarctica Beauty",
@@ -814,7 +662,10 @@ luxury_cruise = Domain(
         "Private dining pod on upper deck", "Garden terrace with real trees",
         "Jazz club with intimate stage", "Water slide complex",
         "Cigar lounge with port views", "Tender launch platform",
-        "Morning yoga deck at sunrise", "Private island beach club stop"
+        "Morning yoga deck at sunrise", "Private island beach club stop",
+        "Anchored in secluded turquoise cove", "Beach club at stern water level",
+        "Sailing yacht under full canvas", "Ice-class yacht near glacier",
+        "Bow lounge with trampoline net", "Catamaran deck between hulls"
     ],
     signature_elements=[
         "infinity pools blending with ocean", "elegant multi-course dining setup",
@@ -828,7 +679,10 @@ luxury_cruise = Domain(
         "cruise director's microphone", "moonlight on open ocean",
         "lifeboat row with orange covers", "ship horn sounding",
         "anchor chain descending", "pilot whale alongside ship",
-        "flag ceremony at stern"
+        "flag ceremony at stern",
+        "sleek hull cutting through water", "teak deck with perfect grain",
+        "jet skis and water toys deployed", "underwater lights at night",
+        "wake pattern from above", "yacht name on stern in gold"
     ],
     lighting_conditions=[
         "golden ocean sunset from deck", "elegant interior chandelier warmth",
@@ -871,86 +725,6 @@ luxury_cruise = Domain(
         "sunsets collected", "cultures connected by water",
         "grand tradition of ocean travel", "community of strangers",
         "the horizon beckons", "time suspended at sea"
-    ]
-)
-
-# Domain 12: Luxury Yachts
-luxury_yachts = Domain(
-    name="Luxury Yachts",
-    icon="⛵",
-    description="Private yacht lifestyle with exclusivity, ocean adventures, and premium amenities",
-    locations=[
-        "Sleek yacht deck with teak flooring", "Helm station with advanced navigation",
-        "Master cabin with panoramic hull windows", "Flybridge lounge with wet bar",
-        "Sundeck with sunpads and shade", "Water sports platform lowered to sea",
-        "Formal dining area with ocean view", "Jacuzzi on upper deck",
-        "Superyacht marina berth in Monaco", "Open ocean cruising at speed",
-        "Anchored in secluded turquoise cove", "Beach club at stern water level",
-        "Engine room cathedral of engineering", "Crew galley preparing gourmet",
-        "Tender garage with jet skis", "Wine cellar in hull",
-        "Master bathroom with sea view", "Bow lounge with trampoline net",
-        "Helipad on upper deck", "Night passage under stars",
-        "Anchored near volcanic island", "Sailing yacht under full canvas",
-        "Catamaran deck between hulls", "Ice-class yacht near glacier",
-        "Yacht in regatta under spinnaker"
-    ],
-    signature_elements=[
-        "sleek hull cutting through water", "teak deck with perfect grain",
-        "leather seating with contrast stitching", "jet skis and water toys deployed",
-        "champagne in crystal stemware", "ocean spray on polished steel",
-        "sunset from flybridge", "hand-stitched leather helm wheel",
-        "navigation screens glowing blue", "anchor chain descending into turquoise",
-        "wake pattern from above", "polished stainless railings",
-        "custom lighting under gunwale", "tender launch and recovery",
-        "flag and ensign flying", "underwater lights at night",
-        "chef plating on deck galley", "swimming platform at water level",
-        "mooring lines on cleats", "wind in yacht burgee",
-        "sonar display of seafloor", "binoculars on helm console",
-        "folded towels and fresh flowers", "yacht name on stern in gold",
-        "drone shot of yacht from above"
-    ],
-    lighting_conditions=[
-        "bright ocean sun with sparkle", "golden hour at sea",
-        "yacht interior ambient mood lighting", "moonlit water from deck",
-        "underwater hull lights creating glow", "sunrise on anchor watch",
-        "storm approaching with dramatic sky", "night passage with instruments glowing"
-    ],
-    camera_weights={"pan_right": 0.3, "zoom_in": 0.25, "zoom_out": 0.2, "pan_left": 0.15, "tilt_up": 0.1},
-    color_palette=["yacht white", "ocean blue", "teak brown", "chrome silver"],
-    mood_keywords=["exclusive", "luxurious", "adventurous", "prestigious", "free", "intimate", "refined", "powerful"],
-    style_prompt="luxury yacht lifestyle, private maritime, upscale boating",
-    time_periods=[
-        "dawn anchor watch", "morning swim off stern",
-        "golden hour cocktails on flybridge", "noon under blazing sun",
-        "afternoon water sports", "blue hour departure",
-        "twilight dinner on deck", "midnight passage under stars",
-        "sunrise arrival at new island"
-    ],
-    seasons=[
-        "Mediterranean high summer", "Caribbean winter charter",
-        "South Pacific spring sailing", "autumn Adriatic cruise",
-        "monsoon Indian Ocean passage", "summer solstice Nordic fjord",
-        "regatta week", "off-season refit and launch"
-    ],
-    weather_conditions=[
-        "flat calm mirror water", "perfect sailing breeze",
-        "building swell on passage", "tropical squall passing",
-        "crystal clear visibility to seafloor", "light chop with spray",
-        "fog requiring radar navigation", "post-storm rainbow over anchorage"
-    ],
-    perspectives=[
-        "aerial drone tracking shot", "from water level looking up at hull",
-        "helm POV over bow", "underwater looking up at hull",
-        "from tender approaching yacht", "through porthole from inside",
-        "from masthead looking down", "wide shot anchored in cove",
-        "macro on polished detail", "from beach watching yacht arrive"
-    ],
-    narrative_themes=[
-        "freedom of the seas", "ultimate privacy",
-        "the art of seamanship", "design meets ocean",
-        "adventures in paradise", "life at anchor",
-        "the yacht as home", "exploring coastlines",
-        "wind and water mastery", "privilege meets responsibility"
     ]
 )
 
@@ -1525,7 +1299,10 @@ luxury_palace = Domain(
         "Kitchen with copper pots and stone hearth", "Observatory tower with telescope",
         "Royal bathroom with marble tub", "Servants' corridor behind walls",
         "Garden terrace with palace facade behind", "Ballroom balcony overlooking dance floor",
-        "Secret passage revealed behind bookcase", "Crown jewel display room"
+        "Secret passage revealed behind bookcase", "Crown jewel display room",
+        "Infinity pool terrace overlooking city lights", "Private home cinema with tiered seating",
+        "Glass-walled staircase with floating steps", "Rooftop lounge with fire pit",
+        "Smart home office with library wall", "Indoor-outdoor courtyard with mature olive tree"
     ],
     signature_elements=[
         "crystal chandeliers with hundreds of prisms", "grand piano reflecting candlelight",
@@ -1540,7 +1317,10 @@ luxury_palace = Domain(
         "silver service on buffet", "gilded picture frames in ornate patterns",
         "bust sculpture on column", "hand-painted wallpaper with birds",
         "fireplace mantel with carved figures", "stained glass window casting colors",
-        "crown molding and ceiling rosettes"
+        "crown molding and ceiling rosettes",
+        "floor-to-ceiling windows with city view", "minimalist furniture with clean geometry",
+        "sleek integrated appliances", "green living wall",
+        "skylight flooding space with light", "retractable glass walls opening to garden"
     ],
     lighting_conditions=[
         "golden chandelier glow filling ballroom", "natural window light through tall french doors",
@@ -1587,20 +1367,482 @@ luxury_palace = Domain(
     ]
 )
 
+
+# Domain 21: Rainy Cozy Interiors
+rainy_cozy = Domain(
+    name="Rainy Cozy Interiors",
+    icon="🌧️",
+    description="Warm indoor spaces during rainfall with fireplaces, book nooks, and ambient comfort",
+    locations=[
+        "Window seat with rain streaming down glass", "Fireplace corner with crackling flames",
+        "Book nook under sloped attic ceiling", "Cabin living room during thunderstorm",
+        "Greenhouse with rain drumming on glass roof", "Library reading alcove with rain sounds",
+        "Kitchen with warm cooking and steamy windows", "Bedroom with rain lullaby on roof",
+        "Tea ceremony room during downpour", "Candle-lit study with rain outside",
+        "Blanket fort in living room on rainy day", "Bay window overlooking rain-soaked garden",
+        "Attic room with rain pattering on skylights", "Coffee shop corner with foggy windows",
+        "Cottage bedroom with quilts and rain sounds", "Sunroom during gentle spring rain",
+        "Loft apartment with floor-to-ceiling rain views", "Wooden cabin porch watching rain on lake",
+        "Cozy den with leather armchair and reading lamp", "Bathroom with rain shower and candles",
+        "Art studio with rain on industrial windows", "Wine cellar tasting room during storm",
+        "Treehouse interior during rainfall", "Mountain lodge lounge with panoramic rain",
+        "Victorian conservatory with rain on glass panels", "Japanese tatami room with rain garden view",
+        "Stone cottage kitchen with wood-burning stove"
+    ],
+    signature_elements=[
+        "rain droplets on window panes", "crackling fireplace with orange glow", "steaming coffee mug",
+        "stacked books with reading glasses", "knitted blankets and throws", "flickering candle flames",
+        "warm pendant lighting", "tea set with steam rising", "cat curled on armchair",
+        "rain-streaked glass reflections", "wood grain textures on floors", "plush cushions and pillows",
+        "dried flowers in vase", "vintage record player spinning", "handwritten journal open on desk",
+        "rain boots by the door", "umbrella stand dripping", "condensation on windowpanes",
+        "warm soup in ceramic bowl", "fairy lights strung across ceiling", "worn leather-bound books",
+        "wool socks on ottoman", "aromatic diffuser with steam", "watercolor painting on easel",
+        "chess set mid-game on side table", "copper kettle on stove"
+    ],
+    lighting_conditions=[
+        "warm golden fireplace glow", "soft candlelight flickering", "grey daylight filtered through rain",
+        "warm pendant lamp over reading nook", "dim ambient mood lighting", "lightning flash illuminating room",
+        "soft fairy light strings", "table lamp casting warm pool of light",
+        "overcast natural light through large windows"
+    ],
+    camera_weights={"zoom_in": 0.35, "pan_right": 0.25, "zoom_out": 0.15, "pan_left": 0.15, "tilt_up": 0.1},
+    color_palette=["warm amber", "soft cream", "rain grey", "deep brown", "candlelight orange"],
+    mood_keywords=["cozy", "warm", "peaceful", "intimate", "comforting", "nostalgic", "soothing", "sheltered", "contemplative"],
+    style_prompt="cozy interior during rainfall, warm ambient lighting, hygge atmosphere, rain on windows",
+    time_periods=[
+        "early morning rain with first light", "mid-morning grey drizzle", "afternoon thunderstorm",
+        "golden hour break in clouds", "evening rain with lamps lit", "late night rain lullaby",
+        "pre-dawn gentle rainfall", "twilight storm with lightning", "midnight steady rain"
+    ],
+    seasons=[
+        "autumn rain with fallen leaves outside", "spring showers with green garden", "winter storm with snow mixing rain",
+        "summer afternoon thunderstorm", "monsoon season heavy downpour", "late autumn cold rain",
+        "early spring first warm rain", "mid-winter freezing rain on windows"
+    ],
+    weather_conditions=[
+        "gentle steady drizzle", "heavy thunderstorm with lightning", "light misty rain",
+        "torrential downpour", "rain turning to snow", "warm summer rain",
+        "cold autumn rain with wind", "intermittent showers with sun breaks",
+        "fog and light rain combined"
+    ],
+    perspectives=[
+        "close-up of rain on glass", "from armchair looking at fireplace", "overhead view of reading nook",
+        "through rain-streaked window at garden", "macro of steam from coffee cup",
+        "from doorway into candlelit room", "reflection in rain puddle on windowsill",
+        "wide shot of entire cozy room", "from bed looking at rain window",
+        "through bookshelf at reading corner"
+    ],
+    narrative_themes=[
+        "shelter from the storm", "the joy of staying in", "rain as meditation",
+        "warmth against the cold", "solitude as comfort", "the ritual of tea and books",
+        "childhood rainy days", "listening to the rain", "the world slows down",
+        "finding peace indoors"
+    ]
+)
+
+# Domain 22: Northern Lights & Aurora
+northern_lights = Domain(
+    name="Northern Lights & Aurora",
+    icon="🌌",
+    description="Spectacular aurora borealis displays over Arctic and sub-Arctic landscapes",
+    locations=[
+        "Iceland glacier lagoon with aurora overhead", "Norway fjord reflecting green aurora",
+        "Finland snowy forest with aurora canopy", "Canada lakeside with aurora mirrored in water",
+        "Swedish Lapland frozen tundra under lights", "Aurora over remote lighthouse on rocky coast",
+        "Aurora reflected in perfectly still Arctic lake", "Aurora dancing over snow-capped mountains",
+        "Inside glass igloo watching aurora", "Dog sled trail under aurora sky",
+        "Aurora over frozen waterfall in Iceland", "Greenland ice sheet with aurora bands",
+        "Alaska wilderness cabin under aurora", "Aurora with Milky Way visible together",
+        "Tromsø bridge with aurora behind mountains", "Lofoten Islands fishing village under lights",
+        "Aurora over geothermal hot spring steam", "Reindeer herding camp under aurora",
+        "Ice hotel exterior glowing under aurora", "Aurora over volcanic black sand beach",
+        "Frozen river winding under aurora sky", "Northern lights over Arctic shipwreck",
+        "Snowy church steeple silhouetted by aurora", "Aurora over ice fishing hut on frozen lake",
+        "Mountain pass road under green and purple aurora", "Sami tent with smoke and aurora above",
+        "Aurora reflecting in glacier ice cave entrance"
+    ],
+    signature_elements=[
+        "green curtains of light rippling across sky", "purple and pink aurora bands", "reflection of aurora in still water",
+        "silhouetted pine trees against aurora", "snow-covered landscape under green glow", "star-filled sky behind aurora",
+        "aurora pillars reaching to zenith", "corona burst directly overhead", "time-lapse aurora streaks",
+        "northern lights through wispy clouds", "ice crystals sparkling under aurora light", "cabin warm glow contrasting aurora cold",
+        "aurora casting green shadows on snow", "dog sled team silhouetted against sky", "camera on tripod in foreground",
+        "steam from hot spring lit by aurora", "reindeer antlers against aurora sky", "frozen lake ice patterns under glow",
+        "person standing arms outstretched under aurora", "lighthouse beam cutting through aurora",
+        "mountain ridge line under dancing lights", "aurora reflected in glacier lagoon icebergs",
+        "wooden fence line leading to aurora horizon", "tent glowing orange under green sky",
+        "footprints in snow leading toward aurora", "northern lights with shooting star"
+    ],
+    lighting_conditions=[
+        "green aurora glow on landscape", "purple and magenta aurora illumination",
+        "aurora with moonlight on snow", "pitch dark sky maximizing aurora visibility",
+        "blue hour transition into aurora display", "aurora with light pollution from distant town",
+        "bright aurora casting visible shadows", "subtle aurora with rich starfield"
+    ],
+    camera_weights={"zoom_out": 0.35, "pan_right": 0.25, "tilt_up": 0.2, "pan_left": 0.15, "zoom_in": 0.05},
+    color_palette=["aurora green", "deep purple", "midnight blue", "snow white", "magenta pink"],
+    mood_keywords=["magical", "ethereal", "awe-inspiring", "transcendent", "mystical", "serene", "cosmic", "wonder", "otherworldly"],
+    style_prompt="northern lights aurora borealis, Arctic landscape photography, celestial display over wilderness",
+    time_periods=[
+        "early evening first aurora appearance", "peak aurora around midnight", "pre-dawn fading aurora",
+        "blue hour aurora beginning", "deep night maximum activity", "late evening building display",
+        "3am aurora substorm", "twilight aurora with color gradient sky", "all-night aurora marathon"
+    ],
+    seasons=[
+        "autumn equinox aurora season start", "deep winter solstice maximum darkness",
+        "spring equinox aurora season end", "early autumn first sightings",
+        "mid-winter peak season", "late winter with longer displays",
+        "September storm season", "March farewell displays"
+    ],
+    weather_conditions=[
+        "crystal clear Arctic sky", "thin high clouds adding texture to aurora",
+        "clearing after snowstorm reveals aurora", "bitter cold maximizing clarity",
+        "light snow falling through aurora glow", "fog lifting to reveal aurora",
+        "perfectly still air with no wind", "ice fog creating halos around aurora",
+        "post-blizzard pristine sky"
+    ],
+    perspectives=[
+        "ultra-wide fisheye capturing full sky", "low angle from snow level",
+        "reflected in lake with mirrored composition", "through ice cave opening to aurora sky",
+        "silhouette of person watching", "from inside warm cabin through window",
+        "drone above treeline showing aurora and landscape", "through frosted window frame",
+        "from mountaintop above clouds", "macro of ice crystals with aurora bokeh"
+    ],
+    narrative_themes=[
+        "nature's greatest light show", "connection to the cosmos", "the silence of the Arctic",
+        "ancient legends of the lights", "chasing the aurora", "patience rewarded",
+        "the dance of charged particles", "wilderness and wonder", "cold beauty",
+        "the sky comes alive"
+    ]
+)
+
+# Domain 23: Alpine Villages
+alpine_villages = Domain(
+    name="Alpine Villages",
+    icon="🏔️",
+    description="Charming mountain villages nestled in the Alps with chalets, meadows, and breathtaking peaks",
+    locations=[
+        "Swiss chalet with flower-covered balconies", "Austrian mountain village main square",
+        "Bavarian cottage with carved wooden facade", "Italian Dolomites village at sunset",
+        "Misty valley morning with church spire visible", "Alpine meadow with wildflowers and distant peaks",
+        "Mountain stream flowing through village center", "Cable car station overlooking valley",
+        "Christmas market in snow-covered village square", "Shepherd path winding up mountain pasture",
+        "Fondue cabin with panoramic mountain view", "Lakeside alpine town like Hallstatt",
+        "Mountain railway crossing stone viaduct", "Village bakery with fresh bread in window",
+        "Wooden bridge over mountain torrent", "Bell tower with mountains behind",
+        "Ski lodge terrace at golden hour", "Alpine dairy farm with grazing cows",
+        "Cobblestone village lane with hanging flower baskets", "Mountain chapel on a hillock",
+        "Outdoor café on village square with fountain", "Vineyard terraces on steep slopes",
+        "Hot spring pool with mountain panorama", "Covered wooden bridge in autumn",
+        "Alpine hut on high pasture at dawn", "Village cemetery with mountain backdrop",
+        "Train station platform with arriving red train"
+    ],
+    signature_elements=[
+        "wooden chalets with carved eaves", "window boxes overflowing with geraniums", "church bells echoing through valley",
+        "snow-capped peaks in background", "grazing cows with bells", "mountain stream with clear water",
+        "hand-painted building facades", "cobblestone paths and lanes", "wooden fences along meadows",
+        "smoke rising from chimneys", "alpine wildflowers in meadow", "cable car gondola crossing valley",
+        "stone drinking fountain in square", "traditional costumes and dirndls", "wooden shutters on windows",
+        "hay bales in fields", "mountain railway red carriages", "outdoor drying racks for herbs",
+        "slate roof tiles covered in lichen", "iron balcony railings with scrollwork", "woodpile stacked against wall",
+        "cheese wheels aging in cellar", "hiking trail markers and signs", "horse-drawn cart on village road",
+        "edelweiss growing on rocky ledge", "milk churns on doorstep"
+    ],
+    lighting_conditions=[
+        "dawn light hitting only highest peaks", "golden hour warming wooden facades",
+        "misty morning with diffused light", "bright midday with sharp mountain shadows",
+        "alpenglow on peaks at sunset", "overcast with moody atmosphere",
+        "candlelit windows at dusk", "moonlight on snow-covered rooftops"
+    ],
+    camera_weights={"zoom_out": 0.3, "pan_right": 0.25, "zoom_in": 0.2, "tilt_up": 0.15, "pan_left": 0.1},
+    color_palette=["forest green", "warm wood brown", "snow white", "geranium red", "sky blue"],
+    mood_keywords=["idyllic", "peaceful", "charming", "nostalgic", "wholesome", "timeless", "pastoral", "cozy", "picturesque"],
+    style_prompt="Alpine village photography, Swiss chalet architecture, mountain pastoral scenery, European mountain culture",
+    time_periods=[
+        "pre-dawn with valley still in shadow", "sunrise hitting church spire first",
+        "mid-morning with villagers active", "golden hour on wooden facades",
+        "noon with bright mountain clarity", "late afternoon shadows in valley",
+        "twilight with windows glowing", "evening with stars above peaks",
+        "dawn mist rising from meadows"
+    ],
+    seasons=[
+        "spring with meadow wildflowers blooming", "summer with green pastures and hiking",
+        "autumn with golden larch trees", "winter with deep snow on rooftops",
+        "Christmas season with decorated village", "early spring snowmelt and waterfalls",
+        "late summer harvest festival", "Indian summer warm autumn days"
+    ],
+    weather_conditions=[
+        "morning mist in valley", "fresh snow overnight on village",
+        "clear day with crisp mountain air", "afternoon thunderstorm over peaks",
+        "gentle rain with rainbow over valley", "fog clinging to mountainsides",
+        "first snowfall of season", "warm föhn wind clearing skies",
+        "clouds below village level"
+    ],
+    perspectives=[
+        "aerial view of village in valley", "from mountain trail looking down",
+        "through chalet window at village", "ground level on cobblestone street",
+        "from church tower overlooking rooftops", "reflection in mountain lake",
+        "through flower-covered arch", "from cable car descending to village",
+        "macro of wooden carving detail", "panoramic from meadow above"
+    ],
+    narrative_themes=[
+        "life in harmony with mountains", "traditions passed down generations",
+        "the rhythm of alpine seasons", "simplicity and contentment",
+        "community in isolation", "mountain as protector",
+        "the art of slow living", "nature and architecture in balance",
+        "stories the church bells tell", "finding home in the heights"
+    ]
+)
+
+# Domain 24: Waterfalls & Rivers
+waterfalls_rivers = Domain(
+    name="Waterfalls & Rivers",
+    icon="🌊",
+    description="Majestic waterfalls and flowing rivers in diverse natural settings worldwide",
+    locations=[
+        "Niagara Falls mist rising at golden hour", "Iceland Seljalandsfoss behind the waterfall view",
+        "Tropical jungle waterfall with emerald pool", "Mountain cascade tumbling over rocks",
+        "River bend through ancient forest", "Slow river through wildflower meadow",
+        "Whitewater rapids in red rock canyon", "Frozen waterfall with blue ice formations",
+        "Cave behind waterfall with light filtering through", "River at sunrise with mist and reflections",
+        "Stepping stones across babbling stream", "Bamboo raft drifting down jungle river",
+        "Stone bridge arching over waterfall", "Natural swimming hole with waterfall shower",
+        "River delta from aerial view", "Multi-tiered waterfall in rainforest",
+        "Hot spring waterfall with steam", "Waterfall into ocean from sea cliff",
+        "River through autumn forest with reflections", "Glacial meltwater river bright turquoise",
+        "Waterfall hidden in mossy grotto", "Wide river with sandbar islands",
+        "Plunge pool with mist rainbow", "Creek winding through alpine meadow",
+        "Dam spillway creating artificial waterfall", "Underground river emerging from cave mouth",
+        "River confluence where two colors meet"
+    ],
+    signature_elements=[
+        "cascading white water over rocks", "mist rising from waterfall base", "rainbow in waterfall spray",
+        "moss-covered boulders in stream", "crystal clear water revealing riverbed", "fallen log across stream",
+        "smooth river stones polished by water", "rippling reflections on water surface", "overhanging ferns and vegetation",
+        "fish jumping upstream", "water dripping from cliff face", "root systems exposed by river erosion",
+        "light filtering through waterfall curtain", "foam patterns in plunge pool", "river current bending around rock",
+        "ice formations on frozen waterfall", "autumn leaves floating downstream", "dragonfly hovering over stream",
+        "wooden footbridge crossing stream", "carved rock channels from millennia of flow",
+        "spray catching sunlight in prismatic colors", "still pool reflecting surrounding forest",
+        "rapids creating white foam patterns", "underwater rocks visible through clear flow",
+        "waterfall sound represented in visual texture", "eroded limestone terraces with flowing water"
+    ],
+    lighting_conditions=[
+        "sunrise mist glowing over river", "golden hour backlighting waterfall spray",
+        "midday sun creating rainbow in mist", "overcast soft light on flowing water",
+        "dappled sunlight through forest canopy on stream", "blue hour with smooth long-exposure water",
+        "moonlight reflecting on river surface", "light behind waterfall creating silhouette"
+    ],
+    camera_weights={"zoom_in": 0.3, "pan_right": 0.25, "zoom_out": 0.2, "tilt_up": 0.15, "pan_left": 0.1},
+    color_palette=["water blue", "emerald green", "mist white", "river stone grey", "moss green"],
+    mood_keywords=["powerful", "serene", "refreshing", "majestic", "meditative", "dynamic", "cleansing", "timeless", "flowing"],
+    style_prompt="waterfall and river photography, flowing water, natural water features, cascade scenery",
+    time_periods=[
+        "pre-dawn mist on river", "sunrise with golden water reflections",
+        "mid-morning with active wildlife", "noon with bright water sparkle",
+        "golden hour warm glow on cascade", "blue hour smooth silky water",
+        "twilight with last light on waterfall", "night with moonlit river",
+        "dawn after rain with swollen flow"
+    ],
+    seasons=[
+        "spring snowmelt peak flow", "summer with lush green surroundings",
+        "autumn with colorful reflections", "winter with ice-framed waterfall",
+        "monsoon season dramatic volume", "dry season revealing rock formations",
+        "early spring first thaw", "late autumn low clear water"
+    ],
+    weather_conditions=[
+        "after heavy rain with maximum flow", "misty morning along riverbank",
+        "clear day with sparkling water", "overcast enhancing green tones",
+        "light rain adding ripples to surface", "rainbow after storm near waterfall",
+        "fog hovering over river surface", "snow falling into flowing water",
+        "warm humidity creating steam on cold water"
+    ],
+    perspectives=[
+        "behind the waterfall looking out", "aerial drone following river course",
+        "water level at river surface", "from bridge looking down at rapids",
+        "macro of water droplets on rocks", "wide panoramic of entire waterfall",
+        "from plunge pool looking up at falls", "through forest frame at distant waterfall",
+        "underwater looking up at surface", "from riverbank at eye level"
+    ],
+    narrative_themes=[
+        "the persistence of water", "power and gentleness combined",
+        "the river's journey to the sea", "erosion as sculptor",
+        "life drawn to water", "the music of flowing water",
+        "ancient paths carved by current", "stillness in movement",
+        "water as meditation", "the cycle of rain and river"
+    ]
+)
+
+# Domain 25: Wildlife in Nature
+wildlife_nature = Domain(
+    name="Wildlife in Nature",
+    icon="🐾",
+    description="Wild animals in their natural habitats, from forests to savannas to polar regions",
+    locations=[
+        "Deer in misty morning forest clearing", "Dawn chorus birds perched on branches",
+        "Arctic fox hunting in snowy landscape", "Elephants at African watering hole at sunset",
+        "Giant pandas eating bamboo in mountain forest", "Whale breaching in open ocean",
+        "Butterflies in wildflower meadow", "Owl perched on branch at twilight",
+        "Bear cubs playing by mountain stream", "Koi fish in Japanese garden pond",
+        "Flamingos wading in pink lake at sunset", "Wolf pack on ridge howling at moon",
+        "Sea turtles nesting on moonlit beach", "Hummingbirds hovering at tropical flowers",
+        "Wild horses galloping across open plain", "Penguins waddling on Antarctic ice",
+        "Rabbits in spring wildflower field", "Lions resting under acacia tree",
+        "Dolphins leaping through ocean waves", "Eagles soaring over mountain valley",
+        "Otters playing in river rapids", "Giraffes silhouetted against African sunset",
+        "Snow leopard on Himalayan rocky ledge", "Monarch butterflies on migration in forest",
+        "Coral reef fish in tropical waters", "Moose standing in misty lake at dawn",
+        "Fireflies illuminating summer forest at dusk"
+    ],
+    signature_elements=[
+        "animal eyes reflecting light", "paw prints in mud or snow", "feathers caught in breeze",
+        "morning dew on fur or feathers", "animal breath visible in cold air", "ripples from drinking at water",
+        "bird in flight with wings spread", "predator stalking through grass", "newborn animal taking first steps",
+        "animal silhouette against sky", "fish scales catching sunlight", "antlers or horns against sky",
+        "butterfly wings in close-up detail", "whale tail above water surface", "fox tail disappearing into brush",
+        "nest with eggs or chicks", "spider web with dew drops", "tracks leading into wilderness",
+        "animal grazing in peaceful field", "birds forming murmuration pattern",
+        "bioluminescent ocean creatures at night", "turtle shell patterns and textures",
+        "dragonfly on lily pad", "bear catching fish in river",
+        "peacock displaying full tail feathers", "coral polyps swaying in current"
+    ],
+    lighting_conditions=[
+        "golden savanna sunrise", "misty forest dawn light",
+        "underwater dappled sunlight", "moonlight on nocturnal creatures",
+        "golden hour backlighting flying birds", "twilight with animals silhouetted",
+        "overcast soft light on fur detail", "bioluminescent glow in dark ocean"
+    ],
+    camera_weights={"zoom_in": 0.35, "pan_right": 0.25, "zoom_out": 0.2, "pan_left": 0.1, "tilt_up": 0.1},
+    color_palette=["savanna gold", "forest green", "ocean blue", "earth brown", "sky grey"],
+    mood_keywords=["wild", "peaceful", "majestic", "tender", "untamed", "harmonious", "awe-inspiring", "gentle", "primal"],
+    style_prompt="wildlife photography, animals in natural habitat, nature documentary style, wild beauty",
+    time_periods=[
+        "pre-dawn animal activity", "sunrise with golden wildlife silhouettes",
+        "mid-morning feeding time", "lazy noon rest in shade",
+        "golden hour migration movement", "twilight predator emergence",
+        "dusk watering hole gathering", "midnight nocturnal activity",
+        "dawn chorus of birdsong"
+    ],
+    seasons=[
+        "spring with newborn animals", "summer with peak activity and lush habitat",
+        "autumn migration season", "winter survival and adaptation",
+        "mating season displays", "dry season watering hole drama",
+        "wet season abundance", "breeding season nesting"
+    ],
+    weather_conditions=[
+        "misty morning in forest", "hot African midday heat haze",
+        "rain in tropical jungle", "snow falling on winter wildlife",
+        "clear sky for bird flight", "stormy ocean for whale watching",
+        "fog creating mysterious atmosphere", "after rain with rainbow over savanna",
+        "wind ruffling fur and feathers"
+    ],
+    perspectives=[
+        "eye-level with animal", "aerial following migration",
+        "underwater with marine life", "hidden camera trap angle",
+        "macro close-up of animal details", "wide landscape with tiny animal figure",
+        "from nest or burrow looking out", "tracking shot following movement",
+        "from behind vegetation observing", "reflection in water with animal above"
+    ],
+    narrative_themes=[
+        "survival and adaptation", "the circle of life",
+        "parent and offspring bond", "migration journeys",
+        "predator and prey dance", "coexistence in ecosystem",
+        "endangered species beauty", "wild freedom",
+        "nature's intelligence", "the web of life"
+    ]
+)
+
+# Domain 26: Café & Bookshop Ambience
+cafe_bookshop = Domain(
+    name="Café & Bookshop Ambience",
+    icon="☕",
+    description="Cozy coffee shops, vintage bookstores, and intimate reading spaces with warm ambience",
+    locations=[
+        "Cozy corner coffee shop with exposed brick", "Old bookshop with towering shelves",
+        "Library reading room with green lamps", "University café with study corners",
+        "Parisian café terrace on quiet street", "Rainy window café seat with condensation",
+        "Barista counter with espresso machine steam", "Bookshelf wall floor to ceiling with ladder",
+        "Warm pendant-lit café interior", "Vinyl record café with turntable playing",
+        "Japanese tea house zen corner", "Study desk with warm brass lamp",
+        "Bakery display case with pastries", "Window seat café overlooking city street",
+        "Candlelit wine bar with book shelves", "Courtyard café draped in ivy",
+        "Secondhand bookshop basement with armchairs", "Art café with paintings on walls",
+        "Rooftop café garden with string lights", "Monastery library with ancient volumes",
+        "Train station café with departures board", "Floating bookshop on canal boat",
+        "Mountain lodge café with fireplace", "Botanical garden greenhouse café",
+        "Jazz café with dim lighting and piano", "College town bookshop with cat sleeping",
+        "Converted church café with stained glass"
+    ],
+    signature_elements=[
+        "steaming latte art in ceramic cup", "stacked vintage books with worn spines", "reading glasses on open book",
+        "warm pendant lighting casting pools of light", "espresso machine with gleaming brass", "chalkboard menu with handwritten specials",
+        "potted plants on windowsills", "worn wooden tables with character", "mismatched vintage chairs",
+        "pastry display under glass dome", "handwritten notes tucked in books", "typewriter on display shelf",
+        "coffee beans in burlap sack", "newspaper folded on table", "vinyl record spinning on turntable",
+        "fairy lights around bookshelves", "candle in wine bottle with wax drips", "cat curled on bookshop chair",
+        "sugar bowl and cream pitcher", "vintage cash register", "book recommendations on handwritten cards",
+        "tea strainer and loose leaf tea", "croissant on plate with butter knife",
+        "rain-spotted window with café reflection", "antique globe on shelf",
+        "leather journal with fountain pen"
+    ],
+    lighting_conditions=[
+        "warm pendant lights over tables", "soft daylight through large windows",
+        "candlelit evening ambience", "green banker's lamp on reading desk",
+        "fairy lights creating gentle twinkle", "golden hour streaming through café windows",
+        "rainy day grey light with warm interior contrast", "fireplace glow in corner"
+    ],
+    camera_weights={"zoom_in": 0.35, "pan_right": 0.25, "zoom_out": 0.15, "pan_left": 0.15, "tilt_up": 0.1},
+    color_palette=["coffee brown", "cream white", "warm amber", "book leather tan", "sage green"],
+    mood_keywords=["cozy", "intellectual", "warm", "nostalgic", "intimate", "contemplative", "bohemian", "inviting", "cultured"],
+    style_prompt="cozy café and bookshop interior, warm ambient atmosphere, literary aesthetic, coffee culture",
+    time_periods=[
+        "early morning first coffee", "mid-morning quiet study time",
+        "lunchtime café bustle settling", "lazy afternoon with book",
+        "golden hour light in café", "evening wine and reading",
+        "late night last customers", "weekend morning brunch atmosphere",
+        "closing time peaceful emptiness"
+    ],
+    seasons=[
+        "autumn with hot drinks and scarves", "winter with steamed windows and warmth",
+        "spring with doors open to breeze", "summer iced coffee afternoons",
+        "holiday season with decorated café", "rainy season as refuge",
+        "back-to-school September energy", "lazy summer reading season"
+    ],
+    weather_conditions=[
+        "rain making café a cozy refuge", "snow falling outside warm windows",
+        "sunny day with outdoor seating", "overcast perfect reading weather",
+        "windy day rattling café door", "fog creating intimate atmosphere",
+        "thunderstorm with dramatic window views", "crisp clear day with open doors",
+        "drizzle with umbrellas at door"
+    ],
+    perspectives=[
+        "from armchair looking at bookshelf wall", "overhead view of coffee and open book",
+        "through steamy window from outside", "macro of latte art foam",
+        "between bookshelves at reading nook", "from counter watching barista work",
+        "wide shot of entire café interior", "through doorway from street",
+        "from reading desk at warm lamp", "reflection in coffee surface"
+    ],
+    narrative_themes=[
+        "the third place between work and home", "books as portals",
+        "the ritual of coffee", "conversations over cups",
+        "solitude in public spaces", "the smell of old books",
+        "caffeine and creativity", "community gathering spot",
+        "the art of doing nothing", "words and warmth"
+    ]
+)
+
 # Registry of all domains
 DOMAIN_REGISTRY = {
     "Ancient Places": ancient_places,
-    "Modern Luxury Mansions": modern_mansions,
     "Lush Agricultural Farmhouses": agricultural_farmhouses,
     "Ocean & Sea Creatures": ocean_beauty,
     "Lush Green Forests": lush_forests,
     "Beautiful Himalayas": himalayan_beauty,
     "Lakeside Lifestyle": lakeside_lifestyle,
-    "Colorful American Roads": colorful_roads,
     "Antarctica Beauty": antarctica,
     "Life in Space": space_life,
     "Luxury Cruise Ships": luxury_cruise,
-    "Luxury Yachts": luxury_yachts,
     "Desert Life Worldwide": desert_life,
     "Tropical Greenery": tropical_greenery,
     "Buddhist Lifestyle": buddhist_lifestyle,
@@ -1609,4 +1851,10 @@ DOMAIN_REGISTRY = {
     "Amazon Rainforest": amazon_rainforest,
     "Beautiful Beaches": beautiful_beaches,
     "Luxury Palace Interiors": luxury_palace,
+    "Rainy Cozy Interiors": rainy_cozy,
+    "Northern Lights & Aurora": northern_lights,
+    "Alpine Villages": alpine_villages,
+    "Waterfalls & Rivers": waterfalls_rivers,
+    "Wildlife in Nature": wildlife_nature,
+    "Café & Bookshop Ambience": cafe_bookshop,
 }
